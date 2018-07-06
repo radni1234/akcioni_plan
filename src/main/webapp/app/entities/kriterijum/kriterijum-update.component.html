@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-kriterijum-heading" jhiTranslate="akcioniPlanApp.kriterijum.home.createOrEditLabel">Create or edit a Kriterijum</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!kriterijum.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="kriterijum.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.kriterijumTip" for="field_kriterijumTip">Kriterijum Tip</label>
+                    <select class="form-control" name="kriterijumTip" [(ngModel)]="kriterijum.kriterijumTip" id="field_kriterijumTip"  required>
+                        <option value="BOD">{{'akcioniPlanApp.KriterijumTip.BOD' | translate}}</option>
+                        <option value="VREDNOST">{{'akcioniPlanApp.KriterijumTip.VREDNOST' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.kriterijumTip?.dirty && editForm.controls.kriterijumTip?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.kriterijumTip?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.naziv" for="field_naziv">Naziv</label>
+                    <input type="text" class="form-control" name="naziv" id="field_naziv"
+                        [(ngModel)]="kriterijum.naziv" required minlength="1" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.naziv?.dirty && editForm.controls.naziv?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.ponder" for="field_ponder">Ponder</label>
+                    <input type="number" class="form-control" name="ponder" id="field_ponder"
+                        [(ngModel)]="kriterijum.ponder" required/>
+                    <div [hidden]="!(editForm.controls.ponder?.dirty && editForm.controls.ponder?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ponder?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.ponder?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>
+                    <select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="kriterijum.akcioniPlan"  required>
+                        <option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>
+                        <option [ngValue]="akcioniPlanOption.id === kriterijum.akcioniPlan?.id ? kriterijum.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

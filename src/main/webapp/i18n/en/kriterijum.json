@@ -1,0 +1,27 @@
+
+{
+    "akcioniPlanApp": {
+        "kriterijum" : {
+            "home": {
+                "title": "Kriterijums",
+                "createLabel": "Create a new Kriterijum",
+                "createOrEditLabel": "Create or edit a Kriterijum"
+            },
+            "created": "A new Kriterijum is created with identifier {{ param }}",
+            "updated": "A Kriterijum is updated with identifier {{ param }}",
+            "deleted": "A Kriterijum is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Kriterijum {{ id }}?"
+            },
+            "detail": {
+                "title": "Kriterijum"
+            },
+            "kriterijumTip": "Kriterijum Tip",
+            "naziv": "Naziv",
+            "ponder": "Ponder",
+            "kriterijumBodovanje": "Kriterijum Bodovanje",
+            "projekatPodovanje": "Projekat Podovanje",
+            "akcioniPlan": "Akcioni Plan"
+        }
+    }
+}

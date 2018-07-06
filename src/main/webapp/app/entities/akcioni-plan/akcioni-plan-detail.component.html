@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="akcioniPlan">
+            <h2><span jhiTranslate="akcioniPlanApp.akcioniPlan.detail.title">Akcioni Plan</span> {{akcioniPlan.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.naziv">Naziv</span></dt>
+                <dd>
+                    <span>{{akcioniPlan.naziv}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.opis">Opis</span></dt>
+                <dd>
+                    <span>{{akcioniPlan.opis}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.budzet">Budzet</span></dt>
+                <dd>
+                    <span>{{akcioniPlan.budzet}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.datumOd">Datum Od</span></dt>
+                <dd>
+                    <span>{{akcioniPlan.datumOd}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.datumDo">Datum Do</span></dt>
+                <dd>
+                    <span>{{akcioniPlan.datumDo}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.akcioniPlan.user">User</span></dt>
+                <dd>
+                    {{akcioniPlan.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/akcioni-plan', akcioniPlan.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

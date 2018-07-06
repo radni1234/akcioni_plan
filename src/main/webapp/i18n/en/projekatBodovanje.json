@@ -1,0 +1,27 @@
+
+{
+    "akcioniPlanApp": {
+        "projekatBodovanje" : {
+            "home": {
+                "title": "Projekat Bodovanjes",
+                "createLabel": "Create a new Projekat Bodovanje",
+                "createOrEditLabel": "Create or edit a Projekat Bodovanje"
+            },
+            "created": "A new Projekat Bodovanje is created with identifier {{ param }}",
+            "updated": "A Projekat Bodovanje is updated with identifier {{ param }}",
+            "deleted": "A Projekat Bodovanje is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Projekat Bodovanje {{ id }}?"
+            },
+            "detail": {
+                "title": "Projekat Bodovanje"
+            },
+            "vrednost": "Vrednost",
+            "bodovi": "Bodovi",
+            "ponder": "Ponder",
+            "ponderisaniBodovi": "Ponderisani Bodovi",
+            "kriterijum": "Kriterijum",
+            "projekat": "Projekat"
+        }
+    }
+}

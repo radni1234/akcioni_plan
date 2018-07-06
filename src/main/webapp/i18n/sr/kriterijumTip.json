@@ -1,0 +1,9 @@
+{
+    "akcioniPlanApp": {
+        "KriterijumTip" : {
+            "null": "",
+            "BOD": "BOD",
+            "VREDNOST": "VREDNOST"
+        }
+    }
+}

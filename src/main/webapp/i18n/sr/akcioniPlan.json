@@ -1,0 +1,29 @@
+
+{
+    "akcioniPlanApp": {
+        "akcioniPlan" : {
+            "home": {
+                "title": "Akcioni Plans",
+                "createLabel": "Kreiraj novi Akcioni Plan",
+                "createOrEditLabel": "Kreirajte ili izmenite Akcioni Plan"
+            },
+            "created": "Kreiran je novi Akcioni Plan pod nazivom {{ param }}",
+            "updated": "Akcioni Plan pod nazivom {{ param }} je ažuriran",
+            "deleted": "Akcioni Plan pod nazivom {{ param }} je obrisan",
+            "delete": {
+                "question": "Da li ste sigurni da želite da obrišete Akcioni Plan pod nazivom {{ id }}?"
+            },
+            "detail": {
+                "title": "Akcioni Plan"
+            },
+            "naziv": "Naziv",
+            "opis": "Opis",
+            "budzet": "Budzet",
+            "datumOd": "Datum Od",
+            "datumDo": "Datum Do",
+            "kriterijum": "Kriterijum",
+            "projekat": "Projekat",
+            "user": "User"
+        }
+    }
+}

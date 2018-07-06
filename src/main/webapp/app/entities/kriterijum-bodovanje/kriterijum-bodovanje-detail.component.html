@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="kriterijumBodovanje">
+            <h2><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.detail.title">Kriterijum Bodovanje</span> {{kriterijumBodovanje.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></dt>
+                <dd>
+                    <span>{{kriterijumBodovanje.granicaOd}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></dt>
+                <dd>
+                    <span>{{kriterijumBodovanje.granicaDo}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span></dt>
+                <dd>
+                    <span>{{kriterijumBodovanje.bodovi}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></dt>
+                <dd>
+                    <div *ngIf="kriterijumBodovanje.kriterijum">
+                        <a [routerLink]="['/kriterijum', kriterijumBodovanje.kriterijum?.id, 'view']">{{kriterijumBodovanje.kriterijum?.naziv}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

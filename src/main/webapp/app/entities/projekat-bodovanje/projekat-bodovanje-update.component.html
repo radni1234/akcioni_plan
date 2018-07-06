@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-projekat-bodovanje-heading" jhiTranslate="akcioniPlanApp.projekatBodovanje.home.createOrEditLabel">Create or edit a Projekat Bodovanje</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!projekatBodovanje.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="projekatBodovanje.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.vrednost" for="field_vrednost">Vrednost</label>
+                    <input type="number" class="form-control" name="vrednost" id="field_vrednost"
+                        [(ngModel)]="projekatBodovanje.vrednost" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.bodovi" for="field_bodovi">Bodovi</label>
+                    <input type="number" class="form-control" name="bodovi" id="field_bodovi"
+                        [(ngModel)]="projekatBodovanje.bodovi" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.ponder" for="field_ponder">Ponder</label>
+                    <input type="number" class="form-control" name="ponder" id="field_ponder"
+                        [(ngModel)]="projekatBodovanje.ponder" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.ponderisaniBodovi" for="field_ponderisaniBodovi">Ponderisani Bodovi</label>
+                    <input type="number" class="form-control" name="ponderisaniBodovi" id="field_ponderisaniBodovi"
+                        [(ngModel)]="projekatBodovanje.ponderisaniBodovi" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.kriterijum" for="field_kriterijum">Kriterijum</label>
+                    <select class="form-control" id="field_kriterijum" name="kriterijum" [(ngModel)]="projekatBodovanje.kriterijum"  required>
+                        <option *ngIf="!editForm.value.kriterijum" [ngValue]="null" selected></option>
+                        <option [ngValue]="kriterijumOption.id === projekatBodovanje.kriterijum?.id ? projekatBodovanje.kriterijum : kriterijumOption" *ngFor="let kriterijumOption of kriterijums; trackBy: trackKriterijumById">{{kriterijumOption.naziv}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.kriterijum?.dirty && editForm.controls.kriterijum?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.kriterijum?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekatBodovanje.projekat" for="field_projekat">Projekat</label>
+                    <select class="form-control" id="field_projekat" name="projekat" [(ngModel)]="projekatBodovanje.projekat"  required>
+                        <option *ngIf="!editForm.value.projekat" [ngValue]="null" selected></option>
+                        <option [ngValue]="projekatOption.id === projekatBodovanje.projekat?.id ? projekatBodovanje.projekat : projekatOption" *ngFor="let projekatOption of projekats; trackBy: trackProjekatById">{{projekatOption.naziv}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.projekat?.dirty && editForm.controls.projekat?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.projekat?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

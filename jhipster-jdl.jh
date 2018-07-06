@@ -1,0 +1,67 @@
+entity AkcioniPlan {
+	naziv String required minlength(1) maxlength(100)
+    opis String
+    budzet Double
+    datumOd LocalDate
+    datumDo LocalDate    
+}
+
+entity Projekat {
+	naziv String required minlength(1) maxlength(100)
+    datumOd LocalDate
+    datumDo LocalDate
+    aktivnost String
+    lokacija String
+    opstiCilj String
+    posebniCilj String
+    indikatori String
+    referentniParametar String
+    projektovanjaPotrosnja String
+    potrosnjaNakonMere String
+    investicija String
+    vrednostUstede String
+    vremePovracaja String
+    smanjenjeEmisije String
+    opisMere String
+    vremenskiOkvir String
+    odgovornaOsoba String
+    izvorFinansiranja String
+    ostalo String
+    slika ImageBlob
+}
+
+entity Kriterijum {
+	kriterijumTip KriterijumTip required
+	naziv String required  minlength(1) maxlength(100)
+    ponder Float required
+}
+
+entity KriterijumBodovanje {
+	granicaOd Double required
+    granicaDo Double required
+	bodovi Double required
+}
+
+entity ProjekatBodovanje {
+	vrednost Double
+    bodovi Double
+    ponder Double
+    ponderisaniBodovi Double
+}
+
+enum KriterijumTip {
+	BOD, VREDNOST
+}
+
+relationship OneToMany{
+	AkcioniPlan{kriterijum} to Kriterijum{akcioniPlan(naziv) required},
+    AkcioniPlan{projekat} to Projekat{akcioniPlan(naziv) required},
+    Kriterijum{kriterijumBodovanje} to KriterijumBodovanje{kriterijum(naziv) required}
+    Kriterijum{projekatPodovanje} to ProjekatBodovanje{kriterijum(naziv) required}
+    Projekat{projekatBodovanje} to ProjekatBodovanje{projekat(naziv) required}
+}
+
+relationship ManyToOne{
+	AkcioniPlan{user(login) required} to User
+}
+

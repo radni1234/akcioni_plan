@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Projekat.
+    -->
+    <changeSet id="20180706114423-1" author="jhipster">
+        <createTable tableName="projekat">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="naziv" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="datum_od" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="datum_do" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="aktivnost" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="lokacija" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="opsti_cilj" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="posebni_cilj" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="indikatori" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="referentni_parametar" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="projektovanja_potrosnja" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="potrosnja_nakon_mere" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="investicija" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vrednost_ustede" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vreme_povracaja" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="smanjenje_emisije" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="opis_mere" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vremenski_okvir" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="odgovorna_osoba" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="izvor_finansiranja" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ostalo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="slika" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="slika_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="akcioni_plan_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

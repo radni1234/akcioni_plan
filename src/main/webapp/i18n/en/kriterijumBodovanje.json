@@ -1,0 +1,25 @@
+
+{
+    "akcioniPlanApp": {
+        "kriterijumBodovanje" : {
+            "home": {
+                "title": "Kriterijum Bodovanjes",
+                "createLabel": "Create a new Kriterijum Bodovanje",
+                "createOrEditLabel": "Create or edit a Kriterijum Bodovanje"
+            },
+            "created": "A new Kriterijum Bodovanje is created with identifier {{ param }}",
+            "updated": "A Kriterijum Bodovanje is updated with identifier {{ param }}",
+            "deleted": "A Kriterijum Bodovanje is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Kriterijum Bodovanje {{ id }}?"
+            },
+            "detail": {
+                "title": "Kriterijum Bodovanje"
+            },
+            "granicaOd": "Granica Od",
+            "granicaDo": "Granica Do",
+            "bodovi": "Bodovi",
+            "kriterijum": "Kriterijum"
+        }
+    }
+}

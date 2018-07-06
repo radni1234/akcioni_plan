@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projekat">
+            <h2><span jhiTranslate="akcioniPlanApp.projekat.detail.title">Projekat</span> {{projekat.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.naziv">Naziv</span></dt>
+                <dd>
+                    <span>{{projekat.naziv}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.datumOd">Datum Od</span></dt>
+                <dd>
+                    <span>{{projekat.datumOd}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.datumDo">Datum Do</span></dt>
+                <dd>
+                    <span>{{projekat.datumDo}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.aktivnost">Aktivnost</span></dt>
+                <dd>
+                    <span>{{projekat.aktivnost}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.lokacija">Lokacija</span></dt>
+                <dd>
+                    <span>{{projekat.lokacija}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.opstiCilj">Opsti Cilj</span></dt>
+                <dd>
+                    <span>{{projekat.opstiCilj}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.posebniCilj">Posebni Cilj</span></dt>
+                <dd>
+                    <span>{{projekat.posebniCilj}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.indikatori">Indikatori</span></dt>
+                <dd>
+                    <span>{{projekat.indikatori}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.referentniParametar">Referentni Parametar</span></dt>
+                <dd>
+                    <span>{{projekat.referentniParametar}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.projektovanjaPotrosnja">Projektovanja Potrosnja</span></dt>
+                <dd>
+                    <span>{{projekat.projektovanjaPotrosnja}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.potrosnjaNakonMere">Potrosnja Nakon Mere</span></dt>
+                <dd>
+                    <span>{{projekat.potrosnjaNakonMere}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.investicija">Investicija</span></dt>
+                <dd>
+                    <span>{{projekat.investicija}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.vrednostUstede">Vrednost Ustede</span></dt>
+                <dd>
+                    <span>{{projekat.vrednostUstede}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.vremePovracaja">Vreme Povracaja</span></dt>
+                <dd>
+                    <span>{{projekat.vremePovracaja}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.smanjenjeEmisije">Smanjenje Emisije</span></dt>
+                <dd>
+                    <span>{{projekat.smanjenjeEmisije}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.opisMere">Opis Mere</span></dt>
+                <dd>
+                    <span>{{projekat.opisMere}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.vremenskiOkvir">Vremenski Okvir</span></dt>
+                <dd>
+                    <span>{{projekat.vremenskiOkvir}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.odgovornaOsoba">Odgovorna Osoba</span></dt>
+                <dd>
+                    <span>{{projekat.odgovornaOsoba}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.izvorFinansiranja">Izvor Finansiranja</span></dt>
+                <dd>
+                    <span>{{projekat.izvorFinansiranja}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.ostalo">Ostalo</span></dt>
+                <dd>
+                    <span>{{projekat.ostalo}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.slika">Slika</span></dt>
+                <dd>
+                    <div *ngIf="projekat.slika">
+                        <a (click)="openFile(projekat.slikaContentType, projekat.slika)">
+                            <img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-width: 100%;" alt="projekat image"/>
+                        </a>
+                        {{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekat.akcioniPlan">Akcioni Plan</span></dt>
+                <dd>
+                    <div *ngIf="projekat.akcioniPlan">
+                        <a [routerLink]="['/akcioni-plan', projekat.akcioniPlan?.id, 'view']">{{projekat.akcioniPlan?.naziv}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projekat', projekat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+    "name": "ProjekatBodovanje",
+    "fields": [
+        {
+            "fieldName": "vrednost",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "bodovi",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ponder",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ponderisaniBodovi",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "kriterijum",
+            "otherEntityName": "kriterijum",
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "projekat",
+            "otherEntityName": "projekat",
+            "otherEntityField": "naziv"
+        }
+    ],
+    "changelogDate": "20180706114426",
+    "entityTableName": "projekat_bodovanje",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

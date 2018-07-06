@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projekatBodovanje">
+            <h2><span jhiTranslate="akcioniPlanApp.projekatBodovanje.detail.title">Projekat Bodovanje</span> {{projekatBodovanje.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.vrednost">Vrednost</span></dt>
+                <dd>
+                    <span>{{projekatBodovanje.vrednost}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.bodovi">Bodovi</span></dt>
+                <dd>
+                    <span>{{projekatBodovanje.bodovi}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.ponder">Ponder</span></dt>
+                <dd>
+                    <span>{{projekatBodovanje.ponder}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.ponderisaniBodovi">Ponderisani Bodovi</span></dt>
+                <dd>
+                    <span>{{projekatBodovanje.ponderisaniBodovi}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.kriterijum">Kriterijum</span></dt>
+                <dd>
+                    <div *ngIf="projekatBodovanje.kriterijum">
+                        <a [routerLink]="['/kriterijum', projekatBodovanje.kriterijum?.id, 'view']">{{projekatBodovanje.kriterijum?.naziv}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.projekatBodovanje.projekat">Projekat</span></dt>
+                <dd>
+                    <div *ngIf="projekatBodovanje.projekat">
+                        <a [routerLink]="['/projekat', projekatBodovanje.projekat?.id, 'view']">{{projekatBodovanje.projekat?.naziv}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projekat-bodovanje', projekatBodovanje.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="akcioniPlanApp.projekatBodovanje.home.title">Projekat Bodovanjes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-projekat-bodovanje" [routerLink]="['/projekat-bodovanje/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="akcioniPlanApp.projekatBodovanje.home.createLabel">
+            Create new Projekat Bodovanje
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="projekatBodovanjes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.vrednost">Vrednost</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.bodovi">Bodovi</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.ponder">Ponder</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.ponderisaniBodovi">Ponderisani Bodovi</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.kriterijum">Kriterijum</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekatBodovanje.projekat">Projekat</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let projekatBodovanje of projekatBodovanjes ;trackBy: trackId">
+                <td><a [routerLink]="['/projekat-bodovanje', projekatBodovanje.id, 'view' ]">{{projekatBodovanje.id}}</a></td>
+                <td>{{projekatBodovanje.vrednost}}</td>
+                <td>{{projekatBodovanje.bodovi}}</td>
+                <td>{{projekatBodovanje.ponder}}</td>
+                <td>{{projekatBodovanje.ponderisaniBodovi}}</td>
+                <td>
+                    <div *ngIf="projekatBodovanje.kriterijum">
+                        <a [routerLink]="['../kriterijum', projekatBodovanje.kriterijum?.id, 'view' ]" >{{projekatBodovanje.kriterijum?.naziv}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="projekatBodovanje.projekat">
+                        <a [routerLink]="['../projekat', projekatBodovanje.projekat?.id, 'view' ]" >{{projekatBodovanje.projekat?.naziv}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/projekat-bodovanje', projekatBodovanje.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/projekat-bodovanje', projekatBodovanje.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'projekat-bodovanje/'+ projekatBodovanje.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

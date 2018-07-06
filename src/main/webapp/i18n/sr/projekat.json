@@ -1,0 +1,44 @@
+
+{
+    "akcioniPlanApp": {
+        "projekat" : {
+            "home": {
+                "title": "Projekats",
+                "createLabel": "Kreiraj novi Projekat",
+                "createOrEditLabel": "Kreirajte ili izmenite Projekat"
+            },
+            "created": "Kreiran je novi Projekat pod nazivom {{ param }}",
+            "updated": "Projekat pod nazivom {{ param }} je ažuriran",
+            "deleted": "Projekat pod nazivom {{ param }} je obrisan",
+            "delete": {
+                "question": "Da li ste sigurni da želite da obrišete Projekat pod nazivom {{ id }}?"
+            },
+            "detail": {
+                "title": "Projekat"
+            },
+            "naziv": "Naziv",
+            "datumOd": "Datum Od",
+            "datumDo": "Datum Do",
+            "aktivnost": "Aktivnost",
+            "lokacija": "Lokacija",
+            "opstiCilj": "Opsti Cilj",
+            "posebniCilj": "Posebni Cilj",
+            "indikatori": "Indikatori",
+            "referentniParametar": "Referentni Parametar",
+            "projektovanjaPotrosnja": "Projektovanja Potrosnja",
+            "potrosnjaNakonMere": "Potrosnja Nakon Mere",
+            "investicija": "Investicija",
+            "vrednostUstede": "Vrednost Ustede",
+            "vremePovracaja": "Vreme Povracaja",
+            "smanjenjeEmisije": "Smanjenje Emisije",
+            "opisMere": "Opis Mere",
+            "vremenskiOkvir": "Vremenski Okvir",
+            "odgovornaOsoba": "Odgovorna Osoba",
+            "izvorFinansiranja": "Izvor Finansiranja",
+            "ostalo": "Ostalo",
+            "slika": "Slika",
+            "projekatBodovanje": "Projekat Bodovanje",
+            "akcioniPlan": "Akcioni Plan"
+        }
+    }
+}

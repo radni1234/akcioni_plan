@@ -1,0 +1,62 @@
+{
+    "name": "AkcioniPlan",
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "opis",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "budzet",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "datumOd",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "datumDo",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "kriterijum",
+            "otherEntityName": "kriterijum",
+            "otherEntityRelationshipName": "akcioniPlan"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projekat",
+            "otherEntityName": "projekat",
+            "otherEntityRelationshipName": "akcioniPlan"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "changelogDate": "20180706114422",
+    "entityTableName": "akcioni_plan",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

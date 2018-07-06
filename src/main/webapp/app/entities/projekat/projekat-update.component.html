@@ -1,0 +1,178 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-projekat-heading" jhiTranslate="akcioniPlanApp.projekat.home.createOrEditLabel">Create or edit a Projekat</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!projekat.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="projekat.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.naziv" for="field_naziv">Naziv</label>
+                    <input type="text" class="form-control" name="naziv" id="field_naziv"
+                        [(ngModel)]="projekat.naziv" required minlength="1" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.naziv?.dirty && editForm.controls.naziv?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.naziv?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.datumOd" for="field_datumOd">Datum Od</label>
+                    <div class="input-group">
+                        <input id="field_datumOd" type="text" class="form-control" name="datumOd" ngbDatepicker  #datumOdDp="ngbDatepicker" [(ngModel)]="projekat.datumOd"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="datumOdDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.datumDo" for="field_datumDo">Datum Do</label>
+                    <div class="input-group">
+                        <input id="field_datumDo" type="text" class="form-control" name="datumDo" ngbDatepicker  #datumDoDp="ngbDatepicker" [(ngModel)]="projekat.datumDo"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="datumDoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.aktivnost" for="field_aktivnost">Aktivnost</label>
+                    <input type="text" class="form-control" name="aktivnost" id="field_aktivnost"
+                        [(ngModel)]="projekat.aktivnost" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.lokacija" for="field_lokacija">Lokacija</label>
+                    <input type="text" class="form-control" name="lokacija" id="field_lokacija"
+                        [(ngModel)]="projekat.lokacija" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.opstiCilj" for="field_opstiCilj">Opsti Cilj</label>
+                    <input type="text" class="form-control" name="opstiCilj" id="field_opstiCilj"
+                        [(ngModel)]="projekat.opstiCilj" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.posebniCilj" for="field_posebniCilj">Posebni Cilj</label>
+                    <input type="text" class="form-control" name="posebniCilj" id="field_posebniCilj"
+                        [(ngModel)]="projekat.posebniCilj" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.indikatori" for="field_indikatori">Indikatori</label>
+                    <input type="text" class="form-control" name="indikatori" id="field_indikatori"
+                        [(ngModel)]="projekat.indikatori" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.referentniParametar" for="field_referentniParametar">Referentni Parametar</label>
+                    <input type="text" class="form-control" name="referentniParametar" id="field_referentniParametar"
+                        [(ngModel)]="projekat.referentniParametar" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.projektovanjaPotrosnja" for="field_projektovanjaPotrosnja">Projektovanja Potrosnja</label>
+                    <input type="text" class="form-control" name="projektovanjaPotrosnja" id="field_projektovanjaPotrosnja"
+                        [(ngModel)]="projekat.projektovanjaPotrosnja" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.potrosnjaNakonMere" for="field_potrosnjaNakonMere">Potrosnja Nakon Mere</label>
+                    <input type="text" class="form-control" name="potrosnjaNakonMere" id="field_potrosnjaNakonMere"
+                        [(ngModel)]="projekat.potrosnjaNakonMere" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.investicija" for="field_investicija">Investicija</label>
+                    <input type="text" class="form-control" name="investicija" id="field_investicija"
+                        [(ngModel)]="projekat.investicija" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.vrednostUstede" for="field_vrednostUstede">Vrednost Ustede</label>
+                    <input type="text" class="form-control" name="vrednostUstede" id="field_vrednostUstede"
+                        [(ngModel)]="projekat.vrednostUstede" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.vremePovracaja" for="field_vremePovracaja">Vreme Povracaja</label>
+                    <input type="text" class="form-control" name="vremePovracaja" id="field_vremePovracaja"
+                        [(ngModel)]="projekat.vremePovracaja" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.smanjenjeEmisije" for="field_smanjenjeEmisije">Smanjenje Emisije</label>
+                    <input type="text" class="form-control" name="smanjenjeEmisije" id="field_smanjenjeEmisije"
+                        [(ngModel)]="projekat.smanjenjeEmisije" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.opisMere" for="field_opisMere">Opis Mere</label>
+                    <input type="text" class="form-control" name="opisMere" id="field_opisMere"
+                        [(ngModel)]="projekat.opisMere" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.vremenskiOkvir" for="field_vremenskiOkvir">Vremenski Okvir</label>
+                    <input type="text" class="form-control" name="vremenskiOkvir" id="field_vremenskiOkvir"
+                        [(ngModel)]="projekat.vremenskiOkvir" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.odgovornaOsoba" for="field_odgovornaOsoba">Odgovorna Osoba</label>
+                    <input type="text" class="form-control" name="odgovornaOsoba" id="field_odgovornaOsoba"
+                        [(ngModel)]="projekat.odgovornaOsoba" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.izvorFinansiranja" for="field_izvorFinansiranja">Izvor Finansiranja</label>
+                    <input type="text" class="form-control" name="izvorFinansiranja" id="field_izvorFinansiranja"
+                        [(ngModel)]="projekat.izvorFinansiranja" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.ostalo" for="field_ostalo">Ostalo</label>
+                    <input type="text" class="form-control" name="ostalo" id="field_ostalo"
+                        [(ngModel)]="projekat.ostalo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.slika" for="field_slika">Slika</label>
+                    <div>
+                        <img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-height: 100px;" *ngIf="projekat.slika" alt="projekat image"/>
+                        <div *ngIf="projekat.slika" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}</span>
+                            <button type="button" (click)="clearInputImage('slika', 'slikaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_slika" (change)="setFileData($event, projekat, 'slika', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="slika" id="field_slika"
+                        [(ngModel)]="projekat.slika" />
+                    <input type="hidden" class="form-control" name="slikaContentType" id="field_slikaContentType"
+                        [(ngModel)]="projekat.slikaContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>
+                    <select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="projekat.akcioniPlan"  required>
+                        <option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>
+                        <option [ngValue]="akcioniPlanOption.id === projekat.akcioniPlan?.id ? projekat.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

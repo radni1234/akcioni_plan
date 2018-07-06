@@ -1,0 +1,29 @@
+
+{
+    "akcioniPlanApp": {
+        "akcioniPlan" : {
+            "home": {
+                "title": "Akcioni Plans",
+                "createLabel": "Create a new Akcioni Plan",
+                "createOrEditLabel": "Create or edit a Akcioni Plan"
+            },
+            "created": "A new Akcioni Plan is created with identifier {{ param }}",
+            "updated": "A Akcioni Plan is updated with identifier {{ param }}",
+            "deleted": "A Akcioni Plan is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Akcioni Plan {{ id }}?"
+            },
+            "detail": {
+                "title": "Akcioni Plan"
+            },
+            "naziv": "Naziv",
+            "opis": "Opis",
+            "budzet": "Budzet",
+            "datumOd": "Datum Od",
+            "datumDo": "Datum Do",
+            "kriterijum": "Kriterijum",
+            "projekat": "Projekat",
+            "user": "User"
+        }
+    }
+}

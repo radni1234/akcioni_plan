@@ -1,0 +1,61 @@
+{
+    "name": "Kriterijum",
+    "fields": [
+        {
+            "fieldName": "kriterijumTip",
+            "fieldType": "KriterijumTip",
+            "fieldValues": "BOD,VREDNOST",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "ponder",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "kriterijumBodovanje",
+            "otherEntityName": "kriterijumBodovanje",
+            "otherEntityRelationshipName": "kriterijum"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projekatPodovanje",
+            "otherEntityName": "projekatBodovanje",
+            "otherEntityRelationshipName": "kriterijum"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "akcioniPlan",
+            "otherEntityName": "akcioniPlan",
+            "otherEntityField": "naziv"
+        }
+    ],
+    "changelogDate": "20180706114424",
+    "entityTableName": "kriterijum",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,121 @@
+{
+    "name": "Projekat",
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "datumOd",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "datumDo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "aktivnost",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lokacija",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "opstiCilj",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "posebniCilj",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "indikatori",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "referentniParametar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projektovanjaPotrosnja",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "potrosnjaNakonMere",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "investicija",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vrednostUstede",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vremePovracaja",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "smanjenjeEmisije",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "opisMere",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vremenskiOkvir",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "odgovornaOsoba",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "izvorFinansiranja",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ostalo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "slika",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projekatBodovanje",
+            "otherEntityName": "projekatBodovanje",
+            "otherEntityRelationshipName": "projekat"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "akcioniPlan",
+            "otherEntityName": "akcioniPlan",
+            "otherEntityField": "naziv"
+        }
+    ],
+    "changelogDate": "20180706114423",
+    "entityTableName": "projekat",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

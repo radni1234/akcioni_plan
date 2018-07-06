@@ -1,10 +1,20 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import { AkcioniPlanAkcioniPlanModule } from './akcioni-plan/akcioni-plan.module';
+import { AkcioniPlanProjekatModule } from './projekat/projekat.module';
+import { AkcioniPlanKriterijumModule } from './kriterijum/kriterijum.module';
+import { AkcioniPlanKriterijumBodovanjeModule } from './kriterijum-bodovanje/kriterijum-bodovanje.module';
+import { AkcioniPlanProjekatBodovanjeModule } from './projekat-bodovanje/projekat-bodovanje.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     // prettier-ignore
     imports: [
+        AkcioniPlanAkcioniPlanModule,
+        AkcioniPlanProjekatModule,
+        AkcioniPlanKriterijumModule,
+        AkcioniPlanKriterijumBodovanjeModule,
+        AkcioniPlanProjekatBodovanjeModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
