@@ -86,7 +86,7 @@ public class AkcioniPlanResource {
     @Timed
     public List<AkcioniPlan> getAllAkcioniPlans() {
         log.debug("REST request to get all AkcioniPlans");
-        return akcioniPlanRepository.findAll();
+        return akcioniPlanRepository.findByUserIsCurrentUser();
     }
 
     /**
