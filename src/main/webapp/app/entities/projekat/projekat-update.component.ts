@@ -7,7 +7,8 @@ import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IProjekat } from 'app/shared/model/projekat.model';
 import { ProjekatService } from './projekat.service';
 import { IAkcioniPlan } from 'app/shared/model/akcioni-plan.model';
-import { AkcioniPlanService } from 'app/entities/akcioni-plan';
+import {AkcioniPlanService} from '../akcioni-plan/akcioni-plan.service';
+// import { AkcioniPlanService } from 'app/entities/akcioni-plan';
 
 @Component({
     selector: 'jhi-projekat-update',

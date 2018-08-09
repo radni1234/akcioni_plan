@@ -7,7 +7,8 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
 import { KriterijumService } from './kriterijum.service';
 import { IAkcioniPlan } from 'app/shared/model/akcioni-plan.model';
-import { AkcioniPlanService } from 'app/entities/akcioni-plan';
+import {AkcioniPlanService} from '../akcioni-plan/akcioni-plan.service';
+// import { AkcioniPlanService } from 'app/entities/akcioni-plan';
 
 @Component({
     selector: 'jhi-kriterijum-update',
@@ -72,6 +73,7 @@ export class KriterijumUpdateComponent implements OnInit {
     trackAkcioniPlanById(index: number, item: IAkcioniPlan) {
         return item.id;
     }
+
     get kriterijum() {
         return this._kriterijum;
     }

@@ -12,6 +12,7 @@ import {
     akcioniPlanRoute,
     akcioniPlanPopupRoute
 } from './';
+import {AkcioniPlanTabComponent} from './akcioni-plan-tab.component';
 
 const ENTITY_STATES = [...akcioniPlanRoute, ...akcioniPlanPopupRoute];
 
@@ -22,7 +23,8 @@ const ENTITY_STATES = [...akcioniPlanRoute, ...akcioniPlanPopupRoute];
         AkcioniPlanDetailComponent,
         AkcioniPlanUpdateComponent,
         AkcioniPlanDeleteDialogComponent,
-        AkcioniPlanDeletePopupComponent
+        AkcioniPlanDeletePopupComponent,
+        AkcioniPlanTabComponent
     ],
     entryComponents: [AkcioniPlanComponent, AkcioniPlanUpdateComponent, AkcioniPlanDeleteDialogComponent, AkcioniPlanDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

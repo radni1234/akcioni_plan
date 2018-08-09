@@ -18,6 +18,7 @@ import { AkcioniPlanAccountModule } from './account/account.module';
 import { AkcioniPlanEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import {PageNotFoundComponent} from './page-not-found.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         AkcioniPlanEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, PageNotFoundComponent],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,

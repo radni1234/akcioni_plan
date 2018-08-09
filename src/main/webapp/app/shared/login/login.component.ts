@@ -54,7 +54,7 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 this.authenticationError = false;
                 this.activeModal.dismiss('login success');
                 if (this.router.url === '/register' || /^\/activate\//.test(this.router.url) || /^\/reset\//.test(this.router.url)) {
-                    this.router.navigate(['']);
+                    this.router.navigate(['/akcioni-plan']);
                 }
 
                 this.eventManager.broadcast({

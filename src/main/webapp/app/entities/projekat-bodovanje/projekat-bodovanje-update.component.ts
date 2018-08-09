@@ -7,9 +7,11 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IProjekatBodovanje } from 'app/shared/model/projekat-bodovanje.model';
 import { ProjekatBodovanjeService } from './projekat-bodovanje.service';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
-import { KriterijumService } from 'app/entities/kriterijum';
+// import { KriterijumService } from 'app/entities/kriterijum';
 import { IProjekat } from 'app/shared/model/projekat.model';
-import { ProjekatService } from 'app/entities/projekat';
+import {ProjekatService} from '../projekat/projekat.service';
+import {KriterijumService} from '../kriterijum/kriterijum.service';
+// import { ProjekatService } from 'app/entities/projekat';
 
 @Component({
     selector: 'jhi-projekat-bodovanje-update',

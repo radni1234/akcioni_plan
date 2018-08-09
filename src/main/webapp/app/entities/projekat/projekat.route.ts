@@ -11,6 +11,7 @@ import { ProjekatDetailComponent } from './projekat-detail.component';
 import { ProjekatUpdateComponent } from './projekat-update.component';
 import { ProjekatDeletePopupComponent } from './projekat-delete-dialog.component';
 import { IProjekat } from 'app/shared/model/projekat.model';
+import {projekatBodovanjeRoute} from '../projekat-bodovanje/projekat-bodovanje.route';
 
 @Injectable({ providedIn: 'root' })
 export class ProjekatResolve implements Resolve<IProjekat> {
@@ -36,18 +37,6 @@ export const projekatRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'projekat/:id/view',
-        component: ProjekatDetailComponent,
-        resolve: {
-            projekat: ProjekatResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.projekat.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    },
-    {
         path: 'projekat/new',
         component: ProjekatUpdateComponent,
         resolve: {
@@ -60,16 +49,34 @@ export const projekatRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'projekat/:id/edit',
-        component: ProjekatUpdateComponent,
-        resolve: {
-            projekat: ProjekatResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.projekat.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        path: 'projekat/:id',
+        children: [
+            {
+                path: 'view',
+                component: ProjekatDetailComponent,
+                resolve: {
+                    projekat: ProjekatResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.projekat.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            },
+            {
+                path: 'edit',
+                component: ProjekatUpdateComponent,
+                resolve: {
+                    projekat: ProjekatResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.projekat.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            },
+            ...projekatBodovanjeRoute
+        ]
     }
 ];
 
