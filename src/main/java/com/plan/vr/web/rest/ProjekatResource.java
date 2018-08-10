@@ -89,6 +89,13 @@ public class ProjekatResource {
         return projekatRepository.findAll();
     }
 
+    @GetMapping("/projekats/ap/{id}")
+    @Timed
+    public List<Projekat> getAllProjekatsByAkcioniPlanId(@PathVariable Long id) {
+        return projekatRepository.findByAkcioniPlan_Id(id);
+    }
+
+
     /**
      * GET  /projekats/:id : get the "id" projekat.
      *

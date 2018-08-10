@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
 import { Principal } from 'app/core';
 import { KriterijumService } from './kriterijum.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'jhi-kriterijum',
@@ -16,15 +17,28 @@ export class KriterijumComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    params: any;
+    id: any;
+
     constructor(
         private kriterijumService: KriterijumService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private route: ActivatedRoute
     ) {}
 
-    loadAll() {
-        this.kriterijumService.query().subscribe(
+    // loadAll() {
+    //     this.kriterijumService.query().subscribe(
+    //         (res: HttpResponse<IKriterijum[]>) => {
+    //             this.kriterijums = res.body;
+    //         },
+    //         (res: HttpErrorResponse) => this.onError(res.message)
+    //     );
+    // }
+
+    loadAll(id) {
+        this.kriterijumService.queryByAkcioniPlan(id).subscribe(
             (res: HttpResponse<IKriterijum[]>) => {
                 this.kriterijums = res.body;
             },
@@ -33,7 +47,13 @@ export class KriterijumComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.loadAll();
+        this.params = this.route.parent.params.subscribe(
+            params => {
+                this.id = params['id'];
+            }
+        );
+
+        this.loadAll(this.id);
         this.principal.identity().then(account => {
             this.currentAccount = account;
         });
@@ -49,7 +69,7 @@ export class KriterijumComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInKriterijums() {
-        this.eventSubscriber = this.eventManager.subscribe('kriterijumListModification', response => this.loadAll());
+        this.eventSubscriber = this.eventManager.subscribe('kriterijumListModification', response => this.loadAll(this.id));
     }
 
     private onError(errorMessage: string) {

@@ -89,6 +89,13 @@ public class KriterijumResource {
         return kriterijumRepository.findAll();
     }
 
+    @GetMapping("/kriterijums/ap/{id}")
+    @Timed
+    public List<Kriterijum> getAllKriterijumsByAkcioniPlanId(@PathVariable Long id){
+        return kriterijumRepository.findByAkcioniPlan_Id(id);
+    }
+
+
     /**
      * GET  /kriterijums/:id : get the "id" kriterijum.
      *
