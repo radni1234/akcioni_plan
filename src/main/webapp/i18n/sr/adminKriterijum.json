@@ -1,0 +1,25 @@
+
+{
+    "akcioniPlanApp": {
+        "adminKriterijum" : {
+            "home": {
+                "title": "Admin Kriterijums",
+                "createLabel": "Kreiraj novi Admin Kriterijum",
+                "createOrEditLabel": "Kreirajte ili izmenite Admin Kriterijum"
+            },
+            "created": "Kreiran je novi Admin Kriterijum pod nazivom {{ param }}",
+            "updated": "Admin Kriterijum pod nazivom {{ param }} je ažuriran",
+            "deleted": "Admin Kriterijum pod nazivom {{ param }} je obrisan",
+            "delete": {
+                "question": "Da li ste sigurni da želite da obrišete Admin Kriterijum pod nazivom {{ id }}?"
+            },
+            "detail": {
+                "title": "Admin Kriterijum"
+            },
+            "kriterijumTip": "Kriterijum Tip",
+            "naziv": "Naziv",
+            "ponder": "Ponder",
+            "adminKriterijumBodovanje": "Admin Kriterijum Bodovanje"
+        }
+    }
+}

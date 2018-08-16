@@ -10,11 +10,15 @@
     <include file="config/liquibase/changelog/20180706114424_added_entity_Kriterijum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114425_added_entity_KriterijumBodovanje.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114426_added_entity_ProjekatBodovanje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180816085659_added_entity_AdminKriterijum.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180816085700_added_entity_AdminKriterijumBodovanje.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180706114422_added_entity_constraints_AkcioniPlan.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114423_added_entity_constraints_Projekat.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114424_added_entity_constraints_Kriterijum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114425_added_entity_constraints_KriterijumBodovanje.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180706114426_added_entity_constraints_ProjekatBodovanje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180816085700_added_entity_constraints_AdminKriterijumBodovanje.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="config/liquibase/changelog/20180816115400_unos_podataka.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

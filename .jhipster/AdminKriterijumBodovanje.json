@@ -1,0 +1,44 @@
+{
+    "name": "AdminKriterijumBodovanje",
+    "fields": [
+        {
+            "fieldName": "granicaOd",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "granicaDo",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bodovi",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "adminKriterijum",
+            "otherEntityName": "adminKriterijum",
+            "otherEntityField": "naziv"
+        }
+    ],
+    "changelogDate": "20180816085700",
+    "entityTableName": "admin_kriterijum_bodovanje",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

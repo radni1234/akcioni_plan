@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adminKriterijum">
+            <h2><span jhiTranslate="akcioniPlanApp.adminKriterijum.detail.title">Admin Kriterijum</span> {{adminKriterijum.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijum.kriterijumTip">Kriterijum Tip</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'akcioniPlanApp.KriterijumTip.' + adminKriterijum.kriterijumTip}}">{{adminKriterijum.kriterijumTip}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijum.naziv">Naziv</span></dt>
+                <dd>
+                    <span>{{adminKriterijum.naziv}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijum.ponder">Ponder</span></dt>
+                <dd>
+                    <span>{{adminKriterijum.ponder}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/admin-kriterijum', adminKriterijum.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

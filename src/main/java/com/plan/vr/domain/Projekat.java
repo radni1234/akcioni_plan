@@ -57,29 +57,11 @@ public class Projekat implements Serializable {
     @Column(name = "referentni_parametar")
     private String referentniParametar;
 
-    @Column(name = "projektovanja_potrosnja")
-    private String projektovanjaPotrosnja;
-
-    @Column(name = "potrosnja_nakon_mere")
-    private String potrosnjaNakonMere;
-
     @Column(name = "investicija")
     private String investicija;
 
-    @Column(name = "vrednost_ustede")
-    private String vrednostUstede;
-
-    @Column(name = "vreme_povracaja")
-    private String vremePovracaja;
-
-    @Column(name = "smanjenje_emisije")
-    private String smanjenjeEmisije;
-
     @Column(name = "opis_mere")
     private String opisMere;
-
-    @Column(name = "vremenski_okvir")
-    private String vremenskiOkvir;
 
     @Column(name = "odgovorna_osoba")
     private String odgovornaOsoba;
@@ -232,32 +214,6 @@ public class Projekat implements Serializable {
         this.referentniParametar = referentniParametar;
     }
 
-    public String getProjektovanjaPotrosnja() {
-        return projektovanjaPotrosnja;
-    }
-
-    public Projekat projektovanjaPotrosnja(String projektovanjaPotrosnja) {
-        this.projektovanjaPotrosnja = projektovanjaPotrosnja;
-        return this;
-    }
-
-    public void setProjektovanjaPotrosnja(String projektovanjaPotrosnja) {
-        this.projektovanjaPotrosnja = projektovanjaPotrosnja;
-    }
-
-    public String getPotrosnjaNakonMere() {
-        return potrosnjaNakonMere;
-    }
-
-    public Projekat potrosnjaNakonMere(String potrosnjaNakonMere) {
-        this.potrosnjaNakonMere = potrosnjaNakonMere;
-        return this;
-    }
-
-    public void setPotrosnjaNakonMere(String potrosnjaNakonMere) {
-        this.potrosnjaNakonMere = potrosnjaNakonMere;
-    }
-
     public String getInvesticija() {
         return investicija;
     }
@@ -271,45 +227,6 @@ public class Projekat implements Serializable {
         this.investicija = investicija;
     }
 
-    public String getVrednostUstede() {
-        return vrednostUstede;
-    }
-
-    public Projekat vrednostUstede(String vrednostUstede) {
-        this.vrednostUstede = vrednostUstede;
-        return this;
-    }
-
-    public void setVrednostUstede(String vrednostUstede) {
-        this.vrednostUstede = vrednostUstede;
-    }
-
-    public String getVremePovracaja() {
-        return vremePovracaja;
-    }
-
-    public Projekat vremePovracaja(String vremePovracaja) {
-        this.vremePovracaja = vremePovracaja;
-        return this;
-    }
-
-    public void setVremePovracaja(String vremePovracaja) {
-        this.vremePovracaja = vremePovracaja;
-    }
-
-    public String getSmanjenjeEmisije() {
-        return smanjenjeEmisije;
-    }
-
-    public Projekat smanjenjeEmisije(String smanjenjeEmisije) {
-        this.smanjenjeEmisije = smanjenjeEmisije;
-        return this;
-    }
-
-    public void setSmanjenjeEmisije(String smanjenjeEmisije) {
-        this.smanjenjeEmisije = smanjenjeEmisije;
-    }
-
     public String getOpisMere() {
         return opisMere;
     }
@@ -321,19 +238,6 @@ public class Projekat implements Serializable {
 
     public void setOpisMere(String opisMere) {
         this.opisMere = opisMere;
-    }
-
-    public String getVremenskiOkvir() {
-        return vremenskiOkvir;
-    }
-
-    public Projekat vremenskiOkvir(String vremenskiOkvir) {
-        this.vremenskiOkvir = vremenskiOkvir;
-        return this;
-    }
-
-    public void setVremenskiOkvir(String vremenskiOkvir) {
-        this.vremenskiOkvir = vremenskiOkvir;
     }
 
     public String getOdgovornaOsoba() {
@@ -473,14 +377,8 @@ public class Projekat implements Serializable {
             ", posebniCilj='" + getPosebniCilj() + "'" +
             ", indikatori='" + getIndikatori() + "'" +
             ", referentniParametar='" + getReferentniParametar() + "'" +
-            ", projektovanjaPotrosnja='" + getProjektovanjaPotrosnja() + "'" +
-            ", potrosnjaNakonMere='" + getPotrosnjaNakonMere() + "'" +
             ", investicija='" + getInvesticija() + "'" +
-            ", vrednostUstede='" + getVrednostUstede() + "'" +
-            ", vremePovracaja='" + getVremePovracaja() + "'" +
-            ", smanjenjeEmisije='" + getSmanjenjeEmisije() + "'" +
             ", opisMere='" + getOpisMere() + "'" +
-            ", vremenskiOkvir='" + getVremenskiOkvir() + "'" +
             ", odgovornaOsoba='" + getOdgovornaOsoba() + "'" +
             ", izvorFinansiranja='" + getIzvorFinansiranja() + "'" +
             ", ostalo='" + getOstalo() + "'" +

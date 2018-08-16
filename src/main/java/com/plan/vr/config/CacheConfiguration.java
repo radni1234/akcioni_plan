@@ -48,6 +48,9 @@ public class CacheConfiguration {
             cm.createCache(com.plan.vr.domain.Kriterijum.class.getName() + ".projekatPodovanjes", jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.KriterijumBodovanje.class.getName(), jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.ProjekatBodovanje.class.getName(), jcacheConfiguration);
+            cm.createCache(com.plan.vr.domain.AdminKriterijum.class.getName(), jcacheConfiguration);
+            cm.createCache(com.plan.vr.domain.AdminKriterijum.class.getName() + ".adminKriterijumBodovanjes", jcacheConfiguration);
+            cm.createCache(com.plan.vr.domain.AdminKriterijumBodovanje.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

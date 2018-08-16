@@ -5,6 +5,7 @@ import com.plan.vr.AkcioniPlanApp;
 import com.plan.vr.domain.AkcioniPlan;
 import com.plan.vr.domain.User;
 import com.plan.vr.repository.AkcioniPlanRepository;
+import com.plan.vr.service.AkcioniPlanService;
 import com.plan.vr.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -60,6 +61,10 @@ public class AkcioniPlanResourceIntTest {
     @Autowired
     private AkcioniPlanRepository akcioniPlanRepository;
 
+    
+
+    @Autowired
+    private AkcioniPlanService akcioniPlanService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -80,7 +85,7 @@ public class AkcioniPlanResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AkcioniPlanResource akcioniPlanResource = new AkcioniPlanResource(akcioniPlanRepository);
+        final AkcioniPlanResource akcioniPlanResource = new AkcioniPlanResource(akcioniPlanService);
         this.restAkcioniPlanMockMvc = MockMvcBuilders.standaloneSetup(akcioniPlanResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -221,7 +226,7 @@ public class AkcioniPlanResourceIntTest {
     @Transactional
     public void updateAkcioniPlan() throws Exception {
         // Initialize the database
-        akcioniPlanRepository.saveAndFlush(akcioniPlan);
+        akcioniPlanService.save(akcioniPlan);
 
         int databaseSizeBeforeUpdate = akcioniPlanRepository.findAll().size();
 
@@ -274,7 +279,7 @@ public class AkcioniPlanResourceIntTest {
     @Transactional
     public void deleteAkcioniPlan() throws Exception {
         // Initialize the database
-        akcioniPlanRepository.saveAndFlush(akcioniPlan);
+        akcioniPlanService.save(akcioniPlan);
 
         int databaseSizeBeforeDelete = akcioniPlanRepository.findAll().size();
 

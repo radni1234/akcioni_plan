@@ -16,14 +16,8 @@ entity Projekat {
     posebniCilj String
     indikatori String
     referentniParametar String
-    projektovanjaPotrosnja String
-    potrosnjaNakonMere String
-    investicija String
-    vrednostUstede String
-    vremePovracaja String
-    smanjenjeEmisije String
-    opisMere String
-    vremenskiOkvir String
+    investicija String   
+    opisMere String  
     odgovornaOsoba String
     izvorFinansiranja String
     ostalo String
@@ -37,6 +31,18 @@ entity Kriterijum {
 }
 
 entity KriterijumBodovanje {
+	granicaOd Double required
+    granicaDo Double required
+	bodovi Double required
+}
+
+entity AdminKriterijum {
+	kriterijumTip KriterijumTip required
+	naziv String required  minlength(1) maxlength(100)
+    ponder Float required
+}
+
+entity AdminKriterijumBodovanje {
 	granicaOd Double required
     granicaDo Double required
 	bodovi Double required
@@ -57,6 +63,7 @@ relationship OneToMany{
 	AkcioniPlan{kriterijum} to Kriterijum{akcioniPlan(naziv) required},
     AkcioniPlan{projekat} to Projekat{akcioniPlan(naziv) required},
     Kriterijum{kriterijumBodovanje} to KriterijumBodovanje{kriterijum(naziv) required}
+    AdminKriterijum{adminKriterijumBodovanje} to AdminKriterijumBodovanje{adminKriterijum(naziv) required}
     Kriterijum{projekatPodovanje} to ProjekatBodovanje{kriterijum(naziv) required}
     Projekat{projekatBodovanje} to ProjekatBodovanje{projekat(naziv) required}
 }
@@ -64,4 +71,6 @@ relationship OneToMany{
 relationship ManyToOne{
 	AkcioniPlan{user(login) required} to User
 }
+
+service AkcioniPlan with serviceClass
 

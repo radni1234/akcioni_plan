@@ -2,7 +2,7 @@ package com.plan.vr.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.plan.vr.domain.AkcioniPlan;
-import com.plan.vr.repository.AkcioniPlanRepository;
+import com.plan.vr.service.AkcioniPlanService;
 import com.plan.vr.web.rest.errors.BadRequestAlertException;
 import com.plan.vr.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -29,10 +29,10 @@ public class AkcioniPlanResource {
 
     private static final String ENTITY_NAME = "akcioniPlan";
 
-    private final AkcioniPlanRepository akcioniPlanRepository;
+    private final AkcioniPlanService akcioniPlanService;
 
-    public AkcioniPlanResource(AkcioniPlanRepository akcioniPlanRepository) {
-        this.akcioniPlanRepository = akcioniPlanRepository;
+    public AkcioniPlanResource(AkcioniPlanService akcioniPlanService) {
+        this.akcioniPlanService = akcioniPlanService;
     }
 
     /**
@@ -49,7 +49,7 @@ public class AkcioniPlanResource {
         if (akcioniPlan.getId() != null) {
             throw new BadRequestAlertException("A new akcioniPlan cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        AkcioniPlan result = akcioniPlanRepository.save(akcioniPlan);
+        AkcioniPlan result = akcioniPlanService.save(akcioniPlan);
         return ResponseEntity.created(new URI("/api/akcioni-plans/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -71,7 +71,7 @@ public class AkcioniPlanResource {
         if (akcioniPlan.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        AkcioniPlan result = akcioniPlanRepository.save(akcioniPlan);
+        AkcioniPlan result = akcioniPlanService.save(akcioniPlan);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, akcioniPlan.getId().toString()))
             .body(result);
@@ -86,7 +86,7 @@ public class AkcioniPlanResource {
     @Timed
     public List<AkcioniPlan> getAllAkcioniPlans() {
         log.debug("REST request to get all AkcioniPlans");
-        return akcioniPlanRepository.findByUserIsCurrentUser();
+        return akcioniPlanService.findAll();
     }
 
     /**
@@ -99,7 +99,7 @@ public class AkcioniPlanResource {
     @Timed
     public ResponseEntity<AkcioniPlan> getAkcioniPlan(@PathVariable Long id) {
         log.debug("REST request to get AkcioniPlan : {}", id);
-        Optional<AkcioniPlan> akcioniPlan = akcioniPlanRepository.findById(id);
+        Optional<AkcioniPlan> akcioniPlan = akcioniPlanService.findOne(id);
         return ResponseUtil.wrapOrNotFound(akcioniPlan);
     }
 
@@ -113,8 +113,7 @@ public class AkcioniPlanResource {
     @Timed
     public ResponseEntity<Void> deleteAkcioniPlan(@PathVariable Long id) {
         log.debug("REST request to delete AkcioniPlan : {}", id);
-
-        akcioniPlanRepository.deleteById(id);
+        akcioniPlanService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

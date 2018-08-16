@@ -12,6 +12,8 @@
                 "kriterijum": "Kriterijum",
                 "kriterijumBodovanje": "Kriterijum Bodovanje",
                 "projekatBodovanje": "Projekat Bodovanje",
+                "adminKriterijum": "Admin Kriterijum",
+                "adminKriterijumBodovanje": "Admin Kriterijum Bodovanje",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

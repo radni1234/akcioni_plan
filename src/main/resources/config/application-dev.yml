@@ -50,6 +50,7 @@ spring:
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.BeanClassLoaderAwareJCacheRegionFactory
     liquibase:
         contexts: dev
+        drop-first: true
     mail:
         host: smtp.gmail.com
         port: 587

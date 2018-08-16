@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adminKriterijumBodovanje">
+            <h2><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.detail.title">Admin Kriterijum Bodovanje</span> {{adminKriterijumBodovanje.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.granicaOd">Granica Od</span></dt>
+                <dd>
+                    <span>{{adminKriterijumBodovanje.granicaOd}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.granicaDo">Granica Do</span></dt>
+                <dd>
+                    <span>{{adminKriterijumBodovanje.granicaDo}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.bodovi">Bodovi</span></dt>
+                <dd>
+                    <span>{{adminKriterijumBodovanje.bodovi}}</span>
+                </dd>
+                <dt><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.adminKriterijum">Admin Kriterijum</span></dt>
+                <dd>
+                    <div *ngIf="adminKriterijumBodovanje.adminKriterijum">
+                        <a [routerLink]="['/admin-kriterijum', adminKriterijumBodovanje.adminKriterijum?.id, 'view']">{{adminKriterijumBodovanje.adminKriterijum?.naziv}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/admin-kriterijum-bodovanje', adminKriterijumBodovanje.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

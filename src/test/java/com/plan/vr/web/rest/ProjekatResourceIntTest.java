@@ -70,29 +70,11 @@ public class ProjekatResourceIntTest {
     private static final String DEFAULT_REFERENTNI_PARAMETAR = "AAAAAAAAAA";
     private static final String UPDATED_REFERENTNI_PARAMETAR = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PROJEKTOVANJA_POTROSNJA = "AAAAAAAAAA";
-    private static final String UPDATED_PROJEKTOVANJA_POTROSNJA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_POTROSNJA_NAKON_MERE = "AAAAAAAAAA";
-    private static final String UPDATED_POTROSNJA_NAKON_MERE = "BBBBBBBBBB";
-
     private static final String DEFAULT_INVESTICIJA = "AAAAAAAAAA";
     private static final String UPDATED_INVESTICIJA = "BBBBBBBBBB";
 
-    private static final String DEFAULT_VREDNOST_USTEDE = "AAAAAAAAAA";
-    private static final String UPDATED_VREDNOST_USTEDE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_VREME_POVRACAJA = "AAAAAAAAAA";
-    private static final String UPDATED_VREME_POVRACAJA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SMANJENJE_EMISIJE = "AAAAAAAAAA";
-    private static final String UPDATED_SMANJENJE_EMISIJE = "BBBBBBBBBB";
-
     private static final String DEFAULT_OPIS_MERE = "AAAAAAAAAA";
     private static final String UPDATED_OPIS_MERE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_VREMENSKI_OKVIR = "AAAAAAAAAA";
-    private static final String UPDATED_VREMENSKI_OKVIR = "BBBBBBBBBB";
 
     private static final String DEFAULT_ODGOVORNA_OSOBA = "AAAAAAAAAA";
     private static final String UPDATED_ODGOVORNA_OSOBA = "BBBBBBBBBB";
@@ -156,14 +138,8 @@ public class ProjekatResourceIntTest {
             .posebniCilj(DEFAULT_POSEBNI_CILJ)
             .indikatori(DEFAULT_INDIKATORI)
             .referentniParametar(DEFAULT_REFERENTNI_PARAMETAR)
-            .projektovanjaPotrosnja(DEFAULT_PROJEKTOVANJA_POTROSNJA)
-            .potrosnjaNakonMere(DEFAULT_POTROSNJA_NAKON_MERE)
             .investicija(DEFAULT_INVESTICIJA)
-            .vrednostUstede(DEFAULT_VREDNOST_USTEDE)
-            .vremePovracaja(DEFAULT_VREME_POVRACAJA)
-            .smanjenjeEmisije(DEFAULT_SMANJENJE_EMISIJE)
             .opisMere(DEFAULT_OPIS_MERE)
-            .vremenskiOkvir(DEFAULT_VREMENSKI_OKVIR)
             .odgovornaOsoba(DEFAULT_ODGOVORNA_OSOBA)
             .izvorFinansiranja(DEFAULT_IZVOR_FINANSIRANJA)
             .ostalo(DEFAULT_OSTALO)
@@ -206,14 +182,8 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getPosebniCilj()).isEqualTo(DEFAULT_POSEBNI_CILJ);
         assertThat(testProjekat.getIndikatori()).isEqualTo(DEFAULT_INDIKATORI);
         assertThat(testProjekat.getReferentniParametar()).isEqualTo(DEFAULT_REFERENTNI_PARAMETAR);
-        assertThat(testProjekat.getProjektovanjaPotrosnja()).isEqualTo(DEFAULT_PROJEKTOVANJA_POTROSNJA);
-        assertThat(testProjekat.getPotrosnjaNakonMere()).isEqualTo(DEFAULT_POTROSNJA_NAKON_MERE);
         assertThat(testProjekat.getInvesticija()).isEqualTo(DEFAULT_INVESTICIJA);
-        assertThat(testProjekat.getVrednostUstede()).isEqualTo(DEFAULT_VREDNOST_USTEDE);
-        assertThat(testProjekat.getVremePovracaja()).isEqualTo(DEFAULT_VREME_POVRACAJA);
-        assertThat(testProjekat.getSmanjenjeEmisije()).isEqualTo(DEFAULT_SMANJENJE_EMISIJE);
         assertThat(testProjekat.getOpisMere()).isEqualTo(DEFAULT_OPIS_MERE);
-        assertThat(testProjekat.getVremenskiOkvir()).isEqualTo(DEFAULT_VREMENSKI_OKVIR);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(DEFAULT_ODGOVORNA_OSOBA);
         assertThat(testProjekat.getIzvorFinansiranja()).isEqualTo(DEFAULT_IZVOR_FINANSIRANJA);
         assertThat(testProjekat.getOstalo()).isEqualTo(DEFAULT_OSTALO);
@@ -278,14 +248,8 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.[*].posebniCilj").value(hasItem(DEFAULT_POSEBNI_CILJ.toString())))
             .andExpect(jsonPath("$.[*].indikatori").value(hasItem(DEFAULT_INDIKATORI.toString())))
             .andExpect(jsonPath("$.[*].referentniParametar").value(hasItem(DEFAULT_REFERENTNI_PARAMETAR.toString())))
-            .andExpect(jsonPath("$.[*].projektovanjaPotrosnja").value(hasItem(DEFAULT_PROJEKTOVANJA_POTROSNJA.toString())))
-            .andExpect(jsonPath("$.[*].potrosnjaNakonMere").value(hasItem(DEFAULT_POTROSNJA_NAKON_MERE.toString())))
             .andExpect(jsonPath("$.[*].investicija").value(hasItem(DEFAULT_INVESTICIJA.toString())))
-            .andExpect(jsonPath("$.[*].vrednostUstede").value(hasItem(DEFAULT_VREDNOST_USTEDE.toString())))
-            .andExpect(jsonPath("$.[*].vremePovracaja").value(hasItem(DEFAULT_VREME_POVRACAJA.toString())))
-            .andExpect(jsonPath("$.[*].smanjenjeEmisije").value(hasItem(DEFAULT_SMANJENJE_EMISIJE.toString())))
             .andExpect(jsonPath("$.[*].opisMere").value(hasItem(DEFAULT_OPIS_MERE.toString())))
-            .andExpect(jsonPath("$.[*].vremenskiOkvir").value(hasItem(DEFAULT_VREMENSKI_OKVIR.toString())))
             .andExpect(jsonPath("$.[*].odgovornaOsoba").value(hasItem(DEFAULT_ODGOVORNA_OSOBA.toString())))
             .andExpect(jsonPath("$.[*].izvorFinansiranja").value(hasItem(DEFAULT_IZVOR_FINANSIRANJA.toString())))
             .andExpect(jsonPath("$.[*].ostalo").value(hasItem(DEFAULT_OSTALO.toString())))
@@ -314,14 +278,8 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.posebniCilj").value(DEFAULT_POSEBNI_CILJ.toString()))
             .andExpect(jsonPath("$.indikatori").value(DEFAULT_INDIKATORI.toString()))
             .andExpect(jsonPath("$.referentniParametar").value(DEFAULT_REFERENTNI_PARAMETAR.toString()))
-            .andExpect(jsonPath("$.projektovanjaPotrosnja").value(DEFAULT_PROJEKTOVANJA_POTROSNJA.toString()))
-            .andExpect(jsonPath("$.potrosnjaNakonMere").value(DEFAULT_POTROSNJA_NAKON_MERE.toString()))
             .andExpect(jsonPath("$.investicija").value(DEFAULT_INVESTICIJA.toString()))
-            .andExpect(jsonPath("$.vrednostUstede").value(DEFAULT_VREDNOST_USTEDE.toString()))
-            .andExpect(jsonPath("$.vremePovracaja").value(DEFAULT_VREME_POVRACAJA.toString()))
-            .andExpect(jsonPath("$.smanjenjeEmisije").value(DEFAULT_SMANJENJE_EMISIJE.toString()))
             .andExpect(jsonPath("$.opisMere").value(DEFAULT_OPIS_MERE.toString()))
-            .andExpect(jsonPath("$.vremenskiOkvir").value(DEFAULT_VREMENSKI_OKVIR.toString()))
             .andExpect(jsonPath("$.odgovornaOsoba").value(DEFAULT_ODGOVORNA_OSOBA.toString()))
             .andExpect(jsonPath("$.izvorFinansiranja").value(DEFAULT_IZVOR_FINANSIRANJA.toString()))
             .andExpect(jsonPath("$.ostalo").value(DEFAULT_OSTALO.toString()))
@@ -358,14 +316,8 @@ public class ProjekatResourceIntTest {
             .posebniCilj(UPDATED_POSEBNI_CILJ)
             .indikatori(UPDATED_INDIKATORI)
             .referentniParametar(UPDATED_REFERENTNI_PARAMETAR)
-            .projektovanjaPotrosnja(UPDATED_PROJEKTOVANJA_POTROSNJA)
-            .potrosnjaNakonMere(UPDATED_POTROSNJA_NAKON_MERE)
             .investicija(UPDATED_INVESTICIJA)
-            .vrednostUstede(UPDATED_VREDNOST_USTEDE)
-            .vremePovracaja(UPDATED_VREME_POVRACAJA)
-            .smanjenjeEmisije(UPDATED_SMANJENJE_EMISIJE)
             .opisMere(UPDATED_OPIS_MERE)
-            .vremenskiOkvir(UPDATED_VREMENSKI_OKVIR)
             .odgovornaOsoba(UPDATED_ODGOVORNA_OSOBA)
             .izvorFinansiranja(UPDATED_IZVOR_FINANSIRANJA)
             .ostalo(UPDATED_OSTALO)
@@ -390,14 +342,8 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getPosebniCilj()).isEqualTo(UPDATED_POSEBNI_CILJ);
         assertThat(testProjekat.getIndikatori()).isEqualTo(UPDATED_INDIKATORI);
         assertThat(testProjekat.getReferentniParametar()).isEqualTo(UPDATED_REFERENTNI_PARAMETAR);
-        assertThat(testProjekat.getProjektovanjaPotrosnja()).isEqualTo(UPDATED_PROJEKTOVANJA_POTROSNJA);
-        assertThat(testProjekat.getPotrosnjaNakonMere()).isEqualTo(UPDATED_POTROSNJA_NAKON_MERE);
         assertThat(testProjekat.getInvesticija()).isEqualTo(UPDATED_INVESTICIJA);
-        assertThat(testProjekat.getVrednostUstede()).isEqualTo(UPDATED_VREDNOST_USTEDE);
-        assertThat(testProjekat.getVremePovracaja()).isEqualTo(UPDATED_VREME_POVRACAJA);
-        assertThat(testProjekat.getSmanjenjeEmisije()).isEqualTo(UPDATED_SMANJENJE_EMISIJE);
         assertThat(testProjekat.getOpisMere()).isEqualTo(UPDATED_OPIS_MERE);
-        assertThat(testProjekat.getVremenskiOkvir()).isEqualTo(UPDATED_VREMENSKI_OKVIR);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(UPDATED_ODGOVORNA_OSOBA);
         assertThat(testProjekat.getIzvorFinansiranja()).isEqualTo(UPDATED_IZVOR_FINANSIRANJA);
         assertThat(testProjekat.getOstalo()).isEqualTo(UPDATED_OSTALO);

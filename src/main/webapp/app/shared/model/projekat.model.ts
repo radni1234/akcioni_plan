@@ -13,14 +13,8 @@ export interface IProjekat {
     posebniCilj?: string;
     indikatori?: string;
     referentniParametar?: string;
-    projektovanjaPotrosnja?: string;
-    potrosnjaNakonMere?: string;
     investicija?: string;
-    vrednostUstede?: string;
-    vremePovracaja?: string;
-    smanjenjeEmisije?: string;
     opisMere?: string;
-    vremenskiOkvir?: string;
     odgovornaOsoba?: string;
     izvorFinansiranja?: string;
     ostalo?: string;
@@ -42,14 +36,8 @@ export class Projekat implements IProjekat {
         public posebniCilj?: string,
         public indikatori?: string,
         public referentniParametar?: string,
-        public projektovanjaPotrosnja?: string,
-        public potrosnjaNakonMere?: string,
         public investicija?: string,
-        public vrednostUstede?: string,
-        public vremePovracaja?: string,
-        public smanjenjeEmisije?: string,
         public opisMere?: string,
-        public vremenskiOkvir?: string,
         public odgovornaOsoba?: string,
         public izvorFinansiranja?: string,
         public ostalo?: string,

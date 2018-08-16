@@ -58,35 +58,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="projektovanja_potrosnja" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="potrosnja_nakon_mere" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="investicija" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="vrednost_ustede" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="vreme_povracaja" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="smanjenje_emisije" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="opis_mere" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="vremenski_okvir" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

@@ -1,0 +1,48 @@
+{
+    "name": "AdminKriterijum",
+    "fields": [
+        {
+            "fieldName": "kriterijumTip",
+            "fieldType": "KriterijumTip",
+            "fieldValues": "BOD,VREDNOST",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "ponder",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adminKriterijumBodovanje",
+            "otherEntityName": "adminKriterijumBodovanje",
+            "otherEntityRelationshipName": "adminKriterijum"
+        }
+    ],
+    "changelogDate": "20180816085659",
+    "entityTableName": "admin_kriterijum",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

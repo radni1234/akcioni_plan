@@ -45,35 +45,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "projektovanjaPotrosnja",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "potrosnjaNakonMere",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "investicija",
             "fieldType": "String"
         },
         {
-            "fieldName": "vrednostUstede",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "vremePovracaja",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "smanjenjeEmisije",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "opisMere",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "vremenskiOkvir",
             "fieldType": "String"
         },
         {
