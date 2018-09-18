@@ -1,10 +1,10 @@
 ID,KRITERIJUM_TIP,NAZIV,PONDER
-1,BOD,Investicija u energetsku efikasnost (sopstveni udeo),20
-2,BOD,Smanjenje troškova,20
-3,BOD,Amortizacija (period povrata investicije),20
-4,BOD,CO2-Ušteda,20
-5,BOD,Time overhead (Ukupno vreme izvršenja),4
-6,BOD,Vreme realizacije projekta,4
-7,VREDNOST,Postojeća nužnost,4
-8,VREDNOST,Vidljivost projekta,4
-9,VREDNOST,"Privredni, socijalni i ostali efekti",4
+1,VREDNOST,Investicija u energetsku efikasnost (sopstveni udeo),20
+2,VREDNOST,Smanjenje troškova,20
+3,VREDNOST,Amortizacija (period povrata investicije),20
+4,VREDNOST,CO2-Ušteda,20
+5,VREDNOST,Time overhead (Ukupno vreme izvršenja),4
+6,VREDNOST,Vreme realizacije projekta,4
+7,BOD,Postojeća nužnost,4
+8,BOD,Vidljivost projekta,4
+9,BOD,"Privredni, socijalni i ostali efekti",4

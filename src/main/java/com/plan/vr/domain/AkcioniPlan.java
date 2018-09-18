@@ -54,7 +54,7 @@ public class AkcioniPlan implements Serializable {
     private Set<Projekat> projekats = new HashSet<>();
 
     @ManyToOne(optional = false)
-    @NotNull
+//    @NotNull
     @JsonIgnoreProperties("")
     private User user;
 

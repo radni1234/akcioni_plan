@@ -32,12 +32,12 @@ export class AkcioniPlanUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ akcioniPlan }) => {
             this.akcioniPlan = akcioniPlan;
         });
-        this.userService.query().subscribe(
-            (res: HttpResponse<IUser[]>) => {
-                this.users = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        // this.userService.query().subscribe(
+        //     (res: HttpResponse<IUser[]>) => {
+        //         this.users = res.body;
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
     }
 
     previousState() {

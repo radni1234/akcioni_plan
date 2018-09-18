@@ -3,6 +3,7 @@ package com.plan.vr.service;
 import com.plan.vr.domain.AdminKriterijum;
 import com.plan.vr.domain.AkcioniPlan;
 import com.plan.vr.domain.Kriterijum;
+import com.plan.vr.domain.User;
 import com.plan.vr.repository.AdminKriterijumRepository;
 import com.plan.vr.repository.AkcioniPlanRepository;
 import com.plan.vr.repository.KriterijumRepository;
@@ -27,11 +28,13 @@ public class AkcioniPlanService {
     private final AkcioniPlanRepository akcioniPlanRepository;
     private final AdminKriterijumRepository adminKriterijumRepository;
     private final KriterijumRepository kriterijumRepository;
+    private final UserService userService;
 
-    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, KriterijumRepository kriterijumRepository) {
+    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, KriterijumRepository kriterijumRepository, UserService userService) {
         this.akcioniPlanRepository = akcioniPlanRepository;
         this.adminKriterijumRepository = adminKriterijumRepository;
         this.kriterijumRepository = kriterijumRepository;
+        this.userService = userService;
     }
 
     /**
@@ -42,6 +45,14 @@ public class AkcioniPlanService {
      */
     public AkcioniPlan save(AkcioniPlan akcioniPlan) {
         log.debug("Request to save AkcioniPlan : {}", akcioniPlan);
+
+        final Optional<User> isUser = userService.getUserWithAuthorities();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        } else {
+            akcioniPlan.setUser(isUser.get());
+            log.debug("Korisnik je : {}", isUser.get());
+        }
 
         AkcioniPlan ap = akcioniPlanRepository.save(akcioniPlan);
 
@@ -71,7 +82,7 @@ public class AkcioniPlanService {
     @Transactional(readOnly = true)
     public List<AkcioniPlan> findAll() {
         log.debug("Request to get all AkcioniPlans");
-        return akcioniPlanRepository.findAll();
+        return akcioniPlanRepository.findByUserIsCurrentUser();
     }
 
 
