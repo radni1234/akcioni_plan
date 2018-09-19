@@ -23,11 +23,15 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="granica_od" type="double">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="granica_do" type="double">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
+            </column>
+
+            <column name="opis" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
 
             <column name="bodovi" type="double">

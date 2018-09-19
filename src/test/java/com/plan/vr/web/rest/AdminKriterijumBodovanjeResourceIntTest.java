@@ -46,6 +46,9 @@ public class AdminKriterijumBodovanjeResourceIntTest {
     private static final Double DEFAULT_GRANICA_DO = 1D;
     private static final Double UPDATED_GRANICA_DO = 2D;
 
+    private static final String DEFAULT_OPIS = "AAAAAAAAAA";
+    private static final String UPDATED_OPIS = "BBBBBBBBBB";
+
     private static final Double DEFAULT_BODOVI = 1D;
     private static final Double UPDATED_BODOVI = 2D;
 
@@ -90,6 +93,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         AdminKriterijumBodovanje adminKriterijumBodovanje = new AdminKriterijumBodovanje()
             .granicaOd(DEFAULT_GRANICA_OD)
             .granicaDo(DEFAULT_GRANICA_DO)
+            .opis(DEFAULT_OPIS)
             .bodovi(DEFAULT_BODOVI);
         // Add required entity
         AdminKriterijum adminKriterijum = AdminKriterijumResourceIntTest.createEntity(em);
@@ -121,6 +125,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         AdminKriterijumBodovanje testAdminKriterijumBodovanje = adminKriterijumBodovanjeList.get(adminKriterijumBodovanjeList.size() - 1);
         assertThat(testAdminKriterijumBodovanje.getGranicaOd()).isEqualTo(DEFAULT_GRANICA_OD);
         assertThat(testAdminKriterijumBodovanje.getGranicaDo()).isEqualTo(DEFAULT_GRANICA_DO);
+        assertThat(testAdminKriterijumBodovanje.getOpis()).isEqualTo(DEFAULT_OPIS);
         assertThat(testAdminKriterijumBodovanje.getBodovi()).isEqualTo(DEFAULT_BODOVI);
     }
 
@@ -141,42 +146,6 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         // Validate the AdminKriterijumBodovanje in the database
         List<AdminKriterijumBodovanje> adminKriterijumBodovanjeList = adminKriterijumBodovanjeRepository.findAll();
         assertThat(adminKriterijumBodovanjeList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkGranicaOdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = adminKriterijumBodovanjeRepository.findAll().size();
-        // set the field null
-        adminKriterijumBodovanje.setGranicaOd(null);
-
-        // Create the AdminKriterijumBodovanje, which fails.
-
-        restAdminKriterijumBodovanjeMockMvc.perform(post("/api/admin-kriterijum-bodovanjes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(adminKriterijumBodovanje)))
-            .andExpect(status().isBadRequest());
-
-        List<AdminKriterijumBodovanje> adminKriterijumBodovanjeList = adminKriterijumBodovanjeRepository.findAll();
-        assertThat(adminKriterijumBodovanjeList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkGranicaDoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = adminKriterijumBodovanjeRepository.findAll().size();
-        // set the field null
-        adminKriterijumBodovanje.setGranicaDo(null);
-
-        // Create the AdminKriterijumBodovanje, which fails.
-
-        restAdminKriterijumBodovanjeMockMvc.perform(post("/api/admin-kriterijum-bodovanjes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(adminKriterijumBodovanje)))
-            .andExpect(status().isBadRequest());
-
-        List<AdminKriterijumBodovanje> adminKriterijumBodovanjeList = adminKriterijumBodovanjeRepository.findAll();
-        assertThat(adminKriterijumBodovanjeList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -210,6 +179,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(adminKriterijumBodovanje.getId().intValue())))
             .andExpect(jsonPath("$.[*].granicaOd").value(hasItem(DEFAULT_GRANICA_OD.doubleValue())))
             .andExpect(jsonPath("$.[*].granicaDo").value(hasItem(DEFAULT_GRANICA_DO.doubleValue())))
+            .andExpect(jsonPath("$.[*].opis").value(hasItem(DEFAULT_OPIS.toString())))
             .andExpect(jsonPath("$.[*].bodovi").value(hasItem(DEFAULT_BODOVI.doubleValue())));
     }
     
@@ -227,6 +197,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
             .andExpect(jsonPath("$.id").value(adminKriterijumBodovanje.getId().intValue()))
             .andExpect(jsonPath("$.granicaOd").value(DEFAULT_GRANICA_OD.doubleValue()))
             .andExpect(jsonPath("$.granicaDo").value(DEFAULT_GRANICA_DO.doubleValue()))
+            .andExpect(jsonPath("$.opis").value(DEFAULT_OPIS.toString()))
             .andExpect(jsonPath("$.bodovi").value(DEFAULT_BODOVI.doubleValue()));
     }
     @Test
@@ -252,6 +223,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         updatedAdminKriterijumBodovanje
             .granicaOd(UPDATED_GRANICA_OD)
             .granicaDo(UPDATED_GRANICA_DO)
+            .opis(UPDATED_OPIS)
             .bodovi(UPDATED_BODOVI);
 
         restAdminKriterijumBodovanjeMockMvc.perform(put("/api/admin-kriterijum-bodovanjes")
@@ -265,6 +237,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         AdminKriterijumBodovanje testAdminKriterijumBodovanje = adminKriterijumBodovanjeList.get(adminKriterijumBodovanjeList.size() - 1);
         assertThat(testAdminKriterijumBodovanje.getGranicaOd()).isEqualTo(UPDATED_GRANICA_OD);
         assertThat(testAdminKriterijumBodovanje.getGranicaDo()).isEqualTo(UPDATED_GRANICA_DO);
+        assertThat(testAdminKriterijumBodovanje.getOpis()).isEqualTo(UPDATED_OPIS);
         assertThat(testAdminKriterijumBodovanje.getBodovi()).isEqualTo(UPDATED_BODOVI);
     }
 

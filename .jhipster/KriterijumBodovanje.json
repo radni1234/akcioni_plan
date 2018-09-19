@@ -3,17 +3,15 @@
     "fields": [
         {
             "fieldName": "granicaOd",
-            "fieldType": "Double",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "Double"
         },
         {
             "fieldName": "granicaDo",
-            "fieldType": "Double",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "opis",
+            "fieldType": "String"
         },
         {
             "fieldName": "bodovi",

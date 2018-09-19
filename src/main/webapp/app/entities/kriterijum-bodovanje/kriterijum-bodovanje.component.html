@@ -17,6 +17,7 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></th>
             <th></th>
@@ -27,6 +28,7 @@
                 <td><a [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]">{{kriterijumBodovanje.id}}</a></td>
                 <td>{{kriterijumBodovanje.granicaOd}}</td>
                 <td>{{kriterijumBodovanje.granicaDo}}</td>
+                <td>{{kriterijumBodovanje.opis}}</td>
                 <td>{{kriterijumBodovanje.bodovi}}</td>
                 <td>
                     <div *ngIf="kriterijumBodovanje.kriterijum">

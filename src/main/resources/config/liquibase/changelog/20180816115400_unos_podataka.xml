@@ -20,6 +20,10 @@
                   file="config/liquibase/admin_kriterijum.csv"
                   separator=","
                   tableName="admin_kriterijum"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/admin_kriterijum_bodovanje.csv"
+                  separator=","
+                  tableName="admin_kriterijum_bodovanje"/>
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

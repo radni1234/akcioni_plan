@@ -31,8 +31,9 @@ entity Kriterijum {
 }
 
 entity KriterijumBodovanje {
-	granicaOd Double required
-    granicaDo Double required
+	granicaOd Double
+    granicaDo Double
+    opis String
 	bodovi Double required
 }
 
@@ -43,8 +44,9 @@ entity AdminKriterijum {
 }
 
 entity AdminKriterijumBodovanje {
-	granicaOd Double required
-    granicaDo Double required
+	granicaOd Double
+    granicaDo Double
+    opis String
 	bodovi Double required
 }
 

@@ -12,32 +12,17 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd" for="field_granicaOd">Granica Od</label>
                     <input type="number" class="form-control" name="granicaOd" id="field_granicaOd"
-                        [(ngModel)]="kriterijumBodovanje.granicaOd" required/>
-                    <div [hidden]="!(editForm.controls.granicaOd?.dirty && editForm.controls.granicaOd?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.granicaOd?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.granicaOd?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
+                        [(ngModel)]="kriterijumBodovanje.granicaOd" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo" for="field_granicaDo">Granica Do</label>
                     <input type="number" class="form-control" name="granicaDo" id="field_granicaDo"
-                        [(ngModel)]="kriterijumBodovanje.granicaDo" required/>
-                    <div [hidden]="!(editForm.controls.granicaDo?.dirty && editForm.controls.granicaDo?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.granicaDo?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.granicaDo?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
+                        [(ngModel)]="kriterijumBodovanje.granicaDo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis" for="field_opis">Opis</label>
+                    <input type="text" class="form-control" name="opis" id="field_opis"
+                        [(ngModel)]="kriterijumBodovanje.opis" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi" for="field_bodovi">Bodovi</label>

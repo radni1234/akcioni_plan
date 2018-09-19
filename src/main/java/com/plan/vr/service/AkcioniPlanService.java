@@ -1,9 +1,7 @@
 package com.plan.vr.service;
 
-import com.plan.vr.domain.AdminKriterijum;
-import com.plan.vr.domain.AkcioniPlan;
-import com.plan.vr.domain.Kriterijum;
-import com.plan.vr.domain.User;
+import com.plan.vr.domain.*;
+import com.plan.vr.repository.AdminKriterijumBodovanjeRepository;
 import com.plan.vr.repository.AdminKriterijumRepository;
 import com.plan.vr.repository.AkcioniPlanRepository;
 import com.plan.vr.repository.KriterijumRepository;
@@ -27,12 +25,14 @@ public class AkcioniPlanService {
 
     private final AkcioniPlanRepository akcioniPlanRepository;
     private final AdminKriterijumRepository adminKriterijumRepository;
+    private final AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository;
     private final KriterijumRepository kriterijumRepository;
     private final UserService userService;
 
-    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, KriterijumRepository kriterijumRepository, UserService userService) {
+    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository, KriterijumRepository kriterijumRepository, UserService userService) {
         this.akcioniPlanRepository = akcioniPlanRepository;
         this.adminKriterijumRepository = adminKriterijumRepository;
+        this.adminKriterijumBodovanjeRepository = adminKriterijumBodovanjeRepository;
         this.kriterijumRepository = kriterijumRepository;
         this.userService = userService;
     }

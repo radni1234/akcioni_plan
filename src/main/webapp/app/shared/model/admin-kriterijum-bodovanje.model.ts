@@ -4,6 +4,7 @@ export interface IAdminKriterijumBodovanje {
     id?: number;
     granicaOd?: number;
     granicaDo?: number;
+    opis?: string;
     bodovi?: number;
     adminKriterijum?: IAdminKriterijum;
 }
@@ -13,6 +14,7 @@ export class AdminKriterijumBodovanje implements IAdminKriterijumBodovanje {
         public id?: number,
         public granicaOd?: number,
         public granicaDo?: number,
+        public opis?: string,
         public bodovi?: number,
         public adminKriterijum?: IAdminKriterijum
     ) {}

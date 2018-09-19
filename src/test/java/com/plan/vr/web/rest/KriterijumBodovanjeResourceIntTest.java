@@ -46,6 +46,9 @@ public class KriterijumBodovanjeResourceIntTest {
     private static final Double DEFAULT_GRANICA_DO = 1D;
     private static final Double UPDATED_GRANICA_DO = 2D;
 
+    private static final String DEFAULT_OPIS = "AAAAAAAAAA";
+    private static final String UPDATED_OPIS = "BBBBBBBBBB";
+
     private static final Double DEFAULT_BODOVI = 1D;
     private static final Double UPDATED_BODOVI = 2D;
 
@@ -90,6 +93,7 @@ public class KriterijumBodovanjeResourceIntTest {
         KriterijumBodovanje kriterijumBodovanje = new KriterijumBodovanje()
             .granicaOd(DEFAULT_GRANICA_OD)
             .granicaDo(DEFAULT_GRANICA_DO)
+            .opis(DEFAULT_OPIS)
             .bodovi(DEFAULT_BODOVI);
         // Add required entity
         Kriterijum kriterijum = KriterijumResourceIntTest.createEntity(em);
@@ -121,6 +125,7 @@ public class KriterijumBodovanjeResourceIntTest {
         KriterijumBodovanje testKriterijumBodovanje = kriterijumBodovanjeList.get(kriterijumBodovanjeList.size() - 1);
         assertThat(testKriterijumBodovanje.getGranicaOd()).isEqualTo(DEFAULT_GRANICA_OD);
         assertThat(testKriterijumBodovanje.getGranicaDo()).isEqualTo(DEFAULT_GRANICA_DO);
+        assertThat(testKriterijumBodovanje.getOpis()).isEqualTo(DEFAULT_OPIS);
         assertThat(testKriterijumBodovanje.getBodovi()).isEqualTo(DEFAULT_BODOVI);
     }
 
@@ -141,42 +146,6 @@ public class KriterijumBodovanjeResourceIntTest {
         // Validate the KriterijumBodovanje in the database
         List<KriterijumBodovanje> kriterijumBodovanjeList = kriterijumBodovanjeRepository.findAll();
         assertThat(kriterijumBodovanjeList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkGranicaOdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = kriterijumBodovanjeRepository.findAll().size();
-        // set the field null
-        kriterijumBodovanje.setGranicaOd(null);
-
-        // Create the KriterijumBodovanje, which fails.
-
-        restKriterijumBodovanjeMockMvc.perform(post("/api/kriterijum-bodovanjes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(kriterijumBodovanje)))
-            .andExpect(status().isBadRequest());
-
-        List<KriterijumBodovanje> kriterijumBodovanjeList = kriterijumBodovanjeRepository.findAll();
-        assertThat(kriterijumBodovanjeList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkGranicaDoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = kriterijumBodovanjeRepository.findAll().size();
-        // set the field null
-        kriterijumBodovanje.setGranicaDo(null);
-
-        // Create the KriterijumBodovanje, which fails.
-
-        restKriterijumBodovanjeMockMvc.perform(post("/api/kriterijum-bodovanjes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(kriterijumBodovanje)))
-            .andExpect(status().isBadRequest());
-
-        List<KriterijumBodovanje> kriterijumBodovanjeList = kriterijumBodovanjeRepository.findAll();
-        assertThat(kriterijumBodovanjeList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -210,6 +179,7 @@ public class KriterijumBodovanjeResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(kriterijumBodovanje.getId().intValue())))
             .andExpect(jsonPath("$.[*].granicaOd").value(hasItem(DEFAULT_GRANICA_OD.doubleValue())))
             .andExpect(jsonPath("$.[*].granicaDo").value(hasItem(DEFAULT_GRANICA_DO.doubleValue())))
+            .andExpect(jsonPath("$.[*].opis").value(hasItem(DEFAULT_OPIS.toString())))
             .andExpect(jsonPath("$.[*].bodovi").value(hasItem(DEFAULT_BODOVI.doubleValue())));
     }
     
@@ -227,6 +197,7 @@ public class KriterijumBodovanjeResourceIntTest {
             .andExpect(jsonPath("$.id").value(kriterijumBodovanje.getId().intValue()))
             .andExpect(jsonPath("$.granicaOd").value(DEFAULT_GRANICA_OD.doubleValue()))
             .andExpect(jsonPath("$.granicaDo").value(DEFAULT_GRANICA_DO.doubleValue()))
+            .andExpect(jsonPath("$.opis").value(DEFAULT_OPIS.toString()))
             .andExpect(jsonPath("$.bodovi").value(DEFAULT_BODOVI.doubleValue()));
     }
     @Test
@@ -252,6 +223,7 @@ public class KriterijumBodovanjeResourceIntTest {
         updatedKriterijumBodovanje
             .granicaOd(UPDATED_GRANICA_OD)
             .granicaDo(UPDATED_GRANICA_DO)
+            .opis(UPDATED_OPIS)
             .bodovi(UPDATED_BODOVI);
 
         restKriterijumBodovanjeMockMvc.perform(put("/api/kriterijum-bodovanjes")
@@ -265,6 +237,7 @@ public class KriterijumBodovanjeResourceIntTest {
         KriterijumBodovanje testKriterijumBodovanje = kriterijumBodovanjeList.get(kriterijumBodovanjeList.size() - 1);
         assertThat(testKriterijumBodovanje.getGranicaOd()).isEqualTo(UPDATED_GRANICA_OD);
         assertThat(testKriterijumBodovanje.getGranicaDo()).isEqualTo(UPDATED_GRANICA_DO);
+        assertThat(testKriterijumBodovanje.getOpis()).isEqualTo(UPDATED_OPIS);
         assertThat(testKriterijumBodovanje.getBodovi()).isEqualTo(UPDATED_BODOVI);
     }
 
