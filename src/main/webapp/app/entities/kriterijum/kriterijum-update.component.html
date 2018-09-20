@@ -5,23 +5,11 @@
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!kriterijum.id">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        [(ngModel)]="kriterijum.id" readonly />
+                    <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
+                    <!--<input type="text" class="form-control" id="id" name="id"-->
+                        <!--[(ngModel)]="kriterijum.id" readonly />-->
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.kriterijumTip" for="field_kriterijumTip">Kriterijum Tip</label>
-                    <select class="form-control" name="kriterijumTip" [(ngModel)]="kriterijum.kriterijumTip" id="field_kriterijumTip"  required>
-                        <option value="BOD">{{'akcioniPlanApp.KriterijumTip.BOD' | translate}}</option>
-                        <option value="VREDNOST">{{'akcioniPlanApp.KriterijumTip.VREDNOST' | translate}}</option>
-                    </select>
-                    <div [hidden]="!(editForm.controls.kriterijumTip?.dirty && editForm.controls.kriterijumTip?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.kriterijumTip?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.naziv" for="field_naziv">Naziv</label>
                     <input type="text" class="form-control" name="naziv" id="field_naziv"
@@ -56,20 +44,32 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>
-                    <select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="kriterijum.akcioniPlan"  required>
-                        <option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>
-                        <option [ngValue]="akcioniPlanOption.id === kriterijum.akcioniPlan?.id ? kriterijum.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.kriterijumTip" for="field_kriterijumTip">Kriterijum Tip</label>
+                    <select class="form-control" name="kriterijumTip" [(ngModel)]="kriterijum.kriterijumTip" id="field_kriterijumTip"  required>
+                        <option value="BOD">{{'akcioniPlanApp.KriterijumTip.BOD' | translate}}</option>
+                        <option value="VREDNOST">{{'akcioniPlanApp.KriterijumTip.VREDNOST' | translate}}</option>
                     </select>
+                    <div [hidden]="!(editForm.controls.kriterijumTip?.dirty && editForm.controls.kriterijumTip?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.kriterijumTip?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
-                <div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">
-                    <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijum.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>-->
+                    <!--<select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="kriterijum.akcioniPlan"  required>-->
+                        <!--<option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>-->
+                        <!--<option [ngValue]="akcioniPlanOption.id === kriterijum.akcioniPlan?.id ? kriterijum.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">-->
+                    <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                    <!--</small>-->
+                <!--</div>-->
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

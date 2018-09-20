@@ -14,25 +14,25 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijum.kriterijumTip">Kriterijum Tip</span></th>
+            <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
             <th><span jhiTranslate="akcioniPlanApp.kriterijum.naziv">Naziv</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijum.ponder">Ponder</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijum.akcioniPlan">Akcioni Plan</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.kriterijum.kriterijumTip">Kriterijum Tip</span></th>
+            <!--<th><span jhiTranslate="akcioniPlanApp.kriterijum.akcioniPlan">Akcioni Plan</span></th>-->
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let kriterijum of kriterijums ;trackBy: trackId">
-                <td><a [routerLink]="['/kriterijum', kriterijum.id, 'view' ]">{{kriterijum.id}}</a></td>
-                <td jhiTranslate="{{'akcioniPlanApp.KriterijumTip.' + kriterijum.kriterijumTip}}">{{kriterijum.kriterijumTip}}</td>
+                <!--<td><a [routerLink]="['/kriterijum', kriterijum.id, 'view' ]">{{kriterijum.id}}</a></td>-->
                 <td>{{kriterijum.naziv}}</td>
                 <td>{{kriterijum.ponder}}</td>
-                <td>
-                    <div *ngIf="kriterijum.akcioniPlan">
-                        <a [routerLink]="['../akcioni-plan', kriterijum.akcioniPlan?.id, 'view' ]" >{{kriterijum.akcioniPlan?.naziv}}</a>
-                    </div>
-                </td>
+                <td jhiTranslate="{{'akcioniPlanApp.KriterijumTip.' + kriterijum.kriterijumTip}}">{{kriterijum.kriterijumTip}}</td>
+                <!--<td>-->
+                    <!--<div *ngIf="kriterijum.akcioniPlan">-->
+                        <!--<a [routerLink]="['../akcioni-plan', kriterijum.akcioniPlan?.id, 'view' ]" >{{kriterijum.akcioniPlan?.naziv}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <!--<button type="submit"-->
