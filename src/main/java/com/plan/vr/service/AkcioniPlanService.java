@@ -1,10 +1,7 @@
 package com.plan.vr.service;
 
 import com.plan.vr.domain.*;
-import com.plan.vr.repository.AdminKriterijumBodovanjeRepository;
-import com.plan.vr.repository.AdminKriterijumRepository;
-import com.plan.vr.repository.AkcioniPlanRepository;
-import com.plan.vr.repository.KriterijumRepository;
+import com.plan.vr.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,13 +24,15 @@ public class AkcioniPlanService {
     private final AdminKriterijumRepository adminKriterijumRepository;
     private final AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository;
     private final KriterijumRepository kriterijumRepository;
+    private final KriterijumBodovanjeRepository kriterijumBodovanjeRepository;
     private final UserService userService;
 
-    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository, KriterijumRepository kriterijumRepository, UserService userService) {
+    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository, KriterijumRepository kriterijumRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository, UserService userService) {
         this.akcioniPlanRepository = akcioniPlanRepository;
         this.adminKriterijumRepository = adminKriterijumRepository;
         this.adminKriterijumBodovanjeRepository = adminKriterijumBodovanjeRepository;
         this.kriterijumRepository = kriterijumRepository;
+        this.kriterijumBodovanjeRepository = kriterijumBodovanjeRepository;
         this.userService = userService;
     }
 
@@ -60,13 +59,28 @@ public class AkcioniPlanService {
 
         for (AdminKriterijum ak : kriterijumi) {
 
+            List<AdminKriterijumBodovanje> kriterijumBodovanje = adminKriterijumBodovanjeRepository.findAllByAdminKriterijum_id(ak.getId());
+
             Kriterijum k = new Kriterijum();
             k.kriterijumTip(ak.getKriterijumTip())
                 .naziv(ak.getNaziv())
                 .ponder(ak.getPonder())
                 .akcioniPlan(ap);
 
-            kriterijumRepository.save(k);
+            Kriterijum k2 = kriterijumRepository.save(k);
+
+            for (AdminKriterijumBodovanje akb : kriterijumBodovanje) {
+
+                KriterijumBodovanje kb = new KriterijumBodovanje();
+                kb.granicaOd(akb.getGranicaOd())
+                    .granicaDo(akb.getGranicaDo())
+                    .opis(akb.getOpis())
+                    .bodovi(akb.getBodovi())
+                    .kriterijum(k2);
+
+                kriterijumBodovanjeRepository.save(kb);
+            }
+
         }
 
         System.out.println(akcioniPlan);
