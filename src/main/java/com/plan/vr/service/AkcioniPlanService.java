@@ -53,39 +53,41 @@ public class AkcioniPlanService {
             log.debug("Korisnik je : {}", isUser.get());
         }
 
-        AkcioniPlan ap = akcioniPlanRepository.save(akcioniPlan);
+        if (akcioniPlan.getId() == null ) {
+            AkcioniPlan ap = akcioniPlanRepository.save(akcioniPlan);
 
-        List<AdminKriterijum> kriterijumi = adminKriterijumRepository.findAll();
+            List<AdminKriterijum> kriterijumi = adminKriterijumRepository.findAll();
 
-        for (AdminKriterijum ak : kriterijumi) {
+            for (AdminKriterijum ak : kriterijumi) {
 
-            List<AdminKriterijumBodovanje> kriterijumBodovanje = adminKriterijumBodovanjeRepository.findAllByAdminKriterijum_id(ak.getId());
+                List<AdminKriterijumBodovanje> kriterijumBodovanje = adminKriterijumBodovanjeRepository.findAllByAdminKriterijum_id(ak.getId());
 
-            Kriterijum k = new Kriterijum();
-            k.kriterijumTip(ak.getKriterijumTip())
-                .naziv(ak.getNaziv())
-                .ponder(ak.getPonder())
-                .akcioniPlan(ap);
+                Kriterijum k = new Kriterijum();
+                k.kriterijumTip(ak.getKriterijumTip())
+                    .naziv(ak.getNaziv())
+                    .ponder(ak.getPonder())
+                    .akcioniPlan(ap);
 
-            Kriterijum k2 = kriterijumRepository.save(k);
+                Kriterijum k2 = kriterijumRepository.save(k);
 
-            for (AdminKriterijumBodovanje akb : kriterijumBodovanje) {
+                for (AdminKriterijumBodovanje akb : kriterijumBodovanje) {
 
-                KriterijumBodovanje kb = new KriterijumBodovanje();
-                kb.granicaOd(akb.getGranicaOd())
-                    .granicaDo(akb.getGranicaDo())
-                    .opis(akb.getOpis())
-                    .bodovi(akb.getBodovi())
-                    .kriterijum(k2);
+                    KriterijumBodovanje kb = new KriterijumBodovanje();
+                    kb.granicaOd(akb.getGranicaOd())
+                        .granicaDo(akb.getGranicaDo())
+                        .opis(akb.getOpis())
+                        .bodovi(akb.getBodovi())
+                        .kriterijum(k2);
 
-                kriterijumBodovanjeRepository.save(kb);
+                    kriterijumBodovanjeRepository.save(kb);
+                }
+
             }
 
+            return ap;
+        } else {
+            return akcioniPlanRepository.save(akcioniPlan);
         }
-
-        System.out.println(akcioniPlan);
-
-        return ap;
     }
 
     /**
