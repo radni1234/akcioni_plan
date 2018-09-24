@@ -11,6 +11,8 @@ import { KriterijumDetailComponent } from './kriterijum-detail.component';
 import { KriterijumUpdateComponent } from './kriterijum-update.component';
 import { KriterijumDeletePopupComponent } from './kriterijum-delete-dialog.component';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
+import {KriterijumBodovanjeResolve, kriterijumBodovanjeRoute} from '../kriterijum-bodovanje/kriterijum-bodovanje.route';
+import {KriterijumBodovanjeComponent} from '../kriterijum-bodovanje/kriterijum-bodovanje.component';
 
 @Injectable({ providedIn: 'root' })
 export class KriterijumResolve implements Resolve<IKriterijum> {
@@ -36,18 +38,6 @@ export const kriterijumRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'kriterijum/:id/view',
-        component: KriterijumDetailComponent,
-        resolve: {
-            kriterijum: KriterijumResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.kriterijum.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    },
-    {
         path: 'kriterijum/new',
         component: KriterijumUpdateComponent,
         resolve: {
@@ -60,16 +50,34 @@ export const kriterijumRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'kriterijum/:id/edit',
-        component: KriterijumUpdateComponent,
-        resolve: {
-            kriterijum: KriterijumResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.kriterijum.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        path: 'kriterijum/:id',
+        children: [
+            {
+                path: 'view',
+                component: KriterijumDetailComponent,
+                resolve: {
+                    kriterijum: KriterijumResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.kriterijum.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            },
+            {
+                path: 'edit',
+                component: KriterijumUpdateComponent,
+                resolve: {
+                    kriterijum: KriterijumResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.kriterijum.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            },
+            ...kriterijumBodovanjeRoute
+        ]
     }
 ];
 

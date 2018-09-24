@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IKriterijumBodovanje } from 'app/shared/model/kriterijum-bodovanje.model';
 import { Principal } from 'app/core';
 import { KriterijumBodovanjeService } from './kriterijum-bodovanje.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'jhi-kriterijum-bodovanje',
@@ -16,15 +17,28 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    params: any;
+    id: any;
+
     constructor(
         private kriterijumBodovanjeService: KriterijumBodovanjeService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private route: ActivatedRoute
     ) {}
 
-    loadAll() {
-        this.kriterijumBodovanjeService.query().subscribe(
+    // loadAll() {
+    //     this.kriterijumBodovanjeService.query().subscribe(
+    //         (res: HttpResponse<IKriterijumBodovanje[]>) => {
+    //             this.kriterijumBodovanjes = res.body;
+    //         },
+    //         (res: HttpErrorResponse) => this.onError(res.message)
+    //     );
+    // }
+
+    loadAll(id) {
+        this.kriterijumBodovanjeService.queryByKriterijum(id).subscribe(
             (res: HttpResponse<IKriterijumBodovanje[]>) => {
                 this.kriterijumBodovanjes = res.body;
             },
@@ -33,7 +47,13 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.loadAll();
+        this.params = this.route.parent.params.subscribe(
+            params => {
+                this.id = params['id'];
+            }
+        );
+
+        this.loadAll(this.id);
         this.principal.identity().then(account => {
             this.currentAccount = account;
         });

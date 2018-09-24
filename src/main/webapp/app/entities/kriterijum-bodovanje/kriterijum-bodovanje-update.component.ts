@@ -7,7 +7,8 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IKriterijumBodovanje } from 'app/shared/model/kriterijum-bodovanje.model';
 import { KriterijumBodovanjeService } from './kriterijum-bodovanje.service';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
-import { KriterijumService } from 'app/entities/kriterijum';
+import {KriterijumService} from '../kriterijum/kriterijum.service';
+// import { KriterijumService } from 'app/entities/kriterijum';
 
 @Component({
     selector: 'jhi-kriterijum-bodovanje-update',
