@@ -14,37 +14,39 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
+
+            <!--<th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></th>-->
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let kriterijumBodovanje of kriterijumBodovanjes ;trackBy: trackId">
-                <td><a [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]">{{kriterijumBodovanje.id}}</a></td>
+                <!--<td><a [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]">{{kriterijumBodovanje.id}}</a></td>-->
                 <td>{{kriterijumBodovanje.granicaOd}}</td>
                 <td>{{kriterijumBodovanje.granicaDo}}</td>
-                <td>{{kriterijumBodovanje.opis}}</td>
                 <td>{{kriterijumBodovanje.bodovi}}</td>
-                <td>
-                    <div *ngIf="kriterijumBodovanje.kriterijum">
-                        <a [routerLink]="['../kriterijum', kriterijumBodovanje.kriterijum?.id, 'view' ]" >{{kriterijumBodovanje.kriterijum?.naziv}}</a>
-                    </div>
-                </td>
+                <td>{{kriterijumBodovanje.opis}}</td>
+
+                <!--<td>-->
+                    <!--<div *ngIf="kriterijumBodovanje.kriterijum">-->
+                        <!--<a [routerLink]="['../kriterijum', kriterijumBodovanje.kriterijum?.id, 'view' ]" >{{kriterijumBodovanje.kriterijum?.naziv}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]"-->
+                                <!--class="btn btn-info btn-sm">-->
+                            <!--<fa-icon [icon]="'eye'"></fa-icon>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                        <!--</button>-->
                         <button type="submit"
-                                [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'edit']"
+                                [routerLink]="['./', kriterijumBodovanje.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>

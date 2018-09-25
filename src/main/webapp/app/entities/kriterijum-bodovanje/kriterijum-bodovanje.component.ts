@@ -37,8 +37,8 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     //     );
     // }
 
-    loadAll(id) {
-        this.kriterijumBodovanjeService.queryByKriterijum(id).subscribe(
+    loadAll() {
+        this.kriterijumBodovanjeService.queryByKriterijum(this.id).subscribe(
             (res: HttpResponse<IKriterijumBodovanje[]>) => {
                 this.kriterijumBodovanjes = res.body;
             },
@@ -53,7 +53,7 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
             }
         );
 
-        this.loadAll(this.id);
+        this.loadAll();
         this.principal.identity().then(account => {
             this.currentAccount = account;
         });
