@@ -17,8 +17,10 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    parentParams: any;
     params: any;
     id: any;
+    tip: any;
 
     constructor(
         private kriterijumBodovanjeService: KriterijumBodovanjeService,
@@ -47,9 +49,15 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.params = this.route.parent.params.subscribe(
+        this.parentParams = this.route.parent.params.subscribe(
             params => {
                 this.id = params['id'];
+                   }
+        );
+
+        this.params = this.route.queryParams.subscribe(
+            queryParams => {
+                this.tip = queryParams['tip'];
             }
         );
 

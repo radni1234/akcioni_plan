@@ -1,7 +1,9 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.home.title">Kriterijum Bodovanjes</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-kriterijum-bodovanje" [routerLink]="['/kriterijum-bodovanje/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-kriterijum-bodovanje"
+                [routerLink]="['/kriterijum-bodovanje/new']"
+                queryParamsHandling="merge">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="akcioniPlanApp.kriterijumBodovanje.home.createLabel">
             Create new Kriterijum Bodovanje
@@ -15,10 +17,12 @@
             <thead>
             <tr>
             <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
-            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></th>
+
+            <th *ngIf="tip === 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></th>
+            <th *ngIf="tip === 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></th>
+            <th *ngIf="tip === 'BOD'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
+
 
             <!--<th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></th>-->
             <th></th>
@@ -27,10 +31,11 @@
             <tbody>
             <tr *ngFor="let kriterijumBodovanje of kriterijumBodovanjes ;trackBy: trackId">
                 <!--<td><a [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]">{{kriterijumBodovanje.id}}</a></td>-->
-                <td>{{kriterijumBodovanje.granicaOd}}</td>
-                <td>{{kriterijumBodovanje.granicaDo}}</td>
+                <td *ngIf="tip === 'VREDNOST'">{{kriterijumBodovanje.granicaOd}}</td>
+                <td *ngIf="tip === 'VREDNOST'">{{kriterijumBodovanje.granicaDo}}</td>
+                <td *ngIf="tip === 'BOD'">{{kriterijumBodovanje.opis}}</td>
                 <td>{{kriterijumBodovanje.bodovi}}</td>
-                <td>{{kriterijumBodovanje.opis}}</td>
+
 
                 <!--<td>-->
                     <!--<div *ngIf="kriterijumBodovanje.kriterijum">-->
@@ -47,6 +52,7 @@
                         <!--</button>-->
                         <button type="submit"
                                 [routerLink]="['./', kriterijumBodovanje.id, 'edit']"
+                                queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>

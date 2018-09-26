@@ -20,6 +20,9 @@ export class KriterijumBodovanjeUpdateComponent implements OnInit {
 
     kriterijums: IKriterijum[];
 
+    queryParams: any;
+    tip: any;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private kriterijumBodovanjeService: KriterijumBodovanjeService,
@@ -29,6 +32,12 @@ export class KriterijumBodovanjeUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.queryParams = this.activatedRoute.queryParams.subscribe(
+            queryParams => {
+                this.tip = queryParams['tip'];
+            }
+        );
+
         this.activatedRoute.data.subscribe(({ kriterijumBodovanje }) => {
             this.kriterijumBodovanje = kriterijumBodovanje;
         });
