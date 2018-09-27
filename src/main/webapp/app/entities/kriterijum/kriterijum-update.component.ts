@@ -16,9 +16,12 @@ import {AkcioniPlanService} from '../akcioni-plan/akcioni-plan.service';
 })
 export class KriterijumUpdateComponent implements OnInit {
     private _kriterijum: IKriterijum;
+
     isSaving: boolean;
 
-    akcioniplans: IAkcioniPlan[];
+    // akcioniplans: IAkcioniPlan[];
+    akcioniPlan: IAkcioniPlan;
+    params: any;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -32,12 +35,27 @@ export class KriterijumUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ kriterijum }) => {
             this.kriterijum = kriterijum;
         });
-        this.akcioniPlanService.query().subscribe(
-            (res: HttpResponse<IAkcioniPlan[]>) => {
-                this.akcioniplans = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+
+        // this.akcioniPlanService.query().subscribe(
+        //     (res: HttpResponse<IAkcioniPlan[]>) => {
+        //         this.akcioniplans = res.body;
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
+
+        if (this.kriterijum.id === undefined) {
+            this.params = this.activatedRoute.parent.params.subscribe(
+                params => {
+                    console.log(params);
+                    this.akcioniPlanService.find(params['id']).subscribe(
+                        (res: HttpResponse<IAkcioniPlan>) => {
+                            this.akcioniPlan = res.body;
+                        },
+                        (res: HttpErrorResponse) => this.onError(res.message)
+                    );
+                }
+            );
+        }
     }
 
     previousState() {
@@ -49,6 +67,7 @@ export class KriterijumUpdateComponent implements OnInit {
         if (this.kriterijum.id !== undefined) {
             this.subscribeToSaveResponse(this.kriterijumService.update(this.kriterijum));
         } else {
+            this.kriterijum.akcioniPlan = this.akcioniPlan;
             this.subscribeToSaveResponse(this.kriterijumService.create(this.kriterijum));
         }
     }
