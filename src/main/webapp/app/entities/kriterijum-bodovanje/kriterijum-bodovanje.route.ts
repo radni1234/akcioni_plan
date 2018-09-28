@@ -17,7 +17,7 @@ export class KriterijumBodovanjeResolve implements Resolve<IKriterijumBodovanje>
     constructor(private service: KriterijumBodovanjeService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const id = route.params['id'] ? route.params['id'] : null;
+        const id = route.params['kriterijum_bodovanje_id'] ? route.params['kriterijum_bodovanje_id'] : null;
         if (id) {
             return this.service.find(id).pipe(map((kriterijumBodovanje: HttpResponse<KriterijumBodovanje>) => kriterijumBodovanje.body));
         }
@@ -29,18 +29,6 @@ export const kriterijumBodovanjeRoute: Routes = [
     {
         path: 'kriterijum-bodovanje',
         component: KriterijumBodovanjeComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.kriterijumBodovanje.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'kriterijum-bodovanje/:id/view',
-        component: KriterijumBodovanjeDetailComponent,
-        resolve: {
-            kriterijumBodovanje: KriterijumBodovanjeResolve
-        },
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'akcioniPlanApp.kriterijumBodovanje.home.title'
@@ -60,22 +48,39 @@ export const kriterijumBodovanjeRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'kriterijum-bodovanje/:id/edit',
-        component: KriterijumBodovanjeUpdateComponent,
-        resolve: {
-            kriterijumBodovanje: KriterijumBodovanjeResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'akcioniPlanApp.kriterijumBodovanje.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        path: 'kriterijum-bodovanje/:kriterijum_bodovanje_id',
+        children: [
+            {
+                path: 'view',
+                component: KriterijumBodovanjeDetailComponent,
+                resolve: {
+                    kriterijumBodovanje: KriterijumBodovanjeResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.kriterijumBodovanje.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            },
+            {
+                path: 'edit',
+                component: KriterijumBodovanjeUpdateComponent,
+                resolve: {
+                    kriterijumBodovanje: KriterijumBodovanjeResolve
+                },
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'akcioniPlanApp.kriterijumBodovanje.home.title'
+                },
+                canActivate: [UserRouteAccessService]
+            }
+        ]
     }
 ];
 
 export const kriterijumBodovanjePopupRoute: Routes = [
     {
-        path: 'kriterijum-bodovanje/:id/delete',
+        path: 'kriterijum-bodovanje/:kriterijum_bodovanje_id/delete',
         component: KriterijumBodovanjeDeletePopupComponent,
         resolve: {
             kriterijumBodovanje: KriterijumBodovanjeResolve

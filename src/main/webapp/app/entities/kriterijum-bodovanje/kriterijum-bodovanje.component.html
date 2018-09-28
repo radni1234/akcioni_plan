@@ -2,8 +2,9 @@
     <h2 id="page-heading">
         <span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.home.title">Kriterijum Bodovanjes</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-kriterijum-bodovanje"
-                [routerLink]="['/kriterijum-bodovanje/new']"
-                queryParamsHandling="merge">
+                [routerLink]="['./new']"
+                queryParamsHandling="merge"
+                >
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="akcioniPlanApp.kriterijumBodovanje.home.createLabel">
             Create new Kriterijum Bodovanje

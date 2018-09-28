@@ -11,15 +11,14 @@ import { KriterijumDetailComponent } from './kriterijum-detail.component';
 import { KriterijumUpdateComponent } from './kriterijum-update.component';
 import { KriterijumDeletePopupComponent } from './kriterijum-delete-dialog.component';
 import { IKriterijum } from 'app/shared/model/kriterijum.model';
-import {KriterijumBodovanjeResolve, kriterijumBodovanjeRoute} from '../kriterijum-bodovanje/kriterijum-bodovanje.route';
-import {KriterijumBodovanjeComponent} from '../kriterijum-bodovanje/kriterijum-bodovanje.component';
+import {kriterijumBodovanjeRoute} from '../kriterijum-bodovanje/kriterijum-bodovanje.route';
 
 @Injectable({ providedIn: 'root' })
 export class KriterijumResolve implements Resolve<IKriterijum> {
     constructor(private service: KriterijumService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const id = route.params['id'] ? route.params['id'] : null;
+        const id = route.params['kriterijum_id'] ? route.params['kriterijum_id'] : null;
         if (id) {
             return this.service.find(id).pipe(map((kriterijum: HttpResponse<Kriterijum>) => kriterijum.body));
         }
@@ -50,7 +49,7 @@ export const kriterijumRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'kriterijum/:id',
+        path: 'kriterijum/:kriterijum_id',
         children: [
             {
                 path: 'view',
@@ -83,7 +82,7 @@ export const kriterijumRoute: Routes = [
 
 export const kriterijumPopupRoute: Routes = [
     {
-        path: 'kriterijum/:id/delete',
+        path: 'kriterijum/:kriterijum_id/delete',
         component: KriterijumDeletePopupComponent,
         resolve: {
             kriterijum: KriterijumResolve

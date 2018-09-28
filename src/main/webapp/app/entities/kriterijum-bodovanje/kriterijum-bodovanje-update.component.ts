@@ -18,9 +18,11 @@ export class KriterijumBodovanjeUpdateComponent implements OnInit {
     private _kriterijumBodovanje: IKriterijumBodovanje;
     isSaving: boolean;
 
-    kriterijums: IKriterijum[];
+    // kriterijums: IKriterijum[];
+    kriterijum: IKriterijum;
 
     queryParams: any;
+    params: any;
     tip: any;
 
     constructor(
@@ -41,12 +43,25 @@ export class KriterijumBodovanjeUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ kriterijumBodovanje }) => {
             this.kriterijumBodovanje = kriterijumBodovanje;
         });
-        this.kriterijumService.query().subscribe(
-            (res: HttpResponse<IKriterijum[]>) => {
-                this.kriterijums = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        // this.kriterijumService.query().subscribe(
+        //     (res: HttpResponse<IKriterijum[]>) => {
+        //         this.kriterijums = res.body;
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
+
+        if (this.kriterijumBodovanje.id === undefined) {
+            this.params = this.activatedRoute.parent.params.subscribe(
+                params => {
+                    this.kriterijumService.find(params['kriterijum_id']).subscribe(
+                        (res: HttpResponse<IKriterijum>) => {
+                            this.kriterijum = res.body;
+                        },
+                        (res: HttpErrorResponse) => this.onError(res.message)
+                    );
+                }
+            );
+        }
     }
 
     previousState() {
@@ -58,6 +73,7 @@ export class KriterijumBodovanjeUpdateComponent implements OnInit {
         if (this.kriterijumBodovanje.id !== undefined) {
             this.subscribeToSaveResponse(this.kriterijumBodovanjeService.update(this.kriterijumBodovanje));
         } else {
+            this.kriterijumBodovanje.kriterijum = this.kriterijum;
             this.subscribeToSaveResponse(this.kriterijumBodovanjeService.create(this.kriterijumBodovanje));
         }
     }

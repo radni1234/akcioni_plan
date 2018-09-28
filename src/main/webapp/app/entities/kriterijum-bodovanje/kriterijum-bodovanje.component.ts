@@ -51,7 +51,7 @@ export class KriterijumBodovanjeComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.parentParams = this.route.parent.params.subscribe(
             params => {
-                this.id = params['id'];
+                this.id = params['kriterijum_id'];
                    }
         );
 
