@@ -2,11 +2,7 @@
     "name": "KriterijumBodovanje",
     "fields": [
         {
-            "fieldName": "granicaOd",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "granicaDo",
+            "fieldName": "granica",
             "fieldType": "Double"
         },
         {

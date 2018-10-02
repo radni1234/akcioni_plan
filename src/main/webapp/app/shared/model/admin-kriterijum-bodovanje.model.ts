@@ -2,8 +2,7 @@ import { IAdminKriterijum } from 'app/shared/model//admin-kriterijum.model';
 
 export interface IAdminKriterijumBodovanje {
     id?: number;
-    granicaOd?: number;
-    granicaDo?: number;
+    granica?: number;
     opis?: string;
     bodovi?: number;
     adminKriterijum?: IAdminKriterijum;
@@ -12,8 +11,7 @@ export interface IAdminKriterijumBodovanje {
 export class AdminKriterijumBodovanje implements IAdminKriterijumBodovanje {
     constructor(
         public id?: number,
-        public granicaOd?: number,
-        public granicaDo?: number,
+        public granica?: number,
         public opis?: string,
         public bodovi?: number,
         public adminKriterijum?: IAdminKriterijum

@@ -19,8 +19,7 @@
             <tr>
             <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
 
-            <th *ngIf="tip === 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd">Granica Od</span></th>
-            <th *ngIf="tip === 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo">Granica Do</span></th>
+            <th *ngIf="tip === 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granica">Granica</span></th>
             <th *ngIf="tip === 'BOD'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
             <th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span></th>
 
@@ -32,8 +31,7 @@
             <tbody>
             <tr *ngFor="let kriterijumBodovanje of kriterijumBodovanjes ;trackBy: trackId">
                 <!--<td><a [routerLink]="['/kriterijum-bodovanje', kriterijumBodovanje.id, 'view' ]">{{kriterijumBodovanje.id}}</a></td>-->
-                <td *ngIf="tip === 'VREDNOST'">{{kriterijumBodovanje.granicaOd}}</td>
-                <td *ngIf="tip === 'VREDNOST'">{{kriterijumBodovanje.granicaDo}}</td>
+                <td *ngIf="tip === 'VREDNOST'">{{kriterijumBodovanje.granica}}</td>
                 <td *ngIf="tip === 'BOD'">{{kriterijumBodovanje.opis}}</td>
                 <td>{{kriterijumBodovanje.bodovi}}</td>
 

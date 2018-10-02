@@ -16,8 +16,7 @@
             "detail": {
                 "title": "Admin Kriterijum Bodovanje"
             },
-            "granicaOd": "Granica Od",
-            "granicaDo": "Granica Do",
+            "granica": "Granica",
             "opis": "Opis",
             "bodovi": "Bodovi",
             "adminKriterijum": "Admin Kriterijum"

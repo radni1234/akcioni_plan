@@ -24,11 +24,8 @@ public class AdminKriterijumBodovanje implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "granica_od")
-    private Double granicaOd;
-
-    @Column(name = "granica_do")
-    private Double granicaDo;
+    @Column(name = "granica")
+    private Double granica;
 
     @Column(name = "opis")
     private String opis;
@@ -51,30 +48,17 @@ public class AdminKriterijumBodovanje implements Serializable {
         this.id = id;
     }
 
-    public Double getGranicaOd() {
-        return granicaOd;
+    public Double getGranica() {
+        return granica;
     }
 
-    public AdminKriterijumBodovanje granicaOd(Double granicaOd) {
-        this.granicaOd = granicaOd;
+    public AdminKriterijumBodovanje granica(Double granica) {
+        this.granica = granica;
         return this;
     }
 
-    public void setGranicaOd(Double granicaOd) {
-        this.granicaOd = granicaOd;
-    }
-
-    public Double getGranicaDo() {
-        return granicaDo;
-    }
-
-    public AdminKriterijumBodovanje granicaDo(Double granicaDo) {
-        this.granicaDo = granicaDo;
-        return this;
-    }
-
-    public void setGranicaDo(Double granicaDo) {
-        this.granicaDo = granicaDo;
+    public void setGranica(Double granica) {
+        this.granica = granica;
     }
 
     public String getOpis() {
@@ -141,8 +125,7 @@ public class AdminKriterijumBodovanje implements Serializable {
     public String toString() {
         return "AdminKriterijumBodovanje{" +
             "id=" + getId() +
-            ", granicaOd=" + getGranicaOd() +
-            ", granicaDo=" + getGranicaDo() +
+            ", granica=" + getGranica() +
             ", opis='" + getOpis() + "'" +
             ", bodovi=" + getBodovi() +
             "}";

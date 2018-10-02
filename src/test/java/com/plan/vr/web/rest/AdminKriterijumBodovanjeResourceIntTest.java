@@ -40,11 +40,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = AkcioniPlanApp.class)
 public class AdminKriterijumBodovanjeResourceIntTest {
 
-    private static final Double DEFAULT_GRANICA_OD = 1D;
-    private static final Double UPDATED_GRANICA_OD = 2D;
-
-    private static final Double DEFAULT_GRANICA_DO = 1D;
-    private static final Double UPDATED_GRANICA_DO = 2D;
+    private static final Double DEFAULT_GRANICA = 1D;
+    private static final Double UPDATED_GRANICA = 2D;
 
     private static final String DEFAULT_OPIS = "AAAAAAAAAA";
     private static final String UPDATED_OPIS = "BBBBBBBBBB";
@@ -91,8 +88,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
      */
     public static AdminKriterijumBodovanje createEntity(EntityManager em) {
         AdminKriterijumBodovanje adminKriterijumBodovanje = new AdminKriterijumBodovanje()
-            .granicaOd(DEFAULT_GRANICA_OD)
-            .granicaDo(DEFAULT_GRANICA_DO)
+            .granica(DEFAULT_GRANICA)
             .opis(DEFAULT_OPIS)
             .bodovi(DEFAULT_BODOVI);
         // Add required entity
@@ -123,8 +119,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         List<AdminKriterijumBodovanje> adminKriterijumBodovanjeList = adminKriterijumBodovanjeRepository.findAll();
         assertThat(adminKriterijumBodovanjeList).hasSize(databaseSizeBeforeCreate + 1);
         AdminKriterijumBodovanje testAdminKriterijumBodovanje = adminKriterijumBodovanjeList.get(adminKriterijumBodovanjeList.size() - 1);
-        assertThat(testAdminKriterijumBodovanje.getGranicaOd()).isEqualTo(DEFAULT_GRANICA_OD);
-        assertThat(testAdminKriterijumBodovanje.getGranicaDo()).isEqualTo(DEFAULT_GRANICA_DO);
+        assertThat(testAdminKriterijumBodovanje.getGranica()).isEqualTo(DEFAULT_GRANICA);
         assertThat(testAdminKriterijumBodovanje.getOpis()).isEqualTo(DEFAULT_OPIS);
         assertThat(testAdminKriterijumBodovanje.getBodovi()).isEqualTo(DEFAULT_BODOVI);
     }
@@ -177,8 +172,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(adminKriterijumBodovanje.getId().intValue())))
-            .andExpect(jsonPath("$.[*].granicaOd").value(hasItem(DEFAULT_GRANICA_OD.doubleValue())))
-            .andExpect(jsonPath("$.[*].granicaDo").value(hasItem(DEFAULT_GRANICA_DO.doubleValue())))
+            .andExpect(jsonPath("$.[*].granica").value(hasItem(DEFAULT_GRANICA.doubleValue())))
             .andExpect(jsonPath("$.[*].opis").value(hasItem(DEFAULT_OPIS.toString())))
             .andExpect(jsonPath("$.[*].bodovi").value(hasItem(DEFAULT_BODOVI.doubleValue())));
     }
@@ -195,8 +189,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(adminKriterijumBodovanje.getId().intValue()))
-            .andExpect(jsonPath("$.granicaOd").value(DEFAULT_GRANICA_OD.doubleValue()))
-            .andExpect(jsonPath("$.granicaDo").value(DEFAULT_GRANICA_DO.doubleValue()))
+            .andExpect(jsonPath("$.granica").value(DEFAULT_GRANICA.doubleValue()))
             .andExpect(jsonPath("$.opis").value(DEFAULT_OPIS.toString()))
             .andExpect(jsonPath("$.bodovi").value(DEFAULT_BODOVI.doubleValue()));
     }
@@ -221,8 +214,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         // Disconnect from session so that the updates on updatedAdminKriterijumBodovanje are not directly saved in db
         em.detach(updatedAdminKriterijumBodovanje);
         updatedAdminKriterijumBodovanje
-            .granicaOd(UPDATED_GRANICA_OD)
-            .granicaDo(UPDATED_GRANICA_DO)
+            .granica(UPDATED_GRANICA)
             .opis(UPDATED_OPIS)
             .bodovi(UPDATED_BODOVI);
 
@@ -235,8 +227,7 @@ public class AdminKriterijumBodovanjeResourceIntTest {
         List<AdminKriterijumBodovanje> adminKriterijumBodovanjeList = adminKriterijumBodovanjeRepository.findAll();
         assertThat(adminKriterijumBodovanjeList).hasSize(databaseSizeBeforeUpdate);
         AdminKriterijumBodovanje testAdminKriterijumBodovanje = adminKriterijumBodovanjeList.get(adminKriterijumBodovanjeList.size() - 1);
-        assertThat(testAdminKriterijumBodovanje.getGranicaOd()).isEqualTo(UPDATED_GRANICA_OD);
-        assertThat(testAdminKriterijumBodovanje.getGranicaDo()).isEqualTo(UPDATED_GRANICA_DO);
+        assertThat(testAdminKriterijumBodovanje.getGranica()).isEqualTo(UPDATED_GRANICA);
         assertThat(testAdminKriterijumBodovanje.getOpis()).isEqualTo(UPDATED_OPIS);
         assertThat(testAdminKriterijumBodovanje.getBodovi()).isEqualTo(UPDATED_BODOVI);
     }
