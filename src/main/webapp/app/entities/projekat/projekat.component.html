@@ -14,7 +14,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
             <th><span jhiTranslate="akcioniPlanApp.projekat.naziv">Naziv</span></th>
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumOd">Datum Od</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumDo">Datum Do</span></th>-->
@@ -42,7 +42,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let projekat of projekats ;trackBy: trackId">
-                <td><a [routerLink]="['/projekat', projekat.id, 'view' ]">{{projekat.id}}</a></td>
+                <!--<td><a [routerLink]="['/projekat', projekat.id, 'view' ]">{{projekat.id}}</a></td>-->
                 <td>{{projekat.naziv}}</td>
                 <!--<td>{{projekat.datumOd | date:'mediumDate'}}</td>-->
                 <!--<td>{{projekat.datumDo | date:'mediumDate'}}</td>-->
@@ -63,17 +63,17 @@
                 <!--<td>{{projekat.odgovornaOsoba}}</td>-->
                 <!--<td>{{projekat.izvorFinansiranja}}</td>-->
                 <!--<td>{{projekat.ostalo}}</td>-->
-                <td>
-                    <a *ngIf="projekat.slika" (click)="openFile(projekat.slikaContentType, projekat.slika)">
-                        <img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-height: 30px;" alt="projekat image"/>
-                    </a>
-                    <span *ngIf="projekat.slika">{{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}</span>
-                </td>
-                <td>
-                    <div *ngIf="projekat.akcioniPlan">
-                        <a [routerLink]="['../akcioni-plan', projekat.akcioniPlan?.id, 'view' ]" >{{projekat.akcioniPlan?.naziv}}</a>
-                    </div>
-                </td>
+                <!--<td>-->
+                    <!--<a *ngIf="projekat.slika" (click)="openFile(projekat.slikaContentType, projekat.slika)">-->
+                        <!--<img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-height: 30px;" alt="projekat image"/>-->
+                    <!--</a>-->
+                    <!--<span *ngIf="projekat.slika">{{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<div *ngIf="projekat.akcioniPlan">-->
+                        <!--<a [routerLink]="['../akcioni-plan', projekat.akcioniPlan?.id, 'view' ]" >{{projekat.akcioniPlan?.naziv}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <!--<button type="submit"-->
@@ -88,12 +88,12 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['./', projekat.id, 'projekat-bodovanje']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline">Bodovanje</span>
-                        </button>
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['./', projekat.id, 'projekat-bodovanje']"-->
+                                <!--class="btn btn-primary btn-sm">-->
+                            <!--<fa-icon [icon]="'eye'"></fa-icon>-->
+                            <!--<span class="d-none d-md-inline">Bodovanje</span>-->
+                        <!--</button>-->
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'projekat/'+ projekat.id + '/delete'} }]"
                                 replaceUrl="true"

@@ -121,19 +121,19 @@
                         [(ngModel)]="projekat.slikaContentType" />
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>
-                    <select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="projekat.akcioniPlan"  required>
-                        <option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>
-                        <option [ngValue]="akcioniPlanOption.id === projekat.akcioniPlan?.id ? projekat.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>
-                    </select>
-                </div>
-                <div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">
-                    <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>-->
+                    <!--<select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="projekat.akcioniPlan"  required>-->
+                        <!--<option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>-->
+                        <!--<option [ngValue]="akcioniPlanOption.id === projekat.akcioniPlan?.id ? projekat.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">-->
+                    <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                    <!--</small>-->
+                <!--</div>-->
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

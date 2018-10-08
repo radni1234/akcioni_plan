@@ -18,7 +18,8 @@ export class ProjekatUpdateComponent implements OnInit {
     private _projekat: IProjekat;
     isSaving: boolean;
 
-    akcioniplans: IAkcioniPlan[];
+    // akcioniplans: IAkcioniPlan[];
+    akcioniplan: IAkcioniPlan;
     datumOdDp: any;
     datumDoDp: any;
 
@@ -36,12 +37,25 @@ export class ProjekatUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ projekat }) => {
             this.projekat = projekat;
         });
-        this.akcioniPlanService.query().subscribe(
-            (res: HttpResponse<IAkcioniPlan[]>) => {
-                this.akcioniplans = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        // this.akcioniPlanService.query().subscribe(
+        //     (res: HttpResponse<IAkcioniPlan[]>) => {
+        //         this.akcioniplans = res.body;
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
+
+        if (this.projekat.id === undefined) {
+            this.params = this.activatedRoute.parent.params.subscribe(
+                params => {
+                    this.akcioniPlanService.find(params['id']).subscribe(
+                        (res: HttpResponse<IAkcioniPlan>) => {
+                            this.akcioniPlan = res.body;
+                        },
+                        (res: HttpErrorResponse) => this.onError(res.message)
+                    );
+                }
+            );
+        }
     }
 
     byteSize(field) {
@@ -69,6 +83,7 @@ export class ProjekatUpdateComponent implements OnInit {
         if (this.projekat.id !== undefined) {
             this.subscribeToSaveResponse(this.projekatService.update(this.projekat));
         } else {
+            this.projekat.akcioniPlan = this.akcioniPlan;
             this.subscribeToSaveResponse(this.projekatService.create(this.projekat));
         }
     }
