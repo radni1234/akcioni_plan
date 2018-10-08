@@ -10,15 +10,15 @@
                         <!--[(ngModel)]="kriterijumBodovanje.id" readonly />-->
                 <!--</div>-->
                 <div *ngIf="tip === 'VREDNOST'" class="form-group">
-                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaOd" for="field_granicaOd">Granica Od</label>
-                    <input type="number" class="form-control" name="granicaOd" id="field_granicaOd"
-                        [(ngModel)]="kriterijumBodovanje.granicaOd" />
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granica" for="field_granica">Granica</label>
+                    <input type="number" class="form-control" name="granica" id="field_granica"
+                        [(ngModel)]="kriterijumBodovanje.granica" />
                 </div>
-                <div *ngIf="tip === 'VREDNOST'" class="form-group">
-                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo" for="field_granicaDo">Granica Do</label>
-                    <input type="number" class="form-control" name="granicaDo" id="field_granicaDo"
-                        [(ngModel)]="kriterijumBodovanje.granicaDo" />
-                </div>
+                <!--<div *ngIf="tip === 'VREDNOST'" class="form-group">-->
+                    <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granicaDo" for="field_granicaDo">Granica Do</label>-->
+                    <!--<input type="number" class="form-control" name="granicaDo" id="field_granicaDo"-->
+                        <!--[(ngModel)]="kriterijumBodovanje.granicaDo" />-->
+                <!--</div>-->
                 <div *ngIf="tip === 'BOD'" class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis" for="field_opis">Opis</label>
                     <input type="text" class="form-control" name="opis" id="field_opis"

@@ -73,8 +73,7 @@ public class AkcioniPlanService {
                 for (AdminKriterijumBodovanje akb : kriterijumBodovanje) {
 
                     KriterijumBodovanje kb = new KriterijumBodovanje();
-                    kb.granicaOd(akb.getGranicaOd())
-                        .granicaDo(akb.getGranicaDo())
+                    kb.granica(akb.getGranica())
                         .opis(akb.getOpis())
                         .bodovi(akb.getBodovi())
                         .kriterijum(k2);
