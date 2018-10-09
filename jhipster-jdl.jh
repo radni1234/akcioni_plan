@@ -72,5 +72,5 @@ relationship ManyToOne{
 	AkcioniPlan{user(login) required} to User
 }
 
-service AkcioniPlan, Kriterijum with serviceClass
+service AkcioniPlan, Kriterijum, Projekat with serviceClass
 

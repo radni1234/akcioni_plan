@@ -2,7 +2,7 @@ package com.plan.vr.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.plan.vr.domain.Projekat;
-import com.plan.vr.repository.ProjekatRepository;
+import com.plan.vr.service.ProjekatService;
 import com.plan.vr.web.rest.errors.BadRequestAlertException;
 import com.plan.vr.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -29,10 +29,10 @@ public class ProjekatResource {
 
     private static final String ENTITY_NAME = "projekat";
 
-    private final ProjekatRepository projekatRepository;
+    private final ProjekatService projekatService;
 
-    public ProjekatResource(ProjekatRepository projekatRepository) {
-        this.projekatRepository = projekatRepository;
+    public ProjekatResource(ProjekatService projekatService) {
+        this.projekatService = projekatService;
     }
 
     /**
@@ -49,7 +49,7 @@ public class ProjekatResource {
         if (projekat.getId() != null) {
             throw new BadRequestAlertException("A new projekat cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Projekat result = projekatRepository.save(projekat);
+        Projekat result = projekatService.save(projekat);
         return ResponseEntity.created(new URI("/api/projekats/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -71,7 +71,7 @@ public class ProjekatResource {
         if (projekat.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Projekat result = projekatRepository.save(projekat);
+        Projekat result = projekatService.save(projekat);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, projekat.getId().toString()))
             .body(result);
@@ -86,13 +86,13 @@ public class ProjekatResource {
     @Timed
     public List<Projekat> getAllProjekats() {
         log.debug("REST request to get all Projekats");
-        return projekatRepository.findAll();
+        return projekatService.findAll();
     }
 
     @GetMapping("/projekats/ap/{id}")
     @Timed
     public List<Projekat> getAllProjekatsByAkcioniPlanId(@PathVariable Long id) {
-        return projekatRepository.findByAkcioniPlan_Id(id);
+        return projekatService.findByAkcioniPlan_Id(id);
     }
 
 
@@ -106,7 +106,7 @@ public class ProjekatResource {
     @Timed
     public ResponseEntity<Projekat> getProjekat(@PathVariable Long id) {
         log.debug("REST request to get Projekat : {}", id);
-        Optional<Projekat> projekat = projekatRepository.findById(id);
+        Optional<Projekat> projekat = projekatService.findOne(id);
         return ResponseUtil.wrapOrNotFound(projekat);
     }
 
@@ -120,8 +120,7 @@ public class ProjekatResource {
     @Timed
     public ResponseEntity<Void> deleteProjekat(@PathVariable Long id) {
         log.debug("REST request to delete Projekat : {}", id);
-
-        projekatRepository.deleteById(id);
+        projekatService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

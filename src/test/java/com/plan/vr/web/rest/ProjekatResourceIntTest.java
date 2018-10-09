@@ -5,6 +5,7 @@ import com.plan.vr.AkcioniPlanApp;
 import com.plan.vr.domain.Projekat;
 import com.plan.vr.domain.AkcioniPlan;
 import com.plan.vr.repository.ProjekatRepository;
+import com.plan.vr.service.ProjekatService;
 import com.plan.vr.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -93,6 +94,10 @@ public class ProjekatResourceIntTest {
     @Autowired
     private ProjekatRepository projekatRepository;
 
+    
+
+    @Autowired
+    private ProjekatService projekatService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -113,7 +118,7 @@ public class ProjekatResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProjekatResource projekatResource = new ProjekatResource(projekatRepository);
+        final ProjekatResource projekatResource = new ProjekatResource(projekatService);
         this.restProjekatMockMvc = MockMvcBuilders.standaloneSetup(projekatResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -298,7 +303,7 @@ public class ProjekatResourceIntTest {
     @Transactional
     public void updateProjekat() throws Exception {
         // Initialize the database
-        projekatRepository.saveAndFlush(projekat);
+        projekatService.save(projekat);
 
         int databaseSizeBeforeUpdate = projekatRepository.findAll().size();
 
@@ -373,7 +378,7 @@ public class ProjekatResourceIntTest {
     @Transactional
     public void deleteProjekat() throws Exception {
         // Initialize the database
-        projekatRepository.saveAndFlush(projekat);
+        projekatService.save(projekat);
 
         int databaseSizeBeforeDelete = projekatRepository.findAll().size();
 
