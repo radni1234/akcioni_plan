@@ -19,7 +19,8 @@ export class ProjekatUpdateComponent implements OnInit {
     isSaving: boolean;
 
     // akcioniplans: IAkcioniPlan[];
-    akcioniplan: IAkcioniPlan;
+    akcioniPlan: IAkcioniPlan;
+    params: any;
     datumOdDp: any;
     datumDoDp: any;
 

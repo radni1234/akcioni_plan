@@ -1,6 +1,10 @@
 package com.plan.vr.service;
 
+import com.plan.vr.domain.Kriterijum;
 import com.plan.vr.domain.Projekat;
+import com.plan.vr.domain.ProjekatBodovanje;
+import com.plan.vr.repository.KriterijumRepository;
+import com.plan.vr.repository.ProjekatBodovanjeRepository;
 import com.plan.vr.repository.ProjekatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +25,14 @@ public class ProjekatService {
     private final Logger log = LoggerFactory.getLogger(ProjekatService.class);
 
     private final ProjekatRepository projekatRepository;
+    private final KriterijumRepository kriterijumRepository;
+    private final ProjekatBodovanjeRepository projekatBodovanjeRepository;
 
-    public ProjekatService(ProjekatRepository projekatRepository) {
+
+    public ProjekatService(ProjekatRepository projekatRepository, KriterijumRepository kriterijumRepository, ProjekatBodovanjeRepository projekatBodovanjeRepository) {
         this.projekatRepository = projekatRepository;
+        this.kriterijumRepository = kriterijumRepository;
+        this.projekatBodovanjeRepository = projekatBodovanjeRepository;
     }
 
     /**
@@ -33,7 +42,24 @@ public class ProjekatService {
      * @return the persisted entity
      */
     public Projekat save(Projekat projekat) {
-        log.debug("Request to save Projekat : {}", projekat);        return projekatRepository.save(projekat);
+        log.debug("Request to save Projekat : {}", projekat);
+
+        Projekat p = projekatRepository.save(projekat);
+
+        List<Kriterijum> kriterijumi = kriterijumRepository.findAll();
+
+        for (Kriterijum k : kriterijumi) {
+
+            ProjekatBodovanje pb = new ProjekatBodovanje();
+
+            pb.projekat(p)
+                .kriterijum(k)
+                .vrednost(1.0);
+
+            projekatBodovanjeRepository.save(pb);
+        }
+
+        return p;
     }
 
     /**
