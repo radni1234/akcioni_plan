@@ -2,7 +2,7 @@ package com.plan.vr.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.plan.vr.domain.Kriterijum;
-import com.plan.vr.repository.KriterijumRepository;
+import com.plan.vr.service.KriterijumService;
 import com.plan.vr.web.rest.errors.BadRequestAlertException;
 import com.plan.vr.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -29,10 +29,10 @@ public class KriterijumResource {
 
     private static final String ENTITY_NAME = "kriterijum";
 
-    private final KriterijumRepository kriterijumRepository;
+    private final KriterijumService kriterijumService;
 
-    public KriterijumResource(KriterijumRepository kriterijumRepository) {
-        this.kriterijumRepository = kriterijumRepository;
+    public KriterijumResource(KriterijumService kriterijumService) {
+        this.kriterijumService = kriterijumService;
     }
 
     /**
@@ -49,7 +49,7 @@ public class KriterijumResource {
         if (kriterijum.getId() != null) {
             throw new BadRequestAlertException("A new kriterijum cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Kriterijum result = kriterijumRepository.save(kriterijum);
+        Kriterijum result = kriterijumService.save(kriterijum);
         return ResponseEntity.created(new URI("/api/kriterijums/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -71,7 +71,7 @@ public class KriterijumResource {
         if (kriterijum.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Kriterijum result = kriterijumRepository.save(kriterijum);
+        Kriterijum result = kriterijumService.save(kriterijum);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, kriterijum.getId().toString()))
             .body(result);
@@ -86,13 +86,13 @@ public class KriterijumResource {
     @Timed
     public List<Kriterijum> getAllKriterijums() {
         log.debug("REST request to get all Kriterijums");
-        return kriterijumRepository.findAll();
+        return kriterijumService.findAll();
     }
 
     @GetMapping("/kriterijums/ap/{id}")
     @Timed
     public List<Kriterijum> getAllKriterijumsByAkcioniPlanId(@PathVariable Long id){
-        return kriterijumRepository.findByAkcioniPlan_Id(id);
+        return kriterijumService.findByAkcioniPlan_Id(id);
     }
 
 
@@ -106,7 +106,7 @@ public class KriterijumResource {
     @Timed
     public ResponseEntity<Kriterijum> getKriterijum(@PathVariable Long id) {
         log.debug("REST request to get Kriterijum : {}", id);
-        Optional<Kriterijum> kriterijum = kriterijumRepository.findById(id);
+        Optional<Kriterijum> kriterijum = kriterijumService.findOne(id);
         return ResponseUtil.wrapOrNotFound(kriterijum);
     }
 
@@ -120,8 +120,7 @@ public class KriterijumResource {
     @Timed
     public ResponseEntity<Void> deleteKriterijum(@PathVariable Long id) {
         log.debug("REST request to delete Kriterijum : {}", id);
-
-        kriterijumRepository.deleteById(id);
+        kriterijumService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

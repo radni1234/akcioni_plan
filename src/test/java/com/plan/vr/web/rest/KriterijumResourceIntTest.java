@@ -5,6 +5,7 @@ import com.plan.vr.AkcioniPlanApp;
 import com.plan.vr.domain.Kriterijum;
 import com.plan.vr.domain.AkcioniPlan;
 import com.plan.vr.repository.KriterijumRepository;
+import com.plan.vr.service.KriterijumService;
 import com.plan.vr.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -53,6 +54,10 @@ public class KriterijumResourceIntTest {
     @Autowired
     private KriterijumRepository kriterijumRepository;
 
+    
+
+    @Autowired
+    private KriterijumService kriterijumService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -73,7 +78,7 @@ public class KriterijumResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final KriterijumResource kriterijumResource = new KriterijumResource(kriterijumRepository);
+        final KriterijumResource kriterijumResource = new KriterijumResource(kriterijumService);
         this.restKriterijumMockMvc = MockMvcBuilders.standaloneSetup(kriterijumResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -242,7 +247,7 @@ public class KriterijumResourceIntTest {
     @Transactional
     public void updateKriterijum() throws Exception {
         // Initialize the database
-        kriterijumRepository.saveAndFlush(kriterijum);
+        kriterijumService.save(kriterijum);
 
         int databaseSizeBeforeUpdate = kriterijumRepository.findAll().size();
 
@@ -291,7 +296,7 @@ public class KriterijumResourceIntTest {
     @Transactional
     public void deleteKriterijum() throws Exception {
         // Initialize the database
-        kriterijumRepository.saveAndFlush(kriterijum);
+        kriterijumService.save(kriterijum);
 
         int databaseSizeBeforeDelete = kriterijumRepository.findAll().size();
 
