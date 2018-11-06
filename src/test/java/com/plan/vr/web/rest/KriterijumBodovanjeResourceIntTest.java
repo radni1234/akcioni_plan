@@ -40,6 +40,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = AkcioniPlanApp.class)
 public class KriterijumBodovanjeResourceIntTest {
 
+    private static final Integer DEFAULT_RB = 1;
+    private static final Integer UPDATED_RB = 2;
+
     private static final Double DEFAULT_GRANICA = 1D;
     private static final Double UPDATED_GRANICA = 2D;
 
@@ -88,6 +91,7 @@ public class KriterijumBodovanjeResourceIntTest {
      */
     public static KriterijumBodovanje createEntity(EntityManager em) {
         KriterijumBodovanje kriterijumBodovanje = new KriterijumBodovanje()
+            .rb(DEFAULT_RB)
             .granica(DEFAULT_GRANICA)
             .opis(DEFAULT_OPIS)
             .bodovi(DEFAULT_BODOVI);
@@ -119,6 +123,7 @@ public class KriterijumBodovanjeResourceIntTest {
         List<KriterijumBodovanje> kriterijumBodovanjeList = kriterijumBodovanjeRepository.findAll();
         assertThat(kriterijumBodovanjeList).hasSize(databaseSizeBeforeCreate + 1);
         KriterijumBodovanje testKriterijumBodovanje = kriterijumBodovanjeList.get(kriterijumBodovanjeList.size() - 1);
+        assertThat(testKriterijumBodovanje.getRb()).isEqualTo(DEFAULT_RB);
         assertThat(testKriterijumBodovanje.getGranica()).isEqualTo(DEFAULT_GRANICA);
         assertThat(testKriterijumBodovanje.getOpis()).isEqualTo(DEFAULT_OPIS);
         assertThat(testKriterijumBodovanje.getBodovi()).isEqualTo(DEFAULT_BODOVI);
@@ -172,6 +177,7 @@ public class KriterijumBodovanjeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(kriterijumBodovanje.getId().intValue())))
+            .andExpect(jsonPath("$.[*].rb").value(hasItem(DEFAULT_RB)))
             .andExpect(jsonPath("$.[*].granica").value(hasItem(DEFAULT_GRANICA.doubleValue())))
             .andExpect(jsonPath("$.[*].opis").value(hasItem(DEFAULT_OPIS.toString())))
             .andExpect(jsonPath("$.[*].bodovi").value(hasItem(DEFAULT_BODOVI.doubleValue())));
@@ -189,6 +195,7 @@ public class KriterijumBodovanjeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(kriterijumBodovanje.getId().intValue()))
+            .andExpect(jsonPath("$.rb").value(DEFAULT_RB))
             .andExpect(jsonPath("$.granica").value(DEFAULT_GRANICA.doubleValue()))
             .andExpect(jsonPath("$.opis").value(DEFAULT_OPIS.toString()))
             .andExpect(jsonPath("$.bodovi").value(DEFAULT_BODOVI.doubleValue()));
@@ -214,6 +221,7 @@ public class KriterijumBodovanjeResourceIntTest {
         // Disconnect from session so that the updates on updatedKriterijumBodovanje are not directly saved in db
         em.detach(updatedKriterijumBodovanje);
         updatedKriterijumBodovanje
+            .rb(UPDATED_RB)
             .granica(UPDATED_GRANICA)
             .opis(UPDATED_OPIS)
             .bodovi(UPDATED_BODOVI);
@@ -227,6 +235,7 @@ public class KriterijumBodovanjeResourceIntTest {
         List<KriterijumBodovanje> kriterijumBodovanjeList = kriterijumBodovanjeRepository.findAll();
         assertThat(kriterijumBodovanjeList).hasSize(databaseSizeBeforeUpdate);
         KriterijumBodovanje testKriterijumBodovanje = kriterijumBodovanjeList.get(kriterijumBodovanjeList.size() - 1);
+        assertThat(testKriterijumBodovanje.getRb()).isEqualTo(UPDATED_RB);
         assertThat(testKriterijumBodovanje.getGranica()).isEqualTo(UPDATED_GRANICA);
         assertThat(testKriterijumBodovanje.getOpis()).isEqualTo(UPDATED_OPIS);
         assertThat(testKriterijumBodovanje.getBodovi()).isEqualTo(UPDATED_BODOVI);

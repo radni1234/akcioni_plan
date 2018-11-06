@@ -95,6 +95,12 @@ public class KriterijumBodovanjeResource {
         return kriterijumBodovanjeRepository.findAllByKriterijum_Id(id);
     }
 
+    @GetMapping("/kriterijum-bodovanjes/ap/{id}")
+    @Timed
+    public List<KriterijumBodovanje> getAllKriterijumBodovanjeByAkcioniPlanId(@PathVariable Long id) {
+        return kriterijumBodovanjeRepository.findAllByKriterijum_AkcioniPlan_Id(id);
+    }
+
     /**
      * GET  /kriterijum-bodovanjes/:id : get the "id" kriterijumBodovanje.
      *

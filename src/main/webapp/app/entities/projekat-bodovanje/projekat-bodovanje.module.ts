@@ -11,11 +11,12 @@ import {
     projekatBodovanjeRoute,
     projekatBodovanjePopupRoute
 } from './';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ENTITY_STATES = [...projekatBodovanjeRoute, ...projekatBodovanjePopupRoute];
 
 @NgModule({
-    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES), ReactiveFormsModule],
     declarations: [
         ProjekatBodovanjeComponent,
         ProjekatBodovanjeDetailComponent,

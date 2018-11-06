@@ -39,6 +39,13 @@ export class KriterijumBodovanjeService {
             ;
     }
 
+    queryByAkcioniPlan(id: number, req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http
+            .get<IKriterijumBodovanje[]>(`${this.resourceUrl}/${'ap'}/${id}`, { params: options, observe: 'response' })
+            ;
+    }
+
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }

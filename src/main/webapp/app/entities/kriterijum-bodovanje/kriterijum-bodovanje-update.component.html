@@ -9,6 +9,11 @@
                     <!--<input type="text" class="form-control" id="id" name="id"-->
                         <!--[(ngModel)]="kriterijumBodovanje.id" readonly />-->
                 <!--</div>-->
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.rb" for="field_rb">Rb</label>
+                    <input type="number" class="form-control" name="rb" id="field_rb"
+                           [(ngModel)]="kriterijumBodovanje.rb" />
+                </div>
                 <div *ngIf="tip === 'VREDNOST'" class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granica" for="field_granica">Granica</label>
                     <input type="number" class="form-control" name="granica" id="field_granica"

@@ -2,6 +2,10 @@
     "name": "KriterijumBodovanje",
     "fields": [
         {
+            "fieldName": "rb",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "granica",
             "fieldType": "Double"
         },

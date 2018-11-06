@@ -15,6 +15,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.rb">Rb</span></th>
             <th><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.granica">Granica</span></th>
             <th><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.opis">Opis</span></th>
             <th><span jhiTranslate="akcioniPlanApp.adminKriterijumBodovanje.bodovi">Bodovi</span></th>
@@ -25,6 +26,7 @@
             <tbody>
             <tr *ngFor="let adminKriterijumBodovanje of adminKriterijumBodovanjes ;trackBy: trackId">
                 <td><a [routerLink]="['/admin-kriterijum-bodovanje', adminKriterijumBodovanje.id, 'view' ]">{{adminKriterijumBodovanje.id}}</a></td>
+                <td>{{adminKriterijumBodovanje.rb}}</td>
                 <td>{{adminKriterijumBodovanje.granica}}</td>
                 <td>{{adminKriterijumBodovanje.opis}}</td>
                 <td>{{adminKriterijumBodovanje.bodovi}}</td>

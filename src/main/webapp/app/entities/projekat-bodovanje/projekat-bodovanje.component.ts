@@ -6,38 +6,140 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IProjekatBodovanje } from 'app/shared/model/projekat-bodovanje.model';
 import { Principal } from 'app/core';
 import { ProjekatBodovanjeService } from './projekat-bodovanje.service';
+import {FormGroup, FormBuilder, FormArray} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {KriterijumBodovanjeService} from '../kriterijum-bodovanje/kriterijum-bodovanje.service';
+import {IKriterijumBodovanje} from '../../shared/model/kriterijum-bodovanje.model';
+import {IKriterijum} from '../../shared/model/kriterijum.model';
 
 @Component({
     selector: 'jhi-projekat-bodovanje',
-    templateUrl: './projekat-bodovanje.component.html'
+    templateUrl: './projekat-bodovanje.component.html',
+    styleUrls: ['./projekat-bodovanje.component.css']
 })
 export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
     projekatBodovanjes: IProjekatBodovanje[];
+    kriterijumBodovanje: IKriterijumBodovanje[];
+    kriterijums: IKriterijum[];
+
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    rows: FormArray = this.fb.array([]);
+    form: FormGroup = this.fb.group({ 'projekti': this.rows });
+
+    bodovanje: any[] = [];
+
+    projekatId: number;
+    paramsProjekat: any;
+
     constructor(
         private projekatBodovanjeService: ProjekatBodovanjeService,
+        private kriterijumBodovanjeService: KriterijumBodovanjeService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private fb: FormBuilder,
+        private route: ActivatedRoute
     ) {}
 
+    get projekti() {
+        return this.form.get('projekti') as FormArray;
+    }
+
+    addRow(p: IProjekatBodovanje) {
+        const row = this.fb.group({
+            'kriterijumId'      : p.kriterijum.id,
+            'kriterijum'        : p.kriterijum.naziv,
+            'vrednost'          : p.vrednost,
+            'tip'               : p.kriterijum.kriterijumTip,
+            'bodovi'            : p.bodovi,
+            'ponder'            : p.kriterijum.ponder,
+            'ponderisaniBodovi' : p.ponderisaniBodovi
+        });
+        this.rows.push(row);
+    }
+
+    onSubmit() {
+        // TODO: Use EventEmitter with form value
+        console.warn(this.form.value);
+    }
+
     loadAll() {
-        this.projekatBodovanjeService.query().subscribe(
+
+        this.projekatBodovanjeService.queryByProjekat(this.projekatId).subscribe(
             (res: HttpResponse<IProjekatBodovanje[]>) => {
                 this.projekatBodovanjes = res.body;
+
+                this.projekatBodovanjes.forEach((p: IProjekatBodovanje) => {
+
+                        this.kriterijumBodovanjeService.queryByKriterijum(p.kriterijum.id).subscribe(
+                            (res2: HttpResponse<IKriterijumBodovanje[]>) => {
+                                this.kriterijumBodovanje = res2.body;
+
+                                p.kriterijum.kriterijumBodovanjes = this.kriterijumBodovanje;
+                            }
+                        );
+
+                        this.addRow(p);
+                    }
+                );
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
 
     ngOnInit() {
+        this.paramsProjekat = this.route.parent.params.subscribe(
+            params => {
+                console.warn(params);
+                this.projekatId = params['id'];
+            }
+        );
+
         this.loadAll();
+
         this.principal.identity().then(account => {
             this.currentAccount = account;
         });
         this.registerChangeInProjekatBodovanjes();
+    }
+
+    izracunaj(x) {
+
+        let izracunitiBodovi;
+        let izracunitiPonderisaniBodovi;
+
+        const projekat = this.projekatBodovanjes.filter(p => p.kriterijum.id === x.value.kriterijumId);
+
+        if (projekat[0].kriterijum.kriterijumBodovanjes) {
+            if (projekat[0].kriterijum.kriterijumTip === 'BOD') {
+                izracunitiBodovi = x.value.vrednost;
+                izracunitiPonderisaniBodovi = izracunitiBodovi * x.value.ponder;
+            } else if (projekat[0].kriterijum.kriterijumTip === 'VREDNOST') {
+                const bodovanje = projekat[0].kriterijum.kriterijumBodovanjes.sort((n, m) => n.rb - m.rb);
+
+                for (let j = 0; j < bodovanje.length; j++) {
+                    if (x.value.vrednost) {
+                        if (bodovanje[j].granica === null) {
+                            izracunitiBodovi = bodovanje[j].bodovi;
+                            izracunitiPonderisaniBodovi = izracunitiBodovi * x.value.ponder;
+                        } else if (x.value.vrednost < bodovanje[j].granica) {
+                            if (bodovanje[j].bodovi) {
+                                izracunitiBodovi = bodovanje[j].bodovi;
+                                izracunitiPonderisaniBodovi = izracunitiBodovi * x.value.ponder;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        x.get('bodovi').setValue(izracunitiBodovi);
+        x.get('ponderisaniBodovi').setValue(izracunitiPonderisaniBodovi);
+
     }
 
     ngOnDestroy() {

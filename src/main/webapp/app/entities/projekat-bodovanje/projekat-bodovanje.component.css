@@ -1,0 +1,33 @@
+table {
+    width:100%;
+    /*border-collapse: collapse;*/
+}
+.veliko {
+    width:53%;
+    /*border: 1px solid #000;*/
+}
+.srednje {
+    width:20%;
+    text-align: center;
+}
+.malo {
+    width:9%;
+    text-align: center;
+}
+input {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    text-align: right;
+}
+select {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+th {
+    font-weight: bold;
+    text-align: center;
+}

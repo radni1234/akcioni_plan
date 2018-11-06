@@ -4,6 +4,8 @@ import com.plan.vr.domain.ProjekatBodovanje;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the ProjekatBodovanje entity.
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ProjekatBodovanjeRepository extends JpaRepository<ProjekatBodovanje, Long> {
-
+    List<ProjekatBodovanje> findByProjekat_Id(Long id);
 }

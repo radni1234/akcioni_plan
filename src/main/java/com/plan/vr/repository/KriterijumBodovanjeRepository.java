@@ -14,4 +14,5 @@ import java.util.List;
 @Repository
 public interface KriterijumBodovanjeRepository extends JpaRepository<KriterijumBodovanje, Long> {
     List<KriterijumBodovanje> findAllByKriterijum_Id(Long id);
+    List<KriterijumBodovanje> findAllByKriterijum_AkcioniPlan_Id(Long id);
 }

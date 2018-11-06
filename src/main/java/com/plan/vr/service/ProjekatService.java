@@ -46,15 +46,14 @@ public class ProjekatService {
 
         Projekat p = projekatRepository.save(projekat);
 
-        List<Kriterijum> kriterijumi = kriterijumRepository.findAll();
+        List<Kriterijum> kriterijumi = kriterijumRepository.findByAkcioniPlan_Id(p.getAkcioniPlan().getId());
 
         for (Kriterijum k : kriterijumi) {
 
             ProjekatBodovanje pb = new ProjekatBodovanje();
 
             pb.projekat(p)
-                .kriterijum(k)
-                .vrednost(1.0);
+                .kriterijum(k);
 
             projekatBodovanjeRepository.save(pb);
         }

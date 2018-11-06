@@ -89,6 +89,12 @@ public class ProjekatBodovanjeResource {
         return projekatBodovanjeRepository.findAll();
     }
 
+    @GetMapping("/projekat-bodovanjes/ap/{id}")
+    @Timed
+    public List<ProjekatBodovanje> getAllProjekatBodovanjeByProjekatId(@PathVariable Long id){
+        return projekatBodovanjeRepository.findByProjekat_Id(id);
+    }
+
     /**
      * GET  /projekat-bodovanjes/:id : get the "id" projekatBodovanje.
      *
