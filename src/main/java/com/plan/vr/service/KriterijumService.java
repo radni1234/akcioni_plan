@@ -50,8 +50,7 @@ public class KriterijumService {
             ProjekatBodovanje pb = new ProjekatBodovanje();
 
             pb.projekat(p)
-                .kriterijum(k)
-                .bodovi(2.0);
+                .kriterijum(k);
 
             this.projekatBodovanjeRepository.save(pb);
         }
