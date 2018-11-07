@@ -6,11 +6,12 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IProjekatBodovanje } from 'app/shared/model/projekat-bodovanje.model';
 import { Principal } from 'app/core';
 import { ProjekatBodovanjeService } from './projekat-bodovanje.service';
-import {FormGroup, FormBuilder, FormArray} from '@angular/forms';
+import {FormGroup, FormBuilder, FormArray, FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {KriterijumBodovanjeService} from '../kriterijum-bodovanje/kriterijum-bodovanje.service';
 import {IKriterijumBodovanje} from '../../shared/model/kriterijum-bodovanje.model';
 import {IKriterijum} from '../../shared/model/kriterijum.model';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'jhi-projekat-bodovanje',
@@ -32,6 +33,8 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
 
     projekatId: number;
     paramsProjekat: any;
+
+    isSaving: boolean;
 
     constructor(
         private projekatBodovanjeService: ProjekatBodovanjeService,
@@ -60,9 +63,20 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
         this.rows.push(row);
     }
 
-    onSubmit() {
-        // TODO: Use EventEmitter with form value
-        console.warn(this.form.value);
+    ngOnInit() {
+        this.paramsProjekat = this.route.parent.params.subscribe(
+            params => {
+                console.warn(params);
+                this.projekatId = params['id'];
+            }
+        );
+
+        this.loadAll();
+
+        this.principal.identity().then(account => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInProjekatBodovanjes();
     }
 
     loadAll() {
@@ -89,23 +103,7 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
         );
     }
 
-    ngOnInit() {
-        this.paramsProjekat = this.route.parent.params.subscribe(
-            params => {
-                console.warn(params);
-                this.projekatId = params['id'];
-            }
-        );
-
-        this.loadAll();
-
-        this.principal.identity().then(account => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInProjekatBodovanjes();
-    }
-
-    izracunaj(x) {
+    izracunaj(x: FormControl) {
 
         let izracunitiBodovi;
         let izracunitiPonderisaniBodovi;
@@ -140,6 +138,44 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
         x.get('bodovi').setValue(izracunitiBodovi);
         x.get('ponderisaniBodovi').setValue(izracunitiPonderisaniBodovi);
 
+    }
+
+    onSubmit() {
+        // TODO: Use EventEmitter with form value
+        console.warn(this.form.value);
+
+        this.form.value.projekti.forEach(p => {
+                const projekat = this.projekatBodovanjes.filter(pb => pb.kriterijum.id === p.kriterijumId);
+
+                projekat[0].vrednost = p.vrednost;
+                projekat[0].bodovi = p.bodovi;
+                projekat[0].ponderisaniBodovi = p.ponderisaniBodovi;
+
+                this.save(projekat[0]);
+            }
+        );
+    }
+
+    previousState() {
+        window.history.back();
+    }
+
+    save(pb: IProjekatBodovanje) {
+        this.isSaving = true;
+        this.subscribeToSaveResponse(this.projekatBodovanjeService.update(pb));
+    }
+
+    private subscribeToSaveResponse(result: Observable<HttpResponse<IProjekatBodovanje>>) {
+        result.subscribe((res: HttpResponse<IProjekatBodovanje>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    }
+
+    private onSaveSuccess() {
+        this.isSaving = false;
+        this.previousState();
+    }
+
+    private onSaveError() {
+        this.isSaving = false;
     }
 
     ngOnDestroy() {
