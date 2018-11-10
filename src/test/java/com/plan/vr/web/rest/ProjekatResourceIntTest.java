@@ -56,9 +56,6 @@ public class ProjekatResourceIntTest {
     private static final String DEFAULT_LOKACIJA = "AAAAAAAAAA";
     private static final String UPDATED_LOKACIJA = "BBBBBBBBBB";
 
-    private static final String DEFAULT_INVESTICIJA = "AAAAAAAAAA";
-    private static final String UPDATED_INVESTICIJA = "BBBBBBBBBB";
-
     private static final String DEFAULT_OPIS_MERE = "AAAAAAAAAA";
     private static final String UPDATED_OPIS_MERE = "BBBBBBBBBB";
 
@@ -123,7 +120,6 @@ public class ProjekatResourceIntTest {
             .datumOd(DEFAULT_DATUM_OD)
             .datumDo(DEFAULT_DATUM_DO)
             .lokacija(DEFAULT_LOKACIJA)
-            .investicija(DEFAULT_INVESTICIJA)
             .opisMere(DEFAULT_OPIS_MERE)
             .odgovornaOsoba(DEFAULT_ODGOVORNA_OSOBA)
             .izvorFinansiranja(DEFAULT_IZVOR_FINANSIRANJA)
@@ -162,7 +158,6 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getDatumOd()).isEqualTo(DEFAULT_DATUM_OD);
         assertThat(testProjekat.getDatumDo()).isEqualTo(DEFAULT_DATUM_DO);
         assertThat(testProjekat.getLokacija()).isEqualTo(DEFAULT_LOKACIJA);
-        assertThat(testProjekat.getInvesticija()).isEqualTo(DEFAULT_INVESTICIJA);
         assertThat(testProjekat.getOpisMere()).isEqualTo(DEFAULT_OPIS_MERE);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(DEFAULT_ODGOVORNA_OSOBA);
         assertThat(testProjekat.getIzvorFinansiranja()).isEqualTo(DEFAULT_IZVOR_FINANSIRANJA);
@@ -223,7 +218,6 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.[*].datumOd").value(hasItem(DEFAULT_DATUM_OD.toString())))
             .andExpect(jsonPath("$.[*].datumDo").value(hasItem(DEFAULT_DATUM_DO.toString())))
             .andExpect(jsonPath("$.[*].lokacija").value(hasItem(DEFAULT_LOKACIJA.toString())))
-            .andExpect(jsonPath("$.[*].investicija").value(hasItem(DEFAULT_INVESTICIJA.toString())))
             .andExpect(jsonPath("$.[*].opisMere").value(hasItem(DEFAULT_OPIS_MERE.toString())))
             .andExpect(jsonPath("$.[*].odgovornaOsoba").value(hasItem(DEFAULT_ODGOVORNA_OSOBA.toString())))
             .andExpect(jsonPath("$.[*].izvorFinansiranja").value(hasItem(DEFAULT_IZVOR_FINANSIRANJA.toString())))
@@ -248,7 +242,6 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.datumOd").value(DEFAULT_DATUM_OD.toString()))
             .andExpect(jsonPath("$.datumDo").value(DEFAULT_DATUM_DO.toString()))
             .andExpect(jsonPath("$.lokacija").value(DEFAULT_LOKACIJA.toString()))
-            .andExpect(jsonPath("$.investicija").value(DEFAULT_INVESTICIJA.toString()))
             .andExpect(jsonPath("$.opisMere").value(DEFAULT_OPIS_MERE.toString()))
             .andExpect(jsonPath("$.odgovornaOsoba").value(DEFAULT_ODGOVORNA_OSOBA.toString()))
             .andExpect(jsonPath("$.izvorFinansiranja").value(DEFAULT_IZVOR_FINANSIRANJA.toString()))
@@ -281,7 +274,6 @@ public class ProjekatResourceIntTest {
             .datumOd(UPDATED_DATUM_OD)
             .datumDo(UPDATED_DATUM_DO)
             .lokacija(UPDATED_LOKACIJA)
-            .investicija(UPDATED_INVESTICIJA)
             .opisMere(UPDATED_OPIS_MERE)
             .odgovornaOsoba(UPDATED_ODGOVORNA_OSOBA)
             .izvorFinansiranja(UPDATED_IZVOR_FINANSIRANJA)
@@ -302,7 +294,6 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getDatumOd()).isEqualTo(UPDATED_DATUM_OD);
         assertThat(testProjekat.getDatumDo()).isEqualTo(UPDATED_DATUM_DO);
         assertThat(testProjekat.getLokacija()).isEqualTo(UPDATED_LOKACIJA);
-        assertThat(testProjekat.getInvesticija()).isEqualTo(UPDATED_INVESTICIJA);
         assertThat(testProjekat.getOpisMere()).isEqualTo(UPDATED_OPIS_MERE);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(UPDATED_ODGOVORNA_OSOBA);
         assertThat(testProjekat.getIzvorFinansiranja()).isEqualTo(UPDATED_IZVOR_FINANSIRANJA);

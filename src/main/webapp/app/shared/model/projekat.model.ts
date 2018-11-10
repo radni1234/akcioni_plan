@@ -8,7 +8,6 @@ export interface IProjekat {
     datumOd?: Moment;
     datumDo?: Moment;
     lokacija?: string;
-    investicija?: string;
     opisMere?: string;
     odgovornaOsoba?: string;
     izvorFinansiranja?: string;
@@ -26,7 +25,6 @@ export class Projekat implements IProjekat {
         public datumOd?: Moment,
         public datumDo?: Moment,
         public lokacija?: string,
-        public investicija?: string,
         public opisMere?: string,
         public odgovornaOsoba?: string,
         public izvorFinansiranja?: string,

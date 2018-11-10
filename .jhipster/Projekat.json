@@ -25,10 +25,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "investicija",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "opisMere",
             "fieldType": "String"
         },

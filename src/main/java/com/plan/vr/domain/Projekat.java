@@ -42,9 +42,6 @@ public class Projekat implements Serializable {
     @Column(name = "lokacija")
     private String lokacija;
 
-    @Column(name = "investicija")
-    private String investicija;
-
     @Column(name = "opis_mere")
     private String opisMere;
 
@@ -132,19 +129,6 @@ public class Projekat implements Serializable {
 
     public void setLokacija(String lokacija) {
         this.lokacija = lokacija;
-    }
-
-    public String getInvesticija() {
-        return investicija;
-    }
-
-    public Projekat investicija(String investicija) {
-        this.investicija = investicija;
-        return this;
-    }
-
-    public void setInvesticija(String investicija) {
-        this.investicija = investicija;
     }
 
     public String getOpisMere() {
@@ -292,7 +276,6 @@ public class Projekat implements Serializable {
             ", datumOd='" + getDatumOd() + "'" +
             ", datumDo='" + getDatumDo() + "'" +
             ", lokacija='" + getLokacija() + "'" +
-            ", investicija='" + getInvesticija() + "'" +
             ", opisMere='" + getOpisMere() + "'" +
             ", odgovornaOsoba='" + getOdgovornaOsoba() + "'" +
             ", izvorFinansiranja='" + getIzvorFinansiranja() + "'" +
