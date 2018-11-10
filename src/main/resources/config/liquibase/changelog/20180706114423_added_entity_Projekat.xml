@@ -34,27 +34,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="aktivnost" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="lokacija" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="opsti_cilj" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="posebni_cilj" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="indikatori" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="referentni_parametar" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

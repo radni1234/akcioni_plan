@@ -53,23 +53,8 @@ public class ProjekatResourceIntTest {
     private static final LocalDate DEFAULT_DATUM_DO = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATUM_DO = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_AKTIVNOST = "AAAAAAAAAA";
-    private static final String UPDATED_AKTIVNOST = "BBBBBBBBBB";
-
     private static final String DEFAULT_LOKACIJA = "AAAAAAAAAA";
     private static final String UPDATED_LOKACIJA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_OPSTI_CILJ = "AAAAAAAAAA";
-    private static final String UPDATED_OPSTI_CILJ = "BBBBBBBBBB";
-
-    private static final String DEFAULT_POSEBNI_CILJ = "AAAAAAAAAA";
-    private static final String UPDATED_POSEBNI_CILJ = "BBBBBBBBBB";
-
-    private static final String DEFAULT_INDIKATORI = "AAAAAAAAAA";
-    private static final String UPDATED_INDIKATORI = "BBBBBBBBBB";
-
-    private static final String DEFAULT_REFERENTNI_PARAMETAR = "AAAAAAAAAA";
-    private static final String UPDATED_REFERENTNI_PARAMETAR = "BBBBBBBBBB";
 
     private static final String DEFAULT_INVESTICIJA = "AAAAAAAAAA";
     private static final String UPDATED_INVESTICIJA = "BBBBBBBBBB";
@@ -137,12 +122,7 @@ public class ProjekatResourceIntTest {
             .naziv(DEFAULT_NAZIV)
             .datumOd(DEFAULT_DATUM_OD)
             .datumDo(DEFAULT_DATUM_DO)
-            .aktivnost(DEFAULT_AKTIVNOST)
             .lokacija(DEFAULT_LOKACIJA)
-            .opstiCilj(DEFAULT_OPSTI_CILJ)
-            .posebniCilj(DEFAULT_POSEBNI_CILJ)
-            .indikatori(DEFAULT_INDIKATORI)
-            .referentniParametar(DEFAULT_REFERENTNI_PARAMETAR)
             .investicija(DEFAULT_INVESTICIJA)
             .opisMere(DEFAULT_OPIS_MERE)
             .odgovornaOsoba(DEFAULT_ODGOVORNA_OSOBA)
@@ -181,12 +161,7 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getNaziv()).isEqualTo(DEFAULT_NAZIV);
         assertThat(testProjekat.getDatumOd()).isEqualTo(DEFAULT_DATUM_OD);
         assertThat(testProjekat.getDatumDo()).isEqualTo(DEFAULT_DATUM_DO);
-        assertThat(testProjekat.getAktivnost()).isEqualTo(DEFAULT_AKTIVNOST);
         assertThat(testProjekat.getLokacija()).isEqualTo(DEFAULT_LOKACIJA);
-        assertThat(testProjekat.getOpstiCilj()).isEqualTo(DEFAULT_OPSTI_CILJ);
-        assertThat(testProjekat.getPosebniCilj()).isEqualTo(DEFAULT_POSEBNI_CILJ);
-        assertThat(testProjekat.getIndikatori()).isEqualTo(DEFAULT_INDIKATORI);
-        assertThat(testProjekat.getReferentniParametar()).isEqualTo(DEFAULT_REFERENTNI_PARAMETAR);
         assertThat(testProjekat.getInvesticija()).isEqualTo(DEFAULT_INVESTICIJA);
         assertThat(testProjekat.getOpisMere()).isEqualTo(DEFAULT_OPIS_MERE);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(DEFAULT_ODGOVORNA_OSOBA);
@@ -247,12 +222,7 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.[*].naziv").value(hasItem(DEFAULT_NAZIV.toString())))
             .andExpect(jsonPath("$.[*].datumOd").value(hasItem(DEFAULT_DATUM_OD.toString())))
             .andExpect(jsonPath("$.[*].datumDo").value(hasItem(DEFAULT_DATUM_DO.toString())))
-            .andExpect(jsonPath("$.[*].aktivnost").value(hasItem(DEFAULT_AKTIVNOST.toString())))
             .andExpect(jsonPath("$.[*].lokacija").value(hasItem(DEFAULT_LOKACIJA.toString())))
-            .andExpect(jsonPath("$.[*].opstiCilj").value(hasItem(DEFAULT_OPSTI_CILJ.toString())))
-            .andExpect(jsonPath("$.[*].posebniCilj").value(hasItem(DEFAULT_POSEBNI_CILJ.toString())))
-            .andExpect(jsonPath("$.[*].indikatori").value(hasItem(DEFAULT_INDIKATORI.toString())))
-            .andExpect(jsonPath("$.[*].referentniParametar").value(hasItem(DEFAULT_REFERENTNI_PARAMETAR.toString())))
             .andExpect(jsonPath("$.[*].investicija").value(hasItem(DEFAULT_INVESTICIJA.toString())))
             .andExpect(jsonPath("$.[*].opisMere").value(hasItem(DEFAULT_OPIS_MERE.toString())))
             .andExpect(jsonPath("$.[*].odgovornaOsoba").value(hasItem(DEFAULT_ODGOVORNA_OSOBA.toString())))
@@ -277,12 +247,7 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.naziv").value(DEFAULT_NAZIV.toString()))
             .andExpect(jsonPath("$.datumOd").value(DEFAULT_DATUM_OD.toString()))
             .andExpect(jsonPath("$.datumDo").value(DEFAULT_DATUM_DO.toString()))
-            .andExpect(jsonPath("$.aktivnost").value(DEFAULT_AKTIVNOST.toString()))
             .andExpect(jsonPath("$.lokacija").value(DEFAULT_LOKACIJA.toString()))
-            .andExpect(jsonPath("$.opstiCilj").value(DEFAULT_OPSTI_CILJ.toString()))
-            .andExpect(jsonPath("$.posebniCilj").value(DEFAULT_POSEBNI_CILJ.toString()))
-            .andExpect(jsonPath("$.indikatori").value(DEFAULT_INDIKATORI.toString()))
-            .andExpect(jsonPath("$.referentniParametar").value(DEFAULT_REFERENTNI_PARAMETAR.toString()))
             .andExpect(jsonPath("$.investicija").value(DEFAULT_INVESTICIJA.toString()))
             .andExpect(jsonPath("$.opisMere").value(DEFAULT_OPIS_MERE.toString()))
             .andExpect(jsonPath("$.odgovornaOsoba").value(DEFAULT_ODGOVORNA_OSOBA.toString()))
@@ -315,12 +280,7 @@ public class ProjekatResourceIntTest {
             .naziv(UPDATED_NAZIV)
             .datumOd(UPDATED_DATUM_OD)
             .datumDo(UPDATED_DATUM_DO)
-            .aktivnost(UPDATED_AKTIVNOST)
             .lokacija(UPDATED_LOKACIJA)
-            .opstiCilj(UPDATED_OPSTI_CILJ)
-            .posebniCilj(UPDATED_POSEBNI_CILJ)
-            .indikatori(UPDATED_INDIKATORI)
-            .referentniParametar(UPDATED_REFERENTNI_PARAMETAR)
             .investicija(UPDATED_INVESTICIJA)
             .opisMere(UPDATED_OPIS_MERE)
             .odgovornaOsoba(UPDATED_ODGOVORNA_OSOBA)
@@ -341,12 +301,7 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getNaziv()).isEqualTo(UPDATED_NAZIV);
         assertThat(testProjekat.getDatumOd()).isEqualTo(UPDATED_DATUM_OD);
         assertThat(testProjekat.getDatumDo()).isEqualTo(UPDATED_DATUM_DO);
-        assertThat(testProjekat.getAktivnost()).isEqualTo(UPDATED_AKTIVNOST);
         assertThat(testProjekat.getLokacija()).isEqualTo(UPDATED_LOKACIJA);
-        assertThat(testProjekat.getOpstiCilj()).isEqualTo(UPDATED_OPSTI_CILJ);
-        assertThat(testProjekat.getPosebniCilj()).isEqualTo(UPDATED_POSEBNI_CILJ);
-        assertThat(testProjekat.getIndikatori()).isEqualTo(UPDATED_INDIKATORI);
-        assertThat(testProjekat.getReferentniParametar()).isEqualTo(UPDATED_REFERENTNI_PARAMETAR);
         assertThat(testProjekat.getInvesticija()).isEqualTo(UPDATED_INVESTICIJA);
         assertThat(testProjekat.getOpisMere()).isEqualTo(UPDATED_OPIS_MERE);
         assertThat(testProjekat.getOdgovornaOsoba()).isEqualTo(UPDATED_ODGOVORNA_OSOBA);

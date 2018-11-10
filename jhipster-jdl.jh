@@ -9,13 +9,8 @@ entity AkcioniPlan {
 entity Projekat {
 	naziv String required minlength(1) maxlength(100)
     datumOd LocalDate
-    datumDo LocalDate
-    aktivnost String
+    datumDo LocalDate   
     lokacija String
-    opstiCilj String
-    posebniCilj String
-    indikatori String
-    referentniParametar String
     investicija String   
     opisMere String  
     odgovornaOsoba String

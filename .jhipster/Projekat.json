@@ -21,27 +21,7 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "aktivnost",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "lokacija",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "opstiCilj",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "posebniCilj",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "indikatori",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "referentniParametar",
             "fieldType": "String"
         },
         {

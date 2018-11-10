@@ -39,23 +39,8 @@ public class Projekat implements Serializable {
     @Column(name = "datum_do")
     private LocalDate datumDo;
 
-    @Column(name = "aktivnost")
-    private String aktivnost;
-
     @Column(name = "lokacija")
     private String lokacija;
-
-    @Column(name = "opsti_cilj")
-    private String opstiCilj;
-
-    @Column(name = "posebni_cilj")
-    private String posebniCilj;
-
-    @Column(name = "indikatori")
-    private String indikatori;
-
-    @Column(name = "referentni_parametar")
-    private String referentniParametar;
 
     @Column(name = "investicija")
     private String investicija;
@@ -136,19 +121,6 @@ public class Projekat implements Serializable {
         this.datumDo = datumDo;
     }
 
-    public String getAktivnost() {
-        return aktivnost;
-    }
-
-    public Projekat aktivnost(String aktivnost) {
-        this.aktivnost = aktivnost;
-        return this;
-    }
-
-    public void setAktivnost(String aktivnost) {
-        this.aktivnost = aktivnost;
-    }
-
     public String getLokacija() {
         return lokacija;
     }
@@ -160,58 +132,6 @@ public class Projekat implements Serializable {
 
     public void setLokacija(String lokacija) {
         this.lokacija = lokacija;
-    }
-
-    public String getOpstiCilj() {
-        return opstiCilj;
-    }
-
-    public Projekat opstiCilj(String opstiCilj) {
-        this.opstiCilj = opstiCilj;
-        return this;
-    }
-
-    public void setOpstiCilj(String opstiCilj) {
-        this.opstiCilj = opstiCilj;
-    }
-
-    public String getPosebniCilj() {
-        return posebniCilj;
-    }
-
-    public Projekat posebniCilj(String posebniCilj) {
-        this.posebniCilj = posebniCilj;
-        return this;
-    }
-
-    public void setPosebniCilj(String posebniCilj) {
-        this.posebniCilj = posebniCilj;
-    }
-
-    public String getIndikatori() {
-        return indikatori;
-    }
-
-    public Projekat indikatori(String indikatori) {
-        this.indikatori = indikatori;
-        return this;
-    }
-
-    public void setIndikatori(String indikatori) {
-        this.indikatori = indikatori;
-    }
-
-    public String getReferentniParametar() {
-        return referentniParametar;
-    }
-
-    public Projekat referentniParametar(String referentniParametar) {
-        this.referentniParametar = referentniParametar;
-        return this;
-    }
-
-    public void setReferentniParametar(String referentniParametar) {
-        this.referentniParametar = referentniParametar;
     }
 
     public String getInvesticija() {
@@ -371,12 +291,7 @@ public class Projekat implements Serializable {
             ", naziv='" + getNaziv() + "'" +
             ", datumOd='" + getDatumOd() + "'" +
             ", datumDo='" + getDatumDo() + "'" +
-            ", aktivnost='" + getAktivnost() + "'" +
             ", lokacija='" + getLokacija() + "'" +
-            ", opstiCilj='" + getOpstiCilj() + "'" +
-            ", posebniCilj='" + getPosebniCilj() + "'" +
-            ", indikatori='" + getIndikatori() + "'" +
-            ", referentniParametar='" + getReferentniParametar() + "'" +
             ", investicija='" + getInvesticija() + "'" +
             ", opisMere='" + getOpisMere() + "'" +
             ", odgovornaOsoba='" + getOdgovornaOsoba() + "'" +

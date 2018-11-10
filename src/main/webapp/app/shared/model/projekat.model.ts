@@ -7,12 +7,7 @@ export interface IProjekat {
     naziv?: string;
     datumOd?: Moment;
     datumDo?: Moment;
-    aktivnost?: string;
     lokacija?: string;
-    opstiCilj?: string;
-    posebniCilj?: string;
-    indikatori?: string;
-    referentniParametar?: string;
     investicija?: string;
     opisMere?: string;
     odgovornaOsoba?: string;
@@ -30,12 +25,7 @@ export class Projekat implements IProjekat {
         public naziv?: string,
         public datumOd?: Moment,
         public datumDo?: Moment,
-        public aktivnost?: string,
         public lokacija?: string,
-        public opstiCilj?: string,
-        public posebniCilj?: string,
-        public indikatori?: string,
-        public referentniParametar?: string,
         public investicija?: string,
         public opisMere?: string,
         public odgovornaOsoba?: string,
