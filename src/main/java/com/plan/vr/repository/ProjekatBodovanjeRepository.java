@@ -14,4 +14,5 @@ import java.util.List;
 @Repository
 public interface ProjekatBodovanjeRepository extends JpaRepository<ProjekatBodovanje, Long> {
     List<ProjekatBodovanje> findByProjekat_Id(Long id);
+    List<ProjekatBodovanje> findByKriterijum_Id(Long id);
 }

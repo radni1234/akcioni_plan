@@ -3,6 +3,7 @@ package com.plan.vr.service;
 import com.plan.vr.domain.Kriterijum;
 import com.plan.vr.domain.Projekat;
 import com.plan.vr.domain.ProjekatBodovanje;
+import com.plan.vr.repository.KriterijumBodovanjeRepository;
 import com.plan.vr.repository.KriterijumRepository;
 import com.plan.vr.repository.ProjekatBodovanjeRepository;
 import com.plan.vr.repository.ProjekatRepository;
@@ -27,11 +28,13 @@ public class KriterijumService {
     private final KriterijumRepository kriterijumRepository;
     private final ProjekatRepository projekatRepository;
     private final ProjekatBodovanjeRepository projekatBodovanjeRepository;
+    private final KriterijumBodovanjeRepository kriterijumBodovanjeRepository;
 
-    public KriterijumService(KriterijumRepository kriterijumRepository, ProjekatRepository projekatRepository, ProjekatBodovanjeRepository projekatBodovanjeRepository) {
+    public KriterijumService(KriterijumRepository kriterijumRepository, ProjekatRepository projekatRepository, ProjekatBodovanjeRepository projekatBodovanjeRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository) {
         this.kriterijumRepository = kriterijumRepository;
         this.projekatRepository = projekatRepository;
         this.projekatBodovanjeRepository = projekatBodovanjeRepository;
+        this.kriterijumBodovanjeRepository = kriterijumBodovanjeRepository;
     }
 
     /**
@@ -89,6 +92,8 @@ public class KriterijumService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Kriterijum : {}", id);
+        kriterijumBodovanjeRepository.deleteAll(kriterijumBodovanjeRepository.findAllByKriterijum_Id(id));
+        projekatBodovanjeRepository.deleteAll(projekatBodovanjeRepository.findByKriterijum_Id(id));
         kriterijumRepository.deleteById(id);
     }
 
