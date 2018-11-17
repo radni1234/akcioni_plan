@@ -100,6 +100,9 @@ public class ProjekatService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Projekat : {}", id);
+
+        projekatBodovanjeRepository.deleteAll(projekatBodovanjeRepository.findByProjekat_Id(id));
+
         projekatRepository.deleteById(id);
     }
 
