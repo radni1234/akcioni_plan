@@ -11,11 +11,12 @@ import {
     projekatRoute,
     projekatPopupRoute
 } from './';
+import {AkcioniPlanProjekatBodovanjeModule} from '../projekat-bodovanje/projekat-bodovanje.module';
 
 const ENTITY_STATES = [...projekatRoute, ...projekatPopupRoute];
 
 @NgModule({
-    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES), AkcioniPlanProjekatBodovanjeModule],
     declarations: [
         ProjekatComponent,
         ProjekatDetailComponent,

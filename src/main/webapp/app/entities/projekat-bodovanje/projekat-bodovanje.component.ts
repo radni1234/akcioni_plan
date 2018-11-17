@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
@@ -19,6 +19,8 @@ import {Observable} from 'rxjs/Rx';
     styleUrls: ['./projekat-bodovanje.component.css']
 })
 export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
+    @Input() projekatId: number;
+
     projekatBodovanjes: IProjekatBodovanje[];
     kriterijumBodovanje: IKriterijumBodovanje[];
     kriterijums: IKriterijum[];
@@ -31,7 +33,6 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
 
     bodovanje: any[] = [];
 
-    projekatId: number;
     paramsProjekat: any;
 
     isSaving: boolean;
@@ -64,12 +65,12 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.paramsProjekat = this.route.parent.params.subscribe(
-            params => {
-                console.warn(params);
-                this.projekatId = params['id'];
-            }
-        );
+        // this.paramsProjekat = this.route.parent.params.subscribe(
+        //     params => {
+        //         console.warn(params);
+        //         this.projekatId = params['id'];
+        //     }
+        // );
 
         this.loadAll();
 
@@ -162,6 +163,8 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
 
     save(pb: IProjekatBodovanje) {
         this.isSaving = true;
+        console.warn('save');
+        console.warn(pb);
         this.subscribeToSaveResponse(this.projekatBodovanjeService.update(pb));
     }
 

@@ -17,6 +17,7 @@ const ENTITY_STATES = [...projekatBodovanjeRoute, ...projekatBodovanjePopupRoute
 
 @NgModule({
     imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES), ReactiveFormsModule],
+    exports: [ProjekatBodovanjeComponent],
     declarations: [
         ProjekatBodovanjeComponent,
         ProjekatBodovanjeDetailComponent,

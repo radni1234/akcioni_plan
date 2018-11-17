@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,6 +15,8 @@ import {AkcioniPlanService} from '../akcioni-plan/akcioni-plan.service';
     templateUrl: './projekat-update.component.html'
 })
 export class ProjekatUpdateComponent implements OnInit {
+    @ViewChild('projekatBodovanjeRef') projekatBodovanjeRef;
+
     private _projekat: IProjekat;
     isSaving: boolean;
 
@@ -81,6 +83,11 @@ export class ProjekatUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+
+        if (this.projekatBodovanjeRef) {
+            this.projekatBodovanjeRef.onSubmit();
+        }
+
         if (this.projekat.id !== undefined) {
             this.subscribeToSaveResponse(this.projekatService.update(this.projekat));
         } else {

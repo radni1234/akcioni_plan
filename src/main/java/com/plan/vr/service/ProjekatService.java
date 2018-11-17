@@ -44,21 +44,29 @@ public class ProjekatService {
     public Projekat save(Projekat projekat) {
         log.debug("Request to save Projekat : {}", projekat);
 
-        Projekat p = projekatRepository.save(projekat);
+        if (projekat.getId() == null) {
+            Projekat p = projekatRepository.save(projekat);
 
-        List<Kriterijum> kriterijumi = kriterijumRepository.findByAkcioniPlan_Id(p.getAkcioniPlan().getId());
+            List<Kriterijum> kriterijumi = kriterijumRepository.findByAkcioniPlan_Id(p.getAkcioniPlan().getId());
 
-        for (Kriterijum k : kriterijumi) {
+            for (Kriterijum k : kriterijumi) {
 
-            ProjekatBodovanje pb = new ProjekatBodovanje();
+                ProjekatBodovanje pb = new ProjekatBodovanje();
 
-            pb.projekat(p)
-                .kriterijum(k);
+                pb.projekat(p)
+                    .kriterijum(k);
 
-            projekatBodovanjeRepository.save(pb);
+                projekatBodovanjeRepository.save(pb);
+            }
+
+            return p;
+        } else {
+            return projekatRepository.save(projekat);
         }
 
-        return p;
+
+
+
     }
 
     /**
