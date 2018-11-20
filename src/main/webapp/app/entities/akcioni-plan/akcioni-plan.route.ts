@@ -29,6 +29,20 @@ export class AkcioniPlanResolve implements Resolve<IAkcioniPlan> {
     }
 }
 
+@Injectable({providedIn: 'root'})
+export class AkcioniPlanDeleteResolve implements Resolve<IAkcioniPlan> {
+    constructor(private service: AkcioniPlanService) {}
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const id = route.params['id'] ? route.params['id'] : null;
+        // const id = route.parent.params['id'] ? route.parent.params['id'] : null;
+        if (id) {
+            return this.service.find(id).pipe(map((akcioniPlan: HttpResponse<AkcioniPlan>) => akcioniPlan.body));
+        }
+        return of(new AkcioniPlan());
+    }
+}
+
 export const akcioniPlanRoute: Routes = [
     {
         path: 'akcioni-plan',
@@ -95,7 +109,7 @@ export const akcioniPlanPopupRoute: Routes = [
         path: 'akcioni-plan/:id/delete',
         component: AkcioniPlanDeletePopupComponent,
         resolve: {
-            akcioniPlan: AkcioniPlanResolve
+            akcioniPlan: AkcioniPlanDeleteResolve
         },
         data: {
             authorities: ['ROLE_USER'],

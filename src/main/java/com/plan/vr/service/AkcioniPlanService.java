@@ -25,15 +25,21 @@ public class AkcioniPlanService {
     private final AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository;
     private final KriterijumRepository kriterijumRepository;
     private final KriterijumBodovanjeRepository kriterijumBodovanjeRepository;
+    private final ProjekatRepository projekatRepository;
     private final UserService userService;
+    private final ProjekatService projekatService;
+    private final KriterijumService kriterijumService;
 
-    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository, KriterijumRepository kriterijumRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository, UserService userService) {
+    public AkcioniPlanService(AkcioniPlanRepository akcioniPlanRepository, AdminKriterijumRepository adminKriterijumRepository, AdminKriterijumBodovanjeRepository adminKriterijumBodovanjeRepository, KriterijumRepository kriterijumRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository, ProjekatRepository projekatRepository, UserService userService, ProjekatService projekatService, KriterijumService kriterijumService) {
         this.akcioniPlanRepository = akcioniPlanRepository;
         this.adminKriterijumRepository = adminKriterijumRepository;
         this.adminKriterijumBodovanjeRepository = adminKriterijumBodovanjeRepository;
         this.kriterijumRepository = kriterijumRepository;
         this.kriterijumBodovanjeRepository = kriterijumBodovanjeRepository;
+        this.projekatRepository = projekatRepository;
         this.userService = userService;
+        this.projekatService = projekatService;
+        this.kriterijumService = kriterijumService;
     }
 
     /**
@@ -121,6 +127,18 @@ public class AkcioniPlanService {
      */
     public void delete(Long id) {
         log.debug("Request to delete AkcioniPlan : {}", id);
+        List<Kriterijum> kriterijumi = kriterijumService.findByAkcioniPlan_Id(id);
+
+        for (Kriterijum k : kriterijumi) {
+            kriterijumService.delete(k.getId());
+        }
+
+        List<Projekat> projekti = projekatService.findByAkcioniPlan_Id(id);
+
+        for (Projekat p : projekti) {
+            projekatService.delete(p.getId());
+        }
+
         akcioniPlanRepository.deleteById(id);
     }
 }

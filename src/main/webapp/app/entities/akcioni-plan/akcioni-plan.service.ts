@@ -46,6 +46,8 @@ export class AkcioniPlanService {
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
+        console.warn('delete');
+        console.warn(id);
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 

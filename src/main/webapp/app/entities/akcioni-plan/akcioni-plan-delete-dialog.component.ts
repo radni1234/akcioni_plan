@@ -25,6 +25,8 @@ export class AkcioniPlanDeleteDialogComponent {
     }
 
     confirmDelete(id: number) {
+        console.warn('confirmDelete');
+        console.warn(id);
         this.akcioniPlanService.delete(id).subscribe(response => {
             this.eventManager.broadcast({
                 name: 'akcioniPlanListModification',
@@ -52,6 +54,8 @@ export class AkcioniPlanDeletePopupComponent implements OnInit, OnDestroy {
                     backdrop: 'static'
                 });
                 this.ngbModalRef.componentInstance.akcioniPlan = akcioniPlan;
+                console.warn('componentInstance');
+                console.warn(this.ngbModalRef.componentInstance.akcioniPlan);
                 this.ngbModalRef.result.then(
                     result => {
                         this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true, queryParamsHandling: 'merge' });
