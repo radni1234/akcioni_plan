@@ -1,0 +1,31 @@
+table {
+    width:100%;
+}
+.veliko {
+    width:53%;
+}
+.srednje {
+    width:20%;
+    text-align: center;
+}
+.malo {
+    width:9%;
+    text-align: center;
+}
+input.right {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    text-align: right;
+}
+select {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+th {
+    font-weight: bold;
+    text-align: center;
+}

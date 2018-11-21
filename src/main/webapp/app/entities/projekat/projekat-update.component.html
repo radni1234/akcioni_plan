@@ -111,7 +111,49 @@
                     <!--</small>-->
                 <!--</div>-->
             </div>
-            <jhi-projekat-bodovanje *ngIf="projekat.id" [projekatId]="projekat.id" #projekatBodovanjeRef></jhi-projekat-bodovanje>
+            <!--<jhi-projekat-bodovanje *ngIf="projekat.id" [projekatId]="projekat.id" #projekatBodovanjeRef></jhi-projekat-bodovanje>-->
+
+            <div class="p-4">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <table  class="container" formArrayName="projekti">
+                        <thead>
+                        <tr class="row">
+                            <th class="veliko">Kriterijum</th>
+                            <th class="srednje">Vrednost</th>
+                            <th class="malo">Bodovi</th>
+                            <th class="malo">Ponder</th>
+                            <th class="malo">Ukupno</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let r of rows.controls; let i = index" [formGroupName]="i" class="row">
+                            <td class="font-weight-bold veliko">{{r.value.kriterijum}}</td>
+                            <td class="srednje">
+
+                                <input *ngIf="r.value.tip == 'VREDNOST'" class="right" type="number" (ngModelChange)="izracunaj(r)" formControlName="vrednost" placeholder="Vrednost">
+
+                                <select *ngIf="projekat.id && r.value.tip == 'BOD'" (ngModelChange)="izracunaj(r)" formControlName="vrednost" placeholder="Vrednost">
+
+                                    <option *ngFor="let b of projekatBodovanjes[i].kriterijum.kriterijumBodovanjes" [ngValue]=b.bodovi>{{ b.opis }}</option>
+
+                                </select>
+
+                                <select *ngIf="!projekat.id && r.value.tip == 'BOD'" (ngModelChange)="izracunaj(r)" formControlName="vrednost" placeholder="Vrednost">
+
+                                    <option *ngFor="let k of kriterijums[i].kriterijumBodovanjes" [ngValue]=k.bodovi>{{ k.opis }}</option>
+
+                                </select>
+                            </td>
+
+                            <td class="font-weight-bold malo">{{r.value.bodovi}}</td>
+                            <td class="font-weight-bold malo">{{r.value.ponder}}</td>
+                            <td class="font-weight-bold malo">{{r.value.ponderisaniBodovi}}</td>
+                        </tr>
+                        </tbody>
+                    </table >
+                </form>
+            </div>
+
             <div class="float-right">
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

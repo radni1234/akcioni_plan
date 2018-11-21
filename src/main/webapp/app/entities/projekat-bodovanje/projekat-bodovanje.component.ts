@@ -163,8 +163,6 @@ export class ProjekatBodovanjeComponent implements OnInit, OnDestroy {
 
     save(pb: IProjekatBodovanje) {
         this.isSaving = true;
-        console.warn('save');
-        console.warn(pb);
         this.subscribeToSaveResponse(this.projekatBodovanjeService.update(pb));
     }
 
