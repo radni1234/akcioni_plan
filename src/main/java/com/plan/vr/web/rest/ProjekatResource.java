@@ -51,7 +51,7 @@ public class ProjekatResource {
         }
         Projekat result = projekatService.save(projekat);
         return ResponseEntity.created(new URI("/api/projekats/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getNaziv().toString()))
             .body(result);
     }
 
@@ -73,7 +73,7 @@ public class ProjekatResource {
         }
         Projekat result = projekatService.save(projekat);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, projekat.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, projekat.getNaziv().toString()))
             .body(result);
     }
 

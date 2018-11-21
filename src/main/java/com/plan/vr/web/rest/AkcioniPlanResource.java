@@ -51,7 +51,7 @@ public class AkcioniPlanResource {
         }
         AkcioniPlan result = akcioniPlanService.save(akcioniPlan);
         return ResponseEntity.created(new URI("/api/akcioni-plans/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getNaziv().toString()))
             .body(result);
     }
 
@@ -73,7 +73,7 @@ public class AkcioniPlanResource {
         }
         AkcioniPlan result = akcioniPlanService.save(akcioniPlan);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, akcioniPlan.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, akcioniPlan.getNaziv().toString()))
             .body(result);
     }
 

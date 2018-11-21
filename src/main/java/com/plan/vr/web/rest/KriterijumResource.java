@@ -51,7 +51,7 @@ public class KriterijumResource {
         }
         Kriterijum result = kriterijumService.save(kriterijum);
         return ResponseEntity.created(new URI("/api/kriterijums/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getNaziv().toString()))
             .body(result);
     }
 
@@ -73,7 +73,7 @@ public class KriterijumResource {
         }
         Kriterijum result = kriterijumService.save(kriterijum);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, kriterijum.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, kriterijum.getNaziv().toString()))
             .body(result);
     }
 

@@ -51,8 +51,10 @@ public class ProjekatBodovanjeResource {
         }
         ProjekatBodovanje result = projekatBodovanjeRepository.save(projekatBodovanje);
         return ResponseEntity.created(new URI("/api/projekat-bodovanjes/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
+//        return ResponseEntity.created(new URI("/api/projekat-bodovanjes/" + result.getId()))
+//            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+//            .body(result);
     }
 
     /**
@@ -73,8 +75,10 @@ public class ProjekatBodovanjeResource {
         }
         ProjekatBodovanje result = projekatBodovanjeRepository.save(projekatBodovanje);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, projekatBodovanje.getId().toString()))
             .body(result);
+//        return ResponseEntity.ok()
+//            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, projekatBodovanje.getId().toString()))
+//            .body(result);
     }
 
     /**
