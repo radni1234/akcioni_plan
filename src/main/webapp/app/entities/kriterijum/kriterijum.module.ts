@@ -11,11 +11,12 @@ import {
     kriterijumRoute,
     kriterijumPopupRoute
 } from './';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const ENTITY_STATES = [...kriterijumRoute, ...kriterijumPopupRoute];
 
 @NgModule({
-    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [AkcioniPlanSharedModule, RouterModule.forChild(ENTITY_STATES), ReactiveFormsModule],
     declarations: [
         KriterijumComponent,
         KriterijumDetailComponent,

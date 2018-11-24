@@ -1,0 +1,27 @@
+table {
+    width:100%;
+}
+input.right {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    text-align: right;
+}
+select {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+th {
+    font-weight: bold;
+    text-align: center;
+}
+td {
+    font-weight: bold;
+    text-align: center;
+}
+.row > div {
+    padding: 10px; margin: 5px 0;
+}
