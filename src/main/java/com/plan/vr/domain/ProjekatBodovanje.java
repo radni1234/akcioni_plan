@@ -38,7 +38,7 @@ public class ProjekatBodovanje implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties("projekatPodovanjes")
+    @JsonIgnoreProperties("projekatBodovanjes")
     private Kriterijum kriterijum;
 
     @ManyToOne(optional = false)

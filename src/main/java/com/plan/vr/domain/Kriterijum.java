@@ -1,6 +1,5 @@
 package com.plan.vr.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -49,7 +48,7 @@ public class Kriterijum implements Serializable {
 
     @OneToMany(mappedBy = "kriterijum")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ProjekatBodovanje> projekatPodovanjes = new HashSet<>();
+    private Set<ProjekatBodovanje> projekatBodovanjes = new HashSet<>();
 
     @ManyToOne(optional = false)
     @NotNull
@@ -129,29 +128,29 @@ public class Kriterijum implements Serializable {
         this.kriterijumBodovanjes = kriterijumBodovanjes;
     }
 
-    public Set<ProjekatBodovanje> getProjekatPodovanjes() {
-        return projekatPodovanjes;
+    public Set<ProjekatBodovanje> getProjekatBodovanjes() {
+        return projekatBodovanjes;
     }
 
     public Kriterijum projekatPodovanjes(Set<ProjekatBodovanje> projekatBodovanjes) {
-        this.projekatPodovanjes = projekatBodovanjes;
+        this.projekatBodovanjes = projekatBodovanjes;
         return this;
     }
 
     public Kriterijum addProjekatPodovanje(ProjekatBodovanje projekatBodovanje) {
-        this.projekatPodovanjes.add(projekatBodovanje);
+        this.projekatBodovanjes.add(projekatBodovanje);
         projekatBodovanje.setKriterijum(this);
         return this;
     }
 
     public Kriterijum removeProjekatPodovanje(ProjekatBodovanje projekatBodovanje) {
-        this.projekatPodovanjes.remove(projekatBodovanje);
+        this.projekatBodovanjes.remove(projekatBodovanje);
         projekatBodovanje.setKriterijum(null);
         return this;
     }
 
-    public void setProjekatPodovanjes(Set<ProjekatBodovanje> projekatBodovanjes) {
-        this.projekatPodovanjes = projekatBodovanjes;
+    public void setProjekatBodovanjes(Set<ProjekatBodovanje> projekatBodovanjes) {
+        this.projekatBodovanjes = projekatBodovanjes;
     }
 
     public AkcioniPlan getAkcioniPlan() {

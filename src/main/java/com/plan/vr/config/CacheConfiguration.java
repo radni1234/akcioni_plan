@@ -45,7 +45,7 @@ public class CacheConfiguration {
             cm.createCache(com.plan.vr.domain.Projekat.class.getName() + ".projekatBodovanjes", jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.Kriterijum.class.getName(), jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.Kriterijum.class.getName() + ".kriterijumBodovanjes", jcacheConfiguration);
-            cm.createCache(com.plan.vr.domain.Kriterijum.class.getName() + ".projekatPodovanjes", jcacheConfiguration);
+            cm.createCache(com.plan.vr.domain.Kriterijum.class.getName() + ".projekatBodovanjes", jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.KriterijumBodovanje.class.getName(), jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.ProjekatBodovanje.class.getName(), jcacheConfiguration);
             cm.createCache(com.plan.vr.domain.AdminKriterijum.class.getName(), jcacheConfiguration);

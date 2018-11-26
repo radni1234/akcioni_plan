@@ -13,7 +13,7 @@ export interface IKriterijum {
     naziv?: string;
     ponder?: number;
     kriterijumBodovanjes?: IKriterijumBodovanje[];
-    projekatPodovanjes?: IProjekatBodovanje[];
+    projekatBodovanjes?: IProjekatBodovanje[];
     akcioniPlan?: IAkcioniPlan;
 }
 
@@ -24,7 +24,7 @@ export class Kriterijum implements IKriterijum {
         public naziv?: string,
         public ponder?: number,
         public kriterijumBodovanjes?: IKriterijumBodovanje[],
-        public projekatPodovanjes?: IProjekatBodovanje[],
+        public projekatBodovanjes?: IProjekatBodovanje[],
         public akcioniPlan?: IAkcioniPlan
     ) {}
 }
