@@ -1,3 +1,4 @@
+{{kb|json}}
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
@@ -58,17 +59,17 @@
                     </div>
                 </div>
                 <!--{{ form.value | json}}-->
-                <div *ngIf="kriterijumBodovanjes" class="containter p-4">
+                <div class="containter p-4">
                     <form [formGroup]="form">
                         <table formArrayName="bodovanje">
                             <thead>
                             <tr class="row">
                                 <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
-                                <th class="font-weight-bold col-sm-2"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.rb">Rb</span></th>
-                                <th class="font-weight-bold col-sm-3" *ngIf="kriterijum.kriterijumTip == 'VREDNOST'"></th>
-                                <th class="font-weight-bold col-sm-4" *ngIf="kriterijum.kriterijumTip == 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granica">Granica do</span></th>
-                                <th class="font-weight-bold col-sm-7" *ngIf="kriterijum.kriterijumTip == 'BOD'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
-                                <th class="font-weight-bold col-sm-3"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span>&nbsp;<fa-icon [icon]="'sort'" (click)="promeniBodovanje()"></fa-icon></th>
+                                <!--<th class="font-weight-bold col-sm-2"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.rb">Rb</span></th>-->
+                                <!--<th class="font-weight-bold col-sm-3" *ngIf="kriterijum.kriterijumTip == 'VREDNOST'"></th>-->
+                                <th class="font-weight-bold col-sm-9 text-center border-success border-top border-bottom" *ngIf="kriterijum.kriterijumTip == 'VREDNOST'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.granica">Granica do</span></th>
+                                <th class="font-weight-bold col-sm-9 text-center border-success border-top border-bottom" *ngIf="kriterijum.kriterijumTip == 'BOD'"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.opis">Opis</span></th>
+                                <th class="font-weight-bold col-sm-3 text-center border-success border-top border-bottom"><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.bodovi">Bodovi</span>&nbsp;<fa-icon [icon]="'sort'" (click)="promeniBodovanje()"></fa-icon></th>
 
 
                                 <!--<th><span jhiTranslate="akcioniPlanApp.kriterijumBodovanje.kriterijum">Kriterijum</span></th>-->
@@ -78,12 +79,13 @@
                             <tbody>
                             <tr *ngFor="let r of rows.controls; let i = index" [formGroupName]="i" class="row">
 
-                                <td class="font-weight-bold col-sm-1">{{r.value.rb}}</td>
-                                <td *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb !== 4" class="font-weight-bold col-sm-4 text-left">{{r.value.granicaOd}}</td>
-                                <td *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb === 4" class="font-weight-bold col-sm-8 text-left">{{r.value.granicaOd}}</td>
-                                <input *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb !== 4" class="font-weight-bold right col-sm-4" type="number" (ngModelChange)="popuniGranicaOd(r)" formControlName="granicaDo" placeholder="Granica">
-                                <input *ngIf="kriterijum.kriterijumTip == 'BOD'" class="font-weight-bold right col-sm-7" formControlName="opis" placeholder="Opis">
-                                <td class="font-weight-bold col-sm-3">{{r.value.bodovi}}</td>
+                                <!--<td class="font-weight-bold col-sm-1">{{r.value.rb}}</td>-->
+                                <td *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb !== 4" class="font-weight-bold col-sm-5 text-right border-success border-bottom">{{r.value.granicaOd}}</td>
+                                <input *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb !== 4" class="font-weight-bold right col-sm-4 border-success border-bottom border-top-0 border-right-0 border-left-0" type="number" (ngModelChange)="popuniGranicaOd(r)" formControlName="granicaDo" placeholder="Granica">
+                                <td *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb === 4" class="font-weight-bold col-sm-5 text-right border-success border-bottom">{{r.value.granicaOd}}</td>
+                                <td *ngIf="kriterijum.kriterijumTip == 'VREDNOST' && r.value.rb === 4" class="font-weight-bold col-sm-4 text-right border-success border-bottom"></td>
+                                <input *ngIf="kriterijum.kriterijumTip == 'BOD'" class="font-weight-bold right col-sm-9 border-success border-bottom border-top-0 border-right-0 border-left-0" formControlName="opis" placeholder="Opis">
+                                <td class="font-weight-bold col-sm-3 border-success border-bottom">{{r.value.bodovi}}</td>
 
                             </tr>
 
@@ -99,7 +101,7 @@
                     </form>
                 </div>
             </div>
-            <div>
+            <div class="float-right">
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>

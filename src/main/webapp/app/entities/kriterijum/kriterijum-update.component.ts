@@ -4,11 +4,11 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JhiAlertService } from 'ng-jhipster';
 
-import { IKriterijum } from 'app/shared/model/kriterijum.model';
+import {IKriterijum, KriterijumTip} from 'app/shared/model/kriterijum.model';
 import { KriterijumService } from './kriterijum.service';
 import { IAkcioniPlan } from 'app/shared/model/akcioni-plan.model';
 import {AkcioniPlanService} from '../akcioni-plan/akcioni-plan.service';
-import {IKriterijumBodovanje} from '../../shared/model/kriterijum-bodovanje.model';
+import {IKriterijumBodovanje, KriterijumBodovanje} from '../../shared/model/kriterijum-bodovanje.model';
 import {KriterijumBodovanjeService} from '../kriterijum-bodovanje/kriterijum-bodovanje.service';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 // import { AkcioniPlanService } from 'app/entities/akcioni-plan';
@@ -29,6 +29,8 @@ export class KriterijumUpdateComponent implements OnInit {
 
     rows: FormArray = this.fb.array([]);
     form: FormGroup = this.fb.group({ 'bodovanje': this.rows });
+
+    kb: any;
 
     get bodovanje() {
         return this.form.get('bodovanje') as FormArray;
@@ -62,10 +64,18 @@ export class KriterijumUpdateComponent implements OnInit {
                 }
             );
 
+            for (let i = 1; i < 5; i++) {
+                this.addRowBodovanjeNew(i);
+            }
+
+            this.kriterijum.kriterijumTip = KriterijumTip.VREDNOST;
+
+            this.popuniGranicaOd();
+
         } else {
             this.kriterijumBodovanjeService.queryByKriterijum(this.kriterijum.id).subscribe(
                 (res: HttpResponse<IKriterijumBodovanje[]>) => {
-                    this.kriterijumBodovanjes = res.body;
+                    this.kriterijumBodovanjes = res.body.sort((n, m) => n.rb - m.rb);
 
                     this.kriterijumBodovanjes.forEach((k: IKriterijumBodovanje) => {
                         this.addRowBodovanje(k);
@@ -90,6 +100,17 @@ export class KriterijumUpdateComponent implements OnInit {
         });
         this.rows.push(row);
         // console.warn(this.form);
+    }
+
+    addRowBodovanjeNew(x: number) {
+        const row = this.fb.group({
+            'rb': x,
+            'granicaOd': 0,
+            'granicaDo': 0,
+            'opis': null,
+            'bodovi': x
+        });
+        this.rows.push(row);
     }
 
     popuniGranicaOd() {
@@ -149,7 +170,28 @@ export class KriterijumUpdateComponent implements OnInit {
             this.subscribeToSaveResponse(this.kriterijumService.update(this.kriterijum));
         } else {
             this.kriterijum.akcioniPlan = this.akcioniPlan;
-            this.subscribeToSaveResponse(this.kriterijumService.create(this.kriterijum));
+
+            this.kriterijumService.create(this.kriterijum)
+                .subscribe((res: HttpResponse<IKriterijum>) => {
+                        this.form.value.bodovanje.forEach(b => {
+                            const kb = new KriterijumBodovanje();
+                            kb.kriterijum = res.body;
+                            kb.kriterijum.kriterijumBodovanjes = null;
+                            kb.kriterijum.projekatBodovanjes = null;
+                            kb.rb = b.rb;
+                            kb.granica = b.granicaDo;
+                            kb.opis = b.opis;
+                            kb.bodovi = b.bodovi;
+
+                            console.warn(kb);
+                            this.kb = kb;
+                            this.kriterijumBodovanjeService.create(kb)
+                                .subscribe((res2: HttpResponse<IKriterijumBodovanje>) => null, (res2: HttpErrorResponse) => this.onSaveError());
+                        });
+
+                        this.onSaveSuccess();
+                    }
+                    , (res: HttpErrorResponse) => this.onSaveError());
         }
     }
 
