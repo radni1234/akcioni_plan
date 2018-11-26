@@ -47,15 +47,27 @@ public class KriterijumService {
         log.debug("Request to save Kriterijum : {}", kriterijum);
         Kriterijum k = kriterijumRepository.save(kriterijum);
 
-        List<Projekat> projekti = this.projekatRepository.findByAkcioniPlan_Id(k.getAkcioniPlan().getId());
+        if (kriterijum.getId() == null) {
 
-        for (Projekat p : projekti) {
-            ProjekatBodovanje pb = new ProjekatBodovanje();
+            List<Projekat> projekti = this.projekatRepository.findByAkcioniPlan_Id(k.getAkcioniPlan().getId());
 
-            pb.projekat(p)
-                .kriterijum(k);
+            for (Projekat p : projekti) {
+                ProjekatBodovanje pb = new ProjekatBodovanje();
 
-            this.projekatBodovanjeRepository.save(pb);
+                pb.projekat(p)
+                    .kriterijum(k);
+
+                this.projekatBodovanjeRepository.save(pb);
+            }
+
+        } else {
+            List<ProjekatBodovanje> projekatBodovanjes = this.projekatBodovanjeRepository.findByKriterijum_Id(kriterijum.getId());
+
+            for (ProjekatBodovanje pb : projekatBodovanjes) {
+                pb.kriterijum(k);
+
+                this.projekatBodovanjeRepository.save(pb);
+            }
         }
 
         return k;
