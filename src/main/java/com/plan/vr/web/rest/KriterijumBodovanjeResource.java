@@ -51,8 +51,9 @@ public class KriterijumBodovanjeResource {
         }
         KriterijumBodovanje result = kriterijumBodovanjeRepository.save(kriterijumBodovanje);
         return ResponseEntity.created(new URI("/api/kriterijum-bodovanjes/" + result.getId()))
-//            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
+
+        //            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
     }
 
     /**
@@ -73,8 +74,9 @@ public class KriterijumBodovanjeResource {
         }
         KriterijumBodovanje result = kriterijumBodovanjeRepository.save(kriterijumBodovanje);
         return ResponseEntity.ok()
-//            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, kriterijumBodovanje.getId().toString()))
             .body(result);
+
+        //            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, kriterijumBodovanje.getId().toString()))
     }
 
     /**
