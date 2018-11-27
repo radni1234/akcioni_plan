@@ -1,17 +1,3 @@
-table {
-    width:100%;
-}
-.veliko {
-    width:53%;
-}
-.srednje {
-    width:20%;
-    text-align: center;
-}
-.malo {
-    width:9%;
-    text-align: center;
-}
 input.right {
     width: 100%;
     box-sizing: border-box;
@@ -25,7 +11,21 @@ select {
     -webkit-box-sizing:border-box;
     -moz-box-sizing: border-box;
 }
-th {
-    font-weight: bold;
-    text-align: center;
+
+th.rotate {
+        height:100px;
+    white-space: nowrap;
+    position:relative;
 }
+
+th.rotate > div {
+    transform: rotate(270deg);
+    position:relative;
+    left:0;
+    right:0;
+    top: 85px;
+    margin:auto;
+
+}
+
+
