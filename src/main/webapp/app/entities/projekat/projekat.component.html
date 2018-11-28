@@ -16,6 +16,7 @@
             <tr>
             <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
             <th><span jhiTranslate="akcioniPlanApp.projekat.naziv">Naziv</span></th>
+            <th><span jhiTranslate="akcioniPlanApp.projekat.ukupnoBodova">Ukupno bodova</span></th>
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumOd">Datum Od</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumDo">Datum Do</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.aktivnost">Aktivnost</span></th>-->
@@ -44,6 +45,7 @@
             <tr *ngFor="let projekat of projekats ;trackBy: trackId">
                 <!--<td><a [routerLink]="['/projekat', projekat.id, 'view' ]">{{projekat.id}}</a></td>-->
                 <td>{{projekat.naziv}}</td>
+                <td>{{projekat.ukupnoBodova}}</td>
                 <!--<td>{{projekat.datumOd | date:'mediumDate'}}</td>-->
                 <!--<td>{{projekat.datumDo | date:'mediumDate'}}</td>-->
                 <!--<td>{{projekat.aktivnost}}</td>-->

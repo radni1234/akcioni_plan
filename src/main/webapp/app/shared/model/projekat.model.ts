@@ -14,6 +14,7 @@ export interface IProjekat {
     ostalo?: string;
     slikaContentType?: string;
     slika?: any;
+    ukupnoBodova?: number;
     projekatBodovanjes?: IProjekatBodovanje[];
     akcioniPlan?: IAkcioniPlan;
 }
@@ -31,6 +32,7 @@ export class Projekat implements IProjekat {
         public ostalo?: string,
         public slikaContentType?: string,
         public slika?: any,
+        public ukupnoBodova?: number,
         public projekatBodovanjes?: IProjekatBodovanje[],
         public akcioniPlan?: IAkcioniPlan
     ) {}

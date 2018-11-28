@@ -44,6 +44,10 @@
             "fieldName": "slika",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "ukupnoBodova",
+            "fieldType": "Double"
         }
     ],
     "relationships": [

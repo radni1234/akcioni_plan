@@ -16,6 +16,7 @@ entity Projekat {
     izvorFinansiranja String
     ostalo String
     slika ImageBlob
+    ukupnoBodova Double
 }
 
 entity Kriterijum {

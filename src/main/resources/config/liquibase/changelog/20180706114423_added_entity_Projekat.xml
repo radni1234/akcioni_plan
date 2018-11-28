@@ -61,6 +61,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="ukupno_bodova" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <column name="akcioni_plan_id" type="bigint">
                 <constraints nullable="false" />
             </column>

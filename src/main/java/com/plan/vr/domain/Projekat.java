@@ -61,6 +61,9 @@ public class Projekat implements Serializable {
     @Column(name = "slika_content_type")
     private String slikaContentType;
 
+    @Column(name = "ukupno_bodova")
+    private Double ukupnoBodova;
+
     @OneToMany(mappedBy = "projekat")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProjekatBodovanje> projekatBodovanjes = new HashSet<>();
@@ -209,6 +212,19 @@ public class Projekat implements Serializable {
         this.slikaContentType = slikaContentType;
     }
 
+    public Double getUkupnoBodova() {
+        return ukupnoBodova;
+    }
+
+    public Projekat ukupnoBodova(Double ukupnoBodova) {
+        this.ukupnoBodova = ukupnoBodova;
+        return this;
+    }
+
+    public void setUkupnoBodova(Double ukupnoBodova) {
+        this.ukupnoBodova = ukupnoBodova;
+    }
+
     public Set<ProjekatBodovanje> getProjekatBodovanjes() {
         return projekatBodovanjes;
     }
@@ -282,6 +298,7 @@ public class Projekat implements Serializable {
             ", ostalo='" + getOstalo() + "'" +
             ", slika='" + getSlika() + "'" +
             ", slikaContentType='" + getSlikaContentType() + "'" +
+            ", ukupnoBodova=" + getUkupnoBodova() +
             "}";
     }
 }

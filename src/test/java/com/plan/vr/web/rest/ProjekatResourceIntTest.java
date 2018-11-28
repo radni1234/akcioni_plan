@@ -73,6 +73,9 @@ public class ProjekatResourceIntTest {
     private static final String DEFAULT_SLIKA_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_SLIKA_CONTENT_TYPE = "image/png";
 
+    private static final Double DEFAULT_UKUPNO_BODOVA = 1D;
+    private static final Double UPDATED_UKUPNO_BODOVA = 2D;
+
     @Autowired
     private ProjekatRepository projekatRepository;
 
@@ -125,7 +128,8 @@ public class ProjekatResourceIntTest {
             .izvorFinansiranja(DEFAULT_IZVOR_FINANSIRANJA)
             .ostalo(DEFAULT_OSTALO)
             .slika(DEFAULT_SLIKA)
-            .slikaContentType(DEFAULT_SLIKA_CONTENT_TYPE);
+            .slikaContentType(DEFAULT_SLIKA_CONTENT_TYPE)
+            .ukupnoBodova(DEFAULT_UKUPNO_BODOVA);
         // Add required entity
         AkcioniPlan akcioniPlan = AkcioniPlanResourceIntTest.createEntity(em);
         em.persist(akcioniPlan);
@@ -164,6 +168,7 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getOstalo()).isEqualTo(DEFAULT_OSTALO);
         assertThat(testProjekat.getSlika()).isEqualTo(DEFAULT_SLIKA);
         assertThat(testProjekat.getSlikaContentType()).isEqualTo(DEFAULT_SLIKA_CONTENT_TYPE);
+        assertThat(testProjekat.getUkupnoBodova()).isEqualTo(DEFAULT_UKUPNO_BODOVA);
     }
 
     @Test
@@ -223,7 +228,8 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.[*].izvorFinansiranja").value(hasItem(DEFAULT_IZVOR_FINANSIRANJA.toString())))
             .andExpect(jsonPath("$.[*].ostalo").value(hasItem(DEFAULT_OSTALO.toString())))
             .andExpect(jsonPath("$.[*].slikaContentType").value(hasItem(DEFAULT_SLIKA_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].slika").value(hasItem(Base64Utils.encodeToString(DEFAULT_SLIKA))));
+            .andExpect(jsonPath("$.[*].slika").value(hasItem(Base64Utils.encodeToString(DEFAULT_SLIKA))))
+            .andExpect(jsonPath("$.[*].ukupnoBodova").value(hasItem(DEFAULT_UKUPNO_BODOVA.doubleValue())));
     }
     
 
@@ -247,7 +253,8 @@ public class ProjekatResourceIntTest {
             .andExpect(jsonPath("$.izvorFinansiranja").value(DEFAULT_IZVOR_FINANSIRANJA.toString()))
             .andExpect(jsonPath("$.ostalo").value(DEFAULT_OSTALO.toString()))
             .andExpect(jsonPath("$.slikaContentType").value(DEFAULT_SLIKA_CONTENT_TYPE))
-            .andExpect(jsonPath("$.slika").value(Base64Utils.encodeToString(DEFAULT_SLIKA)));
+            .andExpect(jsonPath("$.slika").value(Base64Utils.encodeToString(DEFAULT_SLIKA)))
+            .andExpect(jsonPath("$.ukupnoBodova").value(DEFAULT_UKUPNO_BODOVA.doubleValue()));
     }
     @Test
     @Transactional
@@ -279,7 +286,8 @@ public class ProjekatResourceIntTest {
             .izvorFinansiranja(UPDATED_IZVOR_FINANSIRANJA)
             .ostalo(UPDATED_OSTALO)
             .slika(UPDATED_SLIKA)
-            .slikaContentType(UPDATED_SLIKA_CONTENT_TYPE);
+            .slikaContentType(UPDATED_SLIKA_CONTENT_TYPE)
+            .ukupnoBodova(UPDATED_UKUPNO_BODOVA);
 
         restProjekatMockMvc.perform(put("/api/projekats")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -300,6 +308,7 @@ public class ProjekatResourceIntTest {
         assertThat(testProjekat.getOstalo()).isEqualTo(UPDATED_OSTALO);
         assertThat(testProjekat.getSlika()).isEqualTo(UPDATED_SLIKA);
         assertThat(testProjekat.getSlikaContentType()).isEqualTo(UPDATED_SLIKA_CONTENT_TYPE);
+        assertThat(testProjekat.getUkupnoBodova()).isEqualTo(UPDATED_UKUPNO_BODOVA);
     }
 
     @Test
