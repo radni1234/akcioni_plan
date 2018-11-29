@@ -15,8 +15,8 @@
             <thead>
             <tr>
             <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
-            <th><span jhiTranslate="akcioniPlanApp.projekat.naziv">Naziv</span></th>
-            <th><span jhiTranslate="akcioniPlanApp.projekat.ukupnoBodova">Ukupno bodova</span></th>
+            <th class="col-sm-9 text-center"><span jhiTranslate="akcioniPlanApp.projekat.naziv">Naziv</span></th>
+            <th class="col-sm-1 text-center"><span jhiTranslate="akcioniPlanApp.projekat.ukupnoBodova">Ukupno bodova</span></th>
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumOd">Datum Od</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.datumDo">Datum Do</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.aktivnost">Aktivnost</span></th>-->
@@ -38,14 +38,14 @@
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.ostalo">Ostalo</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.slika">Slika</span></th>-->
             <!--<th><span jhiTranslate="akcioniPlanApp.projekat.akcioniPlan">Akcioni Plan</span></th>-->
-            <th></th>
+            <th class="col-sm-2"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let projekat of projekats ;trackBy: trackId">
                 <!--<td><a [routerLink]="['/projekat', projekat.id, 'view' ]">{{projekat.id}}</a></td>-->
-                <td>{{projekat.naziv}}</td>
-                <td>{{projekat.ukupnoBodova}}</td>
+                <td class="col-sm-9">{{projekat.naziv}}</td>
+                <td class="col-sm-1 text-center">{{projekat.ukupnoBodova}}</td>
                 <!--<td>{{projekat.datumOd | date:'mediumDate'}}</td>-->
                 <!--<td>{{projekat.datumDo | date:'mediumDate'}}</td>-->
                 <!--<td>{{projekat.aktivnost}}</td>-->
@@ -76,7 +76,7 @@
                         <!--<a [routerLink]="['../akcioni-plan', projekat.akcioniPlan?.id, 'view' ]" >{{projekat.akcioniPlan?.naziv}}</a>-->
                     <!--</div>-->
                 <!--</td>-->
-                <td class="text-right">
+                <td class="text-right col-sm-2">
                     <div class="btn-group flex-btn-group-container">
                         <!--<button type="submit"-->
                                 <!--[routerLink]="['./', projekat.id, 'view' ]"-->
