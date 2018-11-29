@@ -159,7 +159,12 @@ export class KriterijumUpdateComponent implements OnInit {
             this.form.value.bodovanje.forEach(b => {
                     const kriterijumBodovanje = this.kriterijumBodovanjes.filter(kb => kb.id === b.id);
 
-                    kriterijumBodovanje[0].granica = b.granicaDo;
+                    if (b.rb === 4) {
+                        kriterijumBodovanje[0].granica = null;
+                    } else {
+                        kriterijumBodovanje[0].granica = b.granicaDo;
+                    }
+
                     kriterijumBodovanje[0].bodovi = b.bodovi;
                     kriterijumBodovanje[0].opis = b.opis;
 
