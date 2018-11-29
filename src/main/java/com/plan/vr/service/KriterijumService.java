@@ -29,12 +29,14 @@ public class KriterijumService {
     private final ProjekatRepository projekatRepository;
     private final ProjekatBodovanjeRepository projekatBodovanjeRepository;
     private final KriterijumBodovanjeRepository kriterijumBodovanjeRepository;
+    private final ProjekatService projekatService;
 
-    public KriterijumService(KriterijumRepository kriterijumRepository, ProjekatRepository projekatRepository, ProjekatBodovanjeRepository projekatBodovanjeRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository) {
+    public KriterijumService(KriterijumRepository kriterijumRepository, ProjekatRepository projekatRepository, ProjekatBodovanjeRepository projekatBodovanjeRepository, KriterijumBodovanjeRepository kriterijumBodovanjeRepository, ProjekatService projekatService) {
         this.kriterijumRepository = kriterijumRepository;
         this.projekatRepository = projekatRepository;
         this.projekatBodovanjeRepository = projekatBodovanjeRepository;
         this.kriterijumBodovanjeRepository = kriterijumBodovanjeRepository;
+        this.projekatService = projekatService;
     }
 
     /**
@@ -104,9 +106,16 @@ public class KriterijumService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Kriterijum : {}", id);
+
+        List<ProjekatBodovanje> projekatBodovanjes = projekatBodovanjeRepository.findByKriterijum_Id(id);
+
         kriterijumBodovanjeRepository.deleteAll(kriterijumBodovanjeRepository.findAllByKriterijum_Id(id));
         projekatBodovanjeRepository.deleteAll(projekatBodovanjeRepository.findByKriterijum_Id(id));
         kriterijumRepository.deleteById(id);
+
+        for (ProjekatBodovanje pb : projekatBodovanjes) {
+            projekatService.preracunajUkupnoBodovi(pb.getProjekat().getId());
+        }
     }
 
     public List<Kriterijum> findByAkcioniPlan_Id(Long id){

@@ -111,4 +111,18 @@ public class ProjekatService {
     public List<Projekat> findByAkcioniPlan_IdOrder(Long id){
         return projekatRepository.findAllByAkcioniPlan_IdOrderByUkupnoBodovaDesc(id);
     }
+
+    public void preracunajUkupnoBodovi(Long id) {
+       List<ProjekatBodovanje> projekatBodovanjes = projekatBodovanjeRepository.findByProjekat_Id(id);
+
+       Double ukupno = 0.0;
+
+       for (ProjekatBodovanje pb : projekatBodovanjes) {
+           ukupno += pb.getPonderisaniBodovi();
+       }
+
+       Projekat projekat = projekatRepository.getOne(id);
+       projekat.setUkupnoBodova(ukupno);
+       projekatRepository.save(projekat);
+    }
 }
