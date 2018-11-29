@@ -94,7 +94,7 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
         if (this.projekat.id !== undefined) {
             this.projekatBodovanjeService.queryByProjekat(this.projekat.id).subscribe(
                 (res: HttpResponse<IProjekatBodovanje[]>) => {
-                    this.projekatBodovanjes = res.body;
+                    this.projekatBodovanjes = res.body.sort((n, m) => n.kriterijum.id - m.kriterijum.id);
 
                     this.projekatBodovanjes.forEach((p: IProjekatBodovanje) => {
 
@@ -117,7 +117,7 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
                 params => {
                     this.kriterijumService.queryByAkcioniPlan(params['id']).subscribe(
                         (res: HttpResponse<IKriterijum[]>) => {
-                            this.kriterijums = res.body;
+                            this.kriterijums = res.body.sort((n, m) => n.id - m.id);
 
                             this.kriterijums.forEach((k: IKriterijum) => {
 
@@ -137,6 +137,8 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
                     );
                 }
             );
+
+            this.projekat.ukupnoBodova = 0;
         }
     }
 
@@ -146,9 +148,9 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
             'kriterijum'        : k.naziv,
             'vrednost'          : null,
             'tip'               : k.kriterijumTip,
-            'bodovi'            : null,
+            'bodovi'            : 0,
             'ponder'            : k.ponder,
-            'ponderisaniBodovi' : null
+            'ponderisaniBodovi' : 0
         });
         this.rows.push(row);
     }
@@ -202,6 +204,9 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
                             }
 
                         }
+                    } else {
+                        izracunitiBodovi = 0;
+                        izracunitiPonderisaniBodovi = 0;
                     }
                 }
             }
@@ -210,6 +215,20 @@ export class ProjekatUpdateComponent implements OnInit, OnDestroy {
         x.get('bodovi').setValue(izracunitiBodovi);
         x.get('ponderisaniBodovi').setValue(izracunitiPonderisaniBodovi);
 
+        this.izracunajUkupno();
+    }
+
+    izracunajUkupno() {
+        let ukupno = 0;
+
+        this.form.value.projekti.forEach(p => {
+                if (p.ponderisaniBodovi) {
+                    ukupno += p.ponderisaniBodovi;
+                }
+            }
+        );
+
+        this.projekat.ukupnoBodova = ukupno;
     }
 
     byteSize(field) {

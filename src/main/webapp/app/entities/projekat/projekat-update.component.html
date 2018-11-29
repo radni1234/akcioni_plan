@@ -5,26 +5,26 @@
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <!--<div class="form-group" [hidden]="!projekat.id">-->
-                    <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
-                    <!--<input type="text" class="form-control" id="id" name="id"-->
-                        <!--[(ngModel)]="projekat.id" readonly />-->
+                <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
+                <!--<input type="text" class="form-control" id="id" name="id"-->
+                <!--[(ngModel)]="projekat.id" readonly />-->
                 <!--</div>-->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.naziv" for="field_naziv">Naziv</label>
                     <input type="text" class="form-control" name="naziv" id="field_naziv"
-                        [(ngModel)]="projekat.naziv" required minlength="1" maxlength="100"/>
+                           [(ngModel)]="projekat.naziv" required minlength="1" maxlength="100"/>
                     <div [hidden]="!(editForm.controls.naziv?.dirty && editForm.controls.naziv?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.naziv?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               [hidden]="!editForm.controls.naziv?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.naziv?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
-                        This field is required to be at least 1 characters.
+                               [hidden]="!editForm.controls.naziv?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
+                            This field is required to be at least 1 characters.
                         </small>
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.naziv?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
-                        This field cannot be longer than 100 characters.
+                               [hidden]="!editForm.controls.naziv?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                            This field cannot be longer than 100 characters.
                         </small>
                     </div>
                 </div>
@@ -57,58 +57,58 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.lokacija" for="field_lokacija">Lokacija</label>
                     <input type="text" class="form-control" name="lokacija" id="field_lokacija"
-                        [(ngModel)]="projekat.lokacija" />
+                           [(ngModel)]="projekat.lokacija" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.opisMere" for="field_opisMere">Opis Mere</label>
                     <input type="text" class="form-control" name="opisMere" id="field_opisMere"
-                        [(ngModel)]="projekat.opisMere" />
+                           [(ngModel)]="projekat.opisMere" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.odgovornaOsoba" for="field_odgovornaOsoba">Odgovorna Osoba</label>
                     <input type="text" class="form-control" name="odgovornaOsoba" id="field_odgovornaOsoba"
-                        [(ngModel)]="projekat.odgovornaOsoba" />
+                           [(ngModel)]="projekat.odgovornaOsoba" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.izvorFinansiranja" for="field_izvorFinansiranja">Izvor Finansiranja</label>
                     <input type="text" class="form-control" name="izvorFinansiranja" id="field_izvorFinansiranja"
-                        [(ngModel)]="projekat.izvorFinansiranja" />
+                           [(ngModel)]="projekat.izvorFinansiranja" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.ostalo" for="field_ostalo">Ostalo</label>
                     <input type="text" class="form-control" name="ostalo" id="field_ostalo"
-                        [(ngModel)]="projekat.ostalo" />
+                           [(ngModel)]="projekat.ostalo" />
                 </div>
                 <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.slika" for="field_slika">Slika</label>-->
-                    <!--<div>-->
-                        <!--<img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-height: 100px;" *ngIf="projekat.slika" alt="projekat image"/>-->
-                        <!--<div *ngIf="projekat.slika" class="form-text text-danger clearfix">-->
-                            <!--<span class="pull-left">{{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}</span>-->
-                            <!--<button type="button" (click)="clearInputImage('slika', 'slikaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">-->
-                                <!--<fa-icon [icon]="'times'"></fa-icon>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                        <!--<input type="file" id="file_slika" (change)="setFileData($event, projekat, 'slika', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>-->
-                    <!--</div>-->
-                    <!--<input type="hidden" class="form-control" name="slika" id="field_slika"-->
-                        <!--[(ngModel)]="projekat.slika" />-->
-                    <!--<input type="hidden" class="form-control" name="slikaContentType" id="field_slikaContentType"-->
-                        <!--[(ngModel)]="projekat.slikaContentType" />-->
+                <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.slika" for="field_slika">Slika</label>-->
+                <!--<div>-->
+                <!--<img [src]="'data:' + projekat.slikaContentType + ';base64,' + projekat.slika" style="max-height: 100px;" *ngIf="projekat.slika" alt="projekat image"/>-->
+                <!--<div *ngIf="projekat.slika" class="form-text text-danger clearfix">-->
+                <!--<span class="pull-left">{{projekat.slikaContentType}}, {{byteSize(projekat.slika)}}</span>-->
+                <!--<button type="button" (click)="clearInputImage('slika', 'slikaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">-->
+                <!--<fa-icon [icon]="'times'"></fa-icon>-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--<input type="file" id="file_slika" (change)="setFileData($event, projekat, 'slika', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>-->
+                <!--</div>-->
+                <!--<input type="hidden" class="form-control" name="slika" id="field_slika"-->
+                <!--[(ngModel)]="projekat.slika" />-->
+                <!--<input type="hidden" class="form-control" name="slikaContentType" id="field_slikaContentType"-->
+                <!--[(ngModel)]="projekat.slikaContentType" />-->
                 <!--</div>-->
 
                 <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>-->
-                    <!--<select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="projekat.akcioniPlan"  required>-->
-                        <!--<option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>-->
-                        <!--<option [ngValue]="akcioniPlanOption.id === projekat.akcioniPlan?.id ? projekat.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>-->
-                    <!--</select>-->
+                <!--<label class="form-control-label" jhiTranslate="akcioniPlanApp.projekat.akcioniPlan" for="field_akcioniPlan">Akcioni Plan</label>-->
+                <!--<select class="form-control" id="field_akcioniPlan" name="akcioniPlan" [(ngModel)]="projekat.akcioniPlan"  required>-->
+                <!--<option *ngIf="!editForm.value.akcioniPlan" [ngValue]="null" selected></option>-->
+                <!--<option [ngValue]="akcioniPlanOption.id === projekat.akcioniPlan?.id ? projekat.akcioniPlan : akcioniPlanOption" *ngFor="let akcioniPlanOption of akcioniplans; trackBy: trackAkcioniPlanById">{{akcioniPlanOption.naziv}}</option>-->
+                <!--</select>-->
                 <!--</div>-->
                 <!--<div [hidden]="!(editForm.controls.akcioniPlan?.dirty && editForm.controls.akcioniPlan?.invalid)">-->
-                    <!--<small class="form-text text-danger"-->
-                        <!--[hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">-->
-                        <!--This field is required.-->
-                    <!--</small>-->
+                <!--<small class="form-text text-danger"-->
+                <!--[hidden]="!editForm.controls.akcioniPlan?.errors?.required" jhiTranslate="entity.validation.required">-->
+                <!--This field is required.-->
+                <!--</small>-->
                 <!--</div>-->
             </div>
             <!--<jhi-projekat-bodovanje *ngIf="projekat.id" [projekatId]="projekat.id" #projekatBodovanjeRef></jhi-projekat-bodovanje>-->
@@ -120,8 +120,6 @@
                     <hr>
                     <table class="container" formArrayName="projekti">
                         <thead>
-                        <tr class="row"></tr>
-                        <tr class="row"></tr>
                         <tr class="row">
                             <th class="col-sm-9 d-none d-sm-block text-center align-bottom font-weight-bold"></th>
                             <th class="col-sm-1 d-none d-sm-block rotate text-center font-weight-bold"><div>Bodovi</div></th>
@@ -160,6 +158,10 @@
                             <td class="col-sm-1 text-right font-weight-bold border-success border-bottom">{{r.value.bodovi}}</td>
                             <td class="col-sm-1 text-right font-weight-bold border-success border-bottom">{{r.value.ponder}}</td>
                             <td class="col-sm-1 text-right font-weight-bold border-success border-bottom">{{r.value.ponderisaniBodovi}}</td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-sm-11"></td>
+                            <td class="col-sm-1 text-right font-weight-bold border-success border-bottom">{{projekat.ukupnoBodova}}</td>
                         </tr>
                         </tbody>
                     </table>
