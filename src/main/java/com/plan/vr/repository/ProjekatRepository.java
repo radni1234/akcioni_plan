@@ -14,4 +14,5 @@ import java.util.List;
 @Repository
 public interface ProjekatRepository extends JpaRepository<Projekat, Long> {
     List<Projekat> findByAkcioniPlan_Id(Long id);
+    List<Projekat> findAllByAkcioniPlan_IdOrderByUkupnoBodovaDesc(Long id);
 }

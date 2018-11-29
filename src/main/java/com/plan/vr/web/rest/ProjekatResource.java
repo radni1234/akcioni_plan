@@ -92,7 +92,7 @@ public class ProjekatResource {
     @GetMapping("/projekats/ap/{id}")
     @Timed
     public List<Projekat> getAllProjekatsByAkcioniPlanId(@PathVariable Long id) {
-        return projekatService.findByAkcioniPlan_Id(id);
+        return projekatService.findByAkcioniPlan_IdOrder(id);
     }
 
 

@@ -79,7 +79,6 @@ public class ProjekatService {
         return projekatRepository.findAll();
     }
 
-
     /**
      * Get one projekat by id.
      *
@@ -107,5 +106,9 @@ public class ProjekatService {
 
     public List<Projekat> findByAkcioniPlan_Id(Long id){
         return projekatRepository.findByAkcioniPlan_Id(id);
+    }
+
+    public List<Projekat> findByAkcioniPlan_IdOrder(Long id){
+        return projekatRepository.findAllByAkcioniPlan_IdOrderByUkupnoBodovaDesc(id);
     }
 }
